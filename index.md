@@ -1,14 +1,14 @@
 ---
 title: Wiki Index
 created: 2026-05-28
-updated: 2026-06-04
+updated: 2026-06-04 23:35
 type: meta
 tags: [index, wiki, catalog]
 ---
 
 # Wiki Index
 
-> **2026-06-04 20:30 状态**:98 个 .md / 5 知识类别 + 多 Agent 第二大脑 + cron healthcheck。死链 0。
+> **2026-06-04 23:35 状态**:103 个 .md (5 新增 gh CLI) / 5 知识类别 + 多 Agent 第二大脑 + 0 cron。死链 0。
 > 启动一个 Agent 后,先读 [[CLAUDE]],再读本文件,再读 [[agents/README]]。
 
 ## 📐 协议层(启动必读)
@@ -39,6 +39,7 @@ tags: [index, wiki, catalog]
 - [[agents/writer-1]] — writer 实例(2026-06-04 E2E 测试)
 - [[agents/coordination-cheatsheet]] — 协调速查表(2026-06-04 新)
 - [[agents/user-preferences]] — 用户偏好(2026-06-04 新)
+- [[agents/tools-gh-cli]] — gh CLI 本机部署(Windows main-claude,2026-06-04 新)
 
 ### Protocols(4)
 - [[protocols/agent-coordination]] — 6 原语 + A2A 兼容映射
@@ -81,6 +82,8 @@ tags: [index, wiki, catalog]
 - [[methods/lcm-memory-guide]] — LCM 内存管理(2026-06-04 新)
 - [[methods/scratchpad-coordination]] — Scratchpad 协调(2026-06-04 新)
 - [[methods/hindsight-health-monitoring-protocol]] — Hindsight liveness + auto-restart cron 协议(2026-06-04 新,本会话 20:11 实测)
+- [[methods/gh-extension-development]] — gh CLI extension 开发实战(2026-06-04 新,Go binary 模式)
+- [[methods/gh-command-cheatsheet]] — gh CLI 命令速查 L1-L2(2026-06-04 新)
 
 ### Concepts(17) — 概念/主题
 - [[concepts/ai-coding-tools-comparison]] — AI 编码工具对比
@@ -103,6 +106,8 @@ tags: [index, wiki, catalog]
 - [[concepts/symphony-spec-as-product]] — Symphony 编排规约
 - [[concepts/hindsight-memory-modes-guide]] — Hindsight 4 模式选型(2026-06-04 stub)
 - [[concepts/awesome-hermes-agent-ecosystem-2026]] — Awesome Hermes 生态全景(2026-06-05 新)
+- [[concepts/github-cli-overview]] — GitHub CLI (gh) 概览 / 何时用(2026-06-04 新)
+- [[concepts/github-cli-architecture]] — gh CLI 内部架构(Cobra/Factory/go-gh)(2026-06-04 新)
 
 ### Comparisons(3) — 对比分析
 - [[comparisons/hermes-memory-systems-comparison-2026]] — 8 provider 对比
