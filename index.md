@@ -55,7 +55,7 @@ tags: [index, wiki, catalog]
 
 | ID | 状态 | Owner | 主题 |
 |---|---|---|---|
-| [[tasks/_archive/2026-06-04-agent-stack-test\|2026-06-04-agent-stack-test]] | done | main-claude | 端到端测试整个多 Agent 第二大脑协议栈(2026-06-04 实测通过,已 archive) |
+| [[tasks/_archive/2026-06-04-agent-stack-test|2026-06-04-agent-stack-test]] | done | main-claude | 端到端测试整个多 Agent 第二大脑协议栈(2026-06-04 实测通过,已 archive) |
 | [[tasks/wiki-multi-agent-refactor]] | done | main-claude | Wiki 多 Agent 第二大脑重构(2026-06-04 任务记录) |
 | [[tasks/cleanup-worker-debris]] | pending | main-claude | 清理 worker 删除残留 |
 | [[tasks/daily-knowledge-curation]] | active | main-claude | 每日新知识推送流程(2026-06-04 启) |
@@ -156,6 +156,12 @@ tags: [index, wiki, catalog]
 - [[notes/agents-md-stale-detect-2026-06-04]] — AGENTS.md stale 检测报告 (9 项偏差, 提议 main-claude 修正)
 - [[notes/multi-machine-wiki-paths]] — 多机器 Wiki 路径对照表 (笔记本 ZZQ vs 台式 Administrator, 5 项差异)
 - [[notes/hindsight-deployment-and-monitoring-2026-06-04]] — Hindsight 实际部署 + health-check cron auto-restart (本会话 20:11 实战, 12.1KB)
+- [[notes/lessons-learned-index]] — **经验与教训索引** (2026-06-05 新建,跨 session 沉淀)
+- [[notes/auto-apply-mode-best-practices]] — **Auto-Apply 模式最佳实践** (2026-06-05 新建, 5 guard rails + 8 步流程)
+- [[notes/git-commit-push-playbook-2026-06-04]] — Git 提交+推送 4 步最佳实践 (3rd 端贡献, 9.3K)
+- [[agents/tools-markitdown]] — MarkItDown 本机部署 (Windows main-claude, 2026-06-04)
+- [[concepts/markitdown-overview]] — MarkItDown 概览 (Microsoft 开源文件→Markdown 转换器)
+- [[methods/markitdown-cheatsheet]] — MarkItDown CLI/Python/5 实战配方
 
 ### References(1) — 长引用
 - [[references/hermes-commands-full|hermes-commands-full]] — Hermes 命令大全 V2 提炼版

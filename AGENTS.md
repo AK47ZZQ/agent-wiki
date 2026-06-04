@@ -37,8 +37,8 @@ sources: [hermes-self-check, wiki-keeper-v1.6, methods/using-knowledge-base]
 │  agent-wiki (GitHub cloud)                  │
 │  https://github.com/AK47ZZQ/agent-wiki      │
 │  + PARA + Zettelkasten 融合                 │
-│  + 73+ .md / 8 类目 / 100% frontmatter       │
-│  + 0 死链 / 0 cron                          │
+│  + 111+ .md / 5 知识类目 / 100% frontmatter  │
+│  + 0 死链 / 2 agent-cron (auto-apply)        │
 └─────────────────────────────────────────────┘
        ↑                                    ↑
        main-claude                        hermes-3rd
@@ -48,12 +48,15 @@ sources: [hermes-self-check, wiki-keeper-v1.6, methods/using-knowledge-base]
        + safe-commit-push         + safe-commit-push
 ```
 
-### 1.3 0 自动化
+### 1.3 自动化原则(2026-06-05 修订)
 
-- ✅ **0 cron**
+- ❌ **0 script-cron**(no_agent, 纯 Python/bash 跑)
+- ✅ **agent-cron OK**(LLM-driven, 飞书 review, 5 guard rails 兜底)
 - ✅ **0 自动 hook**
 - ✅ **0 自动 retain**(除 Hindsight plugin 默认)
-- ✅ **0 wiki 自动推送**(manual,5 步核验)
+- ✅ **0 wiki 自动推送**(manual, 5 步核验)
+
+**auto-apply 模式**: 2 cron (memory-maintenance-morning 9:00 + evening 18:00) 直接改 live, 飞书附 rollback 命令; 用户只看飞书最终结果. 详细: [[notes/auto-apply-mode-best-practices]].
 
 ## 2. 3 节点角色(2026-06-04 18:30+)
 
@@ -189,6 +192,8 @@ bash scripts/safe-commit-push.sh "commit message"
 - ✅ **5 步核验 = wiki-keeper v1.6 协议**(2026-06-04 18:30)
 - ✅ **hermes user.name = "Hermes"**(2026-06-04 17:00)
 - ✅ **hermes-all 仓库本地保留,远端删**(2026-06-04 18:00)
+- ✅ **memory limit 激进扩 40000/10000**(2026-06-05 00:30)
+- ✅ **2 cron memory-maintenance auto-apply mode**(2026-06-05 00:50)
 
 ## 9. 关联文档
 
