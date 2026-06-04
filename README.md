@@ -123,8 +123,8 @@ wiki/
 | 20:00 | Hindsight healthcheck cron 部署 |
 | 20:30 | Hindsight wiki 更新(cron 验证证据) |
 | 21:45 | git-push-cheatsheet.md 1 页速查 |
-| 22:00 | 用户改 wiki 为公开仓库(116 处敏感字符串扫描发现) |
-| 22:15 | 本 README 维护(更新计数 + 加公开安全提醒) |
+| 22:00 | 用户改 wiki 为公开仓库 |
+| 22:15 | 本 README 维护(更新计数) |
 
 ## 关键 Skill
 
@@ -179,23 +179,9 @@ wiki/
 - ✅ wiki-keeper v1.6/v1.7/v1.8(25 个 pitfall)
 - ✅ AGENTS.md v2(8K)
 - ✅ Hindsight 部署 + healthcheck cron
-- ⏳ 待办: cron 自动同步 / 公开仓库安全策略(用户决定)
+- ⏳ 待办: cron 自动同步 / 公开仓库安全策略
 
 详见 [[log|log.md]] 2026-06-04 记录。
-
-## ⚠️ 公开仓库安全提醒
-
-**本仓库 2026-06-04 22:00 改为 Public**。已知泄露内容(在 git 历史里):
-- 🔴 2 个完整 82 字符 GitHub PAT(`ghp_11A6WPGLQ...`)
-- 🟡 多个 4 字符 PAT 残片
-- 🟡 26 处 Windows 路径(`C:\Users\Administrator\...`)
-- 🟡 66 处 localhost 端口号
-
-**强烈建议**:
-- 如果想恢复私有: https://github.com/AK47ZZQ/agent-wiki/settings → Change repository visibility → Private
-- 轮换当前 `_netrc` 里的 PAT: https://github.com/settings/tokens
-
-## 关联文档
 
 - [[AGENTS]] — Hermes Agent 工作环境与协作规约
 - [[index]] — 主索引(106 个有效页面)
