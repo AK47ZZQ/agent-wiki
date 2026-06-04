@@ -39,8 +39,8 @@ Step 1: 读 SKILL frontmatter → 确认触发模式
         └─ 普通探勘 → 6 步法
 
 Step 2: 读 2 个核心 wiki 页(必读,不读不写)
-        ├─ [[wiki/methods/wiki-as-second-brain]] — 协议 + DRY + 评估
-        └─ [[wiki/methods/wiki-code-workflow]] — CODE 4 阶段
+        ├─ [[methods/wiki-as-second-brain]] — 协议 + DRY + 评估
+        └─ [[methods/wiki-code-workflow]] — CODE 4 阶段
 
 Step 3: 评估当前 wiki 状态(CODE 4 阶段盘点)
         ├─ raw/ 有多少? (Capture)
@@ -51,12 +51,12 @@ Step 3: 评估当前 wiki 状态(CODE 4 阶段盘点)
 Step 4: 跑标准 6 步探勘(分析/搜索/交叉验证)
 
 Step 5: 决定产物类型(6 选 1)
-        ├─ 概念 → wiki/concepts/X.md
-        ├─ 方法 → wiki/methods/X.md
-        ├─ 实体 → wiki/entities/X.md
-        ├─ 对比 → wiki/comparisons/X.md
-        ├─ 短记录 → wiki/notes/X.md
-        └─ 范式级 → wiki/methods/X.md (作为新 skill 候选)
+        ├─ 概念 → concepts/X.md
+        ├─ 方法 → methods/X.md
+        ├─ 实体 → entities/X.md
+        ├─ 对比 → comparisons/X.md
+        ├─ 短记录 → notes/X.md
+        └─ 范式级 → methods/X.md (作为新 skill 候选)
 
 Step 6: 写 frontmatter(9 字段,见协议 § 5.7)
 

@@ -119,6 +119,6 @@ pip uninstall -y markitdown[all]
 
 ## 关联
 
-- [[markitdown-overview]] — 概览
-- [[markitdown-cheatsheet]] — 命令速查
-- [[main-claude]] — 本机节点
+- [[concepts/markitdown-overview]] — 概览
+- [[methods/markitdown-cheatsheet]] — 命令速查
+- [[agents/main-claude]] — 本机节点

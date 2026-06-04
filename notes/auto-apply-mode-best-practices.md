@@ -167,3 +167,14 @@ Next: agent will retry tomorrow.
 > 自动化 ≠ 失控。Auto-apply 模式 + 5 guard rails + backup + 飞书 review = "用户信任 agent,但有兜底"。
 > 反面:全静默 cron = 用户看不见 = 不可信。
 > 反面:全 review 闸门 = 用户 review 疲劳 = 真问题被忽略。
+
+## 12. D 报告验证(2026-06-05 00:58)
+
+跑 `check-wiki-quality.py` 摸底后优化:
+
+- 0 死链 / 0 缺索引 / 0 frontmatter 缺 / 0 secret
+- 20+ orphan 全部为 `agents/ai-harness-exploration*` (已 SKIP_PREFIXES,预期)
+- log.md 68K (历史累积) — 暂未裁剪
+- 本 page 加入 lessons-learned-index § 7, 与其形成双向链
+
+**结论**: auto-apply 模式可放心启用; 9:00 第一次跑观察 5 guard rails 是否被 agent 严格执行.

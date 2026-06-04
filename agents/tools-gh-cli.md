@@ -166,7 +166,7 @@ rm -rf "$APPDATA/GitHub CLI"     # Windows
 
 ## 关联
 
-- [[github-cli-overview]] — gh 是什么
-- [[github-cli-architecture]] — 内部
-- [[gh-command-cheatsheet]] — L1 命令
-- [[main-claude]] — 本机节点身份
+- [[concepts/github-cli-overview]] — gh 是什么
+- [[concepts/github-cli-architecture]] — 内部
+- [[methods/gh-command-cheatsheet]] — L1 命令
+- [[agents/main-claude]] — 本机节点身份

@@ -122,3 +122,14 @@ confidence: high
 
 > **Linus 原则**: 经验 = 让未来 agent 不再踩同一坑; 教训 = 知道坑有多大 + 多频。
 > **不要重复 wiki**: 每条经验 wikilink 到原始细节页,本索引只列 "什么坑 → 跳去细节" 1 行表格,避免成为第二份 wiki 副本。
+
+## 12. D 报告验证(2026-06-05 00:58)
+
+- **死链**: 0 真 (3 个修了:index.md 反斜杠转义 + 2 个 skills-*/SKILL 路径)
+- **索引**: 123 已索引 / 0 缺 (加了 5 个:2 新 notes + 3rd 3 个 markitdown/playbook)
+- **frontmatter**: 0 缺字段
+- **secret_scan**: 0 critical, 0 warnings
+- **orphan files**: 20+ 全部为 `agents/ai-harness-exploration*` (已 SKIP_PREFIXES 跳过,预期)
+- **stale 大文件**: log.md 68K (可压缩), ai-harness-exploration-SKILL.md 132K (skill 源码,预期)
+
+**结论**: wiki 整体健康; lessons-learned + auto-apply 2 page 已加入索引并自检 PASS.
