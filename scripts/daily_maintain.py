@@ -86,6 +86,12 @@ human_out = out.split('---JSON_OUTPUT_START---')[0] if '---JSON_OUTPUT_START---'
 report_lines.append(human_out[-500:])  # 只看后 500 字符
 
 # 解析 JSON 算 "新发现" (不在 KNOWN_BASELINE)
+# 严重度对照(必须跟 scan_wiki_secrets.py 的 RED 集合一致)
+RED_LABELS = {'PAT (ghp_/github_pat_)', 'Generic password', 'Generic API key',
+              'AWS access key', 'AWS secret key', 'Private key block',
+              'Bearer token', 'DeepSeek/OpenAI sk-', 'Netrc password',
+              'x-oauth-basic', 'Discord webhook', 'Slack token'}
+
 try:
     import json as _json
     if '---JSON_OUTPUT_START---' in out:
@@ -94,6 +100,8 @@ try:
         new_red = 0
         new_examples = []
         for label, items in data.get('details', {}).items():
+            if label not in RED_LABELS:
+                continue  # 只看 🔴 严重度
             for item in items:
                 if not is_known_baseline(item['file'], item['line']):
                     new_red += 1
