@@ -1,7 +1,7 @@
 ---
 title: Hindsight 实际部署 + Health-check Cron Auto-Restart (2026-06-04 20:11)
 created: 2026-06-04
-updated: 2026-06-04
+updated: 2026-06-04T20:35
 type: note
 tags: [note, hindsight, deployment, health-check, cron, auto-restart, watchdog, hermes, live-ops]
 source: |
@@ -312,3 +312,44 @@ write_state("restarted", ...) → exit 0
 - ✅ 5 步 Liveness 手动流程 (新)
 - ✅ 4 Pitfall 整理 (新)
 - ✅ MSYS bash curl 转义坑 + Python urllib 修法 (新)
+
+**v1.1.1 (2026-06-04 20:30+ 实测验证)**:
+- ✅ Cron 5min tick 真实自动跑(2 次 tick 抓到)
+  - tick 1: `Last run 20:30:44 ok`, latency 2364ms
+  - tick 2: `Last run 20:35:48 ok`, latency 3451ms
+- ✅ State JSON 持续推进 timestamp
+- ✅ `hermes cron list` 显示 `last_run` 字段更新
+- ✅ 输出目录创建 `~/.hermes/cron/output/4793e7a07e08/`
+- ⚠️ **新发现**: latency 持续 2-3s(非预期 <500ms)
+  - 不是 connection cache miss(server 跑了 24+ min)
+  - 推测: pg0-embedded 每次 /health 走完整查, sentence-transformers 模型加载慢
+  - **不影响 health**(5s timeout 内返回)
+  - **留作 v1.1.2 优化**: 改 /health 端点只 ping, 不查 db
+
+---
+
+## 10. 实测时序 (本会话 20:11-20:35)
+
+```
+20:07  调查 → plugin 报 "not available"
+20:11  启 server → PID 1692, 35s 启动
+20:12  bash curl POST → 失败 (MSYS 转义)
+20:16  Python urllib → retain/recall 全过 (3.3k tokens, 3s)
+20:19  写 healthcheck.py + 创建 cron job
+20:24  手动测试 healthcheck → exit 0
+20:30  Cron tick 1 自动跑 → ok
+20:32  wiki commit 0bfd71a (deployment 笔记)
+20:34  wiki commit 6c98399 (protocol + index 4 改)
+20:35  Cron tick 2 自动跑 → ok
+       (本节验证完, 准备 commit log + 2 文件 update)
+```
+
+---
+
+## 11. 待办 (v1.1.2+ 路线)
+
+- [ ] **latency 优化**: 改 /health 端点只 ping, latency 目标 <500ms
+- [ ] **latency 告警**: > 4s 持续 3 tick → 飞书告警
+- [ ] **3rd 笔记本复用**: 把本协议推到 3rd, 3rd 装同款 cron
+- [ ] **health 端点增强**: 加 `pid` + `uptime` + `facts_count` 返回
+- [ ] **v2.0 告警体系**: 飞书 webhook (restart_failed ≥ 3 / 24h)

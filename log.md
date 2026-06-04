@@ -1,5 +1,47 @@
 ## [2026-06-04 15:36] 3rd: Hermes 3rd 首次 onboarding 完成 + 首次 push 成功
 
+## [2026-06-04 20:11] main-claude: Hindsight local server 第二次部署 + health-check cron auto-restart
+
+**触发**: 用户问"hindsight 是否正常工作" → 调查发现 plugin 报 "not available" + server 没在跑.
+
+**20:11 启 server** (PID 1692):
+- `python start_hindsight_local.py` → 35s 启动 → `{"status":"healthy","database":"connected"}`
+- 关键 env: `HINDSIGHT_API_WORKER_ID=hindsight-local` (防任务丢失)
+- LLM: MiniMax-M2.5-highspeed via api.minimaxi.com
+
+**20:16 retain/recall 验证**:
+- ✅ retain 1 fact (3.3k tokens, latency ~3s)
+- ✅ recall 立即命中 (top-1 是刚 retain 的)
+- ✅ 跨 session 持久化 OK (2026-06-03 D 路径测试 facts 还在)
+- ✅ 实体抽取 LLM 工作 (entities: ["Hindsight server", "MiniMax LLM", "PID 1692"])
+
+**踩坑 (3 个)**:
+1. `hermes memory status` 报 "not available" 是**误报** (Cloud key 本地模式不需要, 看 curl /health 真信号)
+2. **bash curl POST JSON 在 MSYS 转义破坏 body** → "There was an error parsing the body" (不是 Hindsight 问题) → 改 Python urllib
+3. 首次 call latency 2-3s 是 pg0-embedded connection cache miss, 后续应 <500ms (但实际持续 2-3s, 见 v1.1.1 验证)
+
+**写 healthcheck.py** (4.8KB, 3 场景: healthy / unhealthy-restart-ok / unhealthy-restart-fail):
+- 位置: `~/.hermes/scripts/hindsight-healthcheck.py`
+- Python urllib 避免 MSYS 转义
+- state JSON: `~/.hermes/hindsight/health-state.json`
+- 死循环防护: MAX_RESTART_ATTEMPTS=1
+
+**创建 cron** (job_id 4793e7a07e08):
+- `hermes cron create --schedule "every 5m" --no-agent true --deliver local --script hindsight-healthcheck.py`
+- ✅ `hermes cron list` 显示 active
+- ✅ `Last run: 20:30:44 ok` (5min tick 自动跑)
+- ✅ `Last run: 20:35:48 ok` (第 2 个 tick 也跑过)
+
+**产出 wiki**:
+- `notes/hindsight-deployment-and-monitoring-2026-06-04.md` (12.1KB, 9 段) — commit `0bfd71a` ✅
+- `methods/hindsight-health-monitoring-protocol.md` (10.8KB, 10 段, 可复用) — commit `6c98399` ✅
+- `index.md` 修 4 处 (顶部状态 / Method 计数 6→18 / Method 段 +1 / Notes 段 +1) — 同一 commit
+
+**现状** (20:35):
+- Hindsight server PID 1692 跑了 24 min
+- Cron 5min tick 2 次成功
+- Latency 持续 2-3s (不是预期 <500ms, 留作 v1.1.2 优化)
+
 ## [2026-06-04 18:50] 3rd: ABCD 4 任务全完成, 报告 4 个剩余死链给 main-claude
 
 **ABCD 完成总览**:
