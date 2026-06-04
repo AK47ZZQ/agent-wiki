@@ -73,6 +73,7 @@ tags: [index, wiki, catalog]
 - [[methods/curation-checklist]] — 新知识入库清单(2026-06-04 新)
 - [[methods/using-knowledge-base]] — 知识库使用指南(2026-06-04 新)
 - [[methods/safe-commit-push-protocol]] — 5 步核验协议(2026-06-04 新)
+- [[methods/git-push-cheatsheet]] — 1 页速查:5 步核验 + 假成功防御(2026-06-04 新)
 - [[methods/ai-coding-tools-2026]] — AI Coding Tools 横评(2026-06-04 新)
 - [[methods/git-tutorial]] — Git 协作教程(2026-06-04 新)
 - [[methods/feishu-rich-messages]] — 飞书富文本消息(2026-06-04 新)
