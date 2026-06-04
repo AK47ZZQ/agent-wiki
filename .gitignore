@@ -1,0 +1,31 @@
+# 内部数据库(SQLite/WAL/SHM) — 包含运行状态,不入版本
+*.db
+*.db-wal
+*.db-shm
+state.db*
+lcm.db*
+response_store.db*
+kanban.db*
+
+# 工具/IDE 目录
+.claudian/
+.codegraph/
+.obsidian/
+.trash/
+
+# 飞书 pipeline 中间文件
+.feishu-pipeline*
+.feishu-pipeline-stamp.json
+
+# Obsidian 临时文件
+未命名.base
+未命名.canvas
+
+# 旧版本备份(wiki 重构前的 AGENTS.md)
+AGENTS.md.bak-pre-flatten
+
+# OS 临时
+.DS_Store
+Thumbs.db
+*.bak
+*.swp
