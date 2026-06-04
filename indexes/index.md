@@ -1,6 +1,11 @@
 ---
 title: Wiki 主索引
-updated: 2026-06-03
+created: 2026-06-02
+updated: 2026-06-04
+type: meta
+tags: [index, wiki, catalog]
+source: wiki/indexes/index.md
+confidence: high
 ---
 
 # Wiki 主索引

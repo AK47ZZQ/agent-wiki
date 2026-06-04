@@ -1,3 +1,13 @@
+---
+title: Hermes命令大全V2
+created: 2026-05-30
+updated: 2026-06-04
+type: reference
+tags: [reference, hermes, command, cheatsheet]
+source: raw/work/hermes命令大全v2-hermes命令大全-hermes-agent-命令大全hermes-agent-完整-1780136199.md
+confidence: high
+---
+
 Hermes命令大全V2
 Hermes命令大全
 📖 Hermes Agent 命令大全

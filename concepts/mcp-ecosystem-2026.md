@@ -9,7 +9,7 @@ confidence: high (多源交叉验证)
 related:
   - concepts/ai-coding-tools-comparison.md
   - concepts/harness-engineering-deep-study.md
-  - concepts/ai-agent-ecosystem-2026.md
+  - concepts/awesome-hermes-agent-ecosystem-2026.md
 ---
 
 # MCP 生态全景 2026

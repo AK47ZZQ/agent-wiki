@@ -1,4 +1,12 @@
-# Wiki 操作日志
+---
+title: Wiki 操作日志
+created: 2026-06-02
+updated: 2026-06-04
+type: meta
+tags: [log, wiki, history]
+source: wiki/indexes/log.md
+confidence: high
+---
 
 ## 2026-06-02 — Hindsight 主动化 + 4-Tier 记忆架构
 

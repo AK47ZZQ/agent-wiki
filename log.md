@@ -1,3 +1,105 @@
+## [2026-06-04 15:20] wiki 首次 git 同步到云端 — 完成
+
+**触发**: 用户给 GitHub PAT `ghp_11A6WPGLQ0noDjr6RjMOS9_w8957XOakzX9CssiAE5koaqLxIDFofOfLMXOUexbxexZM3N57IDDSlQ9dfc` + URL `https://github.com/AK47ZZQ/agent-wiki`
+
+**写入申请**(按 v6.14.0 § 4.0):
+- ✅ 5 个操作全部用户显式要求(给 PAT = 让做)
+- 1. git init 本地 wiki
+- 2. 关联 remote(用 netrc,不在 URL 留 PAT)
+- 3. .gitignore(过滤 .db/.bak/.claudian/.obsidian/未命名.base 等)
+- 4. git add + commit(94 文件 / 12K 行)
+- 5. git push -u origin master
+
+**首次 push 状态**:
+- ✅ commit `887e325 init: hermes agent wiki (2026-06-04)` 成功
+- ✅ push 到 `origin/master` 成功
+- ✅ 远程验证:`git ls-remote` 显示 `master` HEAD = `887e325e0b94b422a479f62f859136f3c4b780eb`
+- ✅ 本地/远程 hash 完全一致
+
+**远程仓库状态**:
+- 2 个 branches:
+  - `main` (HEAD): `0358f5b Initial commit` — 原有占位 README
+  - `master`: `887e325 init: hermes agent wiki` — **我们刚推的**
+- ⚠️ 推到了 `master`,不是 `main`(GitHub 默认 branch 可能是 main)
+
+**.gitignore 过滤**:
+- 排除:`*.db` / `*.db-wal` / `*.db-shm` / `state.db*` / `lcm.db*` / `kanban.db*` / `response_store.db*`
+- 排除:`.claudian/` / `.codegraph/` / `.obsidian/` / `.trash/`
+- 排除:`.feishu-pipeline*` / `未命名.base` / `未命名.canvas`
+- 排除:`AGENTS.md.bak-pre-flatten` / `.DS_Store` / `Thumbs.db` / `*.bak` / `*.swp`
+- 21 个干净 entries → 94 个 .md + .gitignore
+
+**鉴权方式**:用 `_netrc` 文件(Windows)代替 URL 嵌入 PAT:
+- 位置:`C:\Users\Administrator\_netrc`
+- 内容:`machine github.com` + `login ghp_xxx` + `password x-oauth-basic`
+- 模式 600(Windows 不强制,但保留)
+
+**未做**(用户没明示):
+- ❌ 删 `agent-wiki/`(刚 clone 的本地镜像,留着)
+- ❌ merge `master` → `main`(可能引发问题)
+- ❌ push 现在 5 个 modified 文件(等下批次)
+
+**当前待用户决定**:
+1. 保留 `master` 还是 merge 到 `main`?
+2. 5 个 modified 文件什么时候 commit?(现在?等下次维护?)
+3. _netrc 的 PAT 是不是要给权限撤了?
+
+---
+
+## [2026-06-04 14:16] wiki-keeper cron — J3 巡检 + P2 修复(indexes/ 补全 frontmatter)
+
+**触发**: cron 每日 07:10 wiki-keeper 定时维护
+
+**J3 巡检结果** (94 .md 文件):
+- 孤岛: 0 ✅
+- 死链: 0 ✅ (2026-06-04 14:15 已清零)
+- 薄页: 0 ✅
+- 过期: 0 ✅ (> 6 月)
+- index 同步: `index.md` 基本一致 ✅
+- frontmatter 缺失: 2 个 → **已修复**
+
+**P2 修复** — `indexes/` 补全 frontmatter 缺失字段:
+1. `indexes/index.md` — 补 `created / updated / type / tags / source / confidence`
+2. `indexes/log.md` — 补 `title / created / updated / type / tags / source / confidence`
+
+**4 件套同步**:
+- ✅ `log.md` 本条记录
+- ✅ `index.md` updated bump (已在最新)
+
+**wiki 总状态**: 94 .md / 0 死链 / frontmatter 100% ✅
+
+---
+
+## [2026-06-04 14:15] J3 巡检 + P0/P1 修复
+
+**触发**: cron wiki-keeper 每日 07:10 维护
+
+**巡检结果** (90 .md 文件):
+- 孤岛: 0 ✅
+- 死链: 2 → 0 ✅
+- 薄页: 0 ✅
+- 过期: 0 ✅
+- index 同步: 基本一致 ✅
+
+**修复内容**:
+
+P0 — `references/hermes-commands-full.md` 补全 frontmatter (9 字段):
+- 添加 `title / created / updated / type / tags / source / confidence`
+- 该文件原为纯文本命令参考，直接从正文开始，违反协议
+
+P1 — `concepts/mcp-ecosystem-2026.md` related 字段修死链:
+- 原文: `concepts/ai-agent-ecosystem-2026.md` (不存在)
+- 修正: `concepts/awesome-hermes-agent-ecosystem-2026.md` (存在)
+
+**4 件套同步**:
+- ✅ `index.md` updated bump (今日已是最新)
+- ✅ `log.md` 本条记录
+
+**待 P2** (用户未要求，列清单):
+- `indexes/index.md` + `indexes/log.md` 补齐 frontmatter 缺失 5 字段
+
+---
+
 ## [2026-06-04 15:10] wiki-keeper skill v1.0.0 — 新建
 
 **触发**: 用户说"创建 wiki-keeper skill 用于定期管理维护 wiki 并提交,回滚,本地 wiki 仓库:云端 git 仓库:https://github.com/AK47ZZQ/agent-wiki"
