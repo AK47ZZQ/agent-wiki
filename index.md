@@ -46,7 +46,7 @@ tags: [index, wiki, catalog]
 
 | ID | 状态 | Owner | 主题 |
 |---|---|---|---|
-| [[tasks/2026-06-04-agent-stack-test\|2026-06-04-agent-stack-test]] | done | main-claude | 端到端测试整个多 Agent 第二大脑协议栈(2026-06-04 实测通过) |
+| [[tasks/_archive/2026-06-04-agent-stack-test\|2026-06-04-agent-stack-test]] | done | main-claude | 端到端测试整个多 Agent 第二大脑协议栈(2026-06-04 实测通过,已 archive) |
 | [[tasks/wiki-multi-agent-refactor]] | done | main-claude | Wiki 多 Agent 第二大脑重构(2026-06-04 任务记录) |
 | [[tasks/cleanup-worker-debris]] | pending | main-claude | 清理 worker 删除残留 |
 

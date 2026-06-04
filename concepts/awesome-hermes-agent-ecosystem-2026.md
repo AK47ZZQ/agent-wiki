@@ -205,7 +205,7 @@ Awesome Hermes Agent 是 Hermes 生态系统的**社区精选清单**，涵盖 1
 |-------------|-------------|---------|
 | Hindsight | [[concepts/hindsight-in-hermes-ecosystem-2026\|concept]] + [[methods/install-hindsight-native-hermes-method\|method]] + [[methods/hindsight-4d-retrieval-complete\|4D检索]] + [[notes/hindsight-local-deployment-windows-2026\|部署]] + [[notes/hindsight-risks-and-optimizations-2026\|风险]] + [[comparisons/hindsight-automation-patterns-2026\|4模式]] + [[concepts/hindsight-memory-modes-guide\|4模式指南]] | ⭐⭐⭐ 全覆盖 |
 | hermes-workspace | [[entities/hermes-workspace\|实体]] + [[entities/hermes-workspace-architecture\|架构]] + [[entities/hermes-workspace-deployment-guide\|部署]] | ⭐⭐⭐ 全覆盖 |
-| Hermes Skills 系统 | 10 个 [[entities/hermes-skill-*\|skill 实体页]] | ⭐⭐ 部分覆盖 |
+| Hermes Skills 系统 | 10 个 entities/hermes-skill-* (skill 实体页) | ⭐⭐ 部分覆盖 |
 | LCM 记忆 | [[notes/lcm-upgrade-v0.12-to-v0.15\|升级记录]] + [[concepts/agent-memory-state-2026\|记忆状态]] | ⭐⭐ 部分覆盖 |
 | MCP 生态 | [[concepts/mcp-ecosystem-2026\|MCP 全景]] + [[concepts/mcpb-bundle-format\|Bundle 格式]] | ⭐⭐ 部分覆盖 |
 | Kanban/Swarm | [[concepts/hermes-kanban\|Kanban]] + [[entities/hermes-skill-kanban-orchestrator\|编排]] + [[entities/hermes-skill-kanban-worker\|Worker]] | ⭐⭐ 部分覆盖 |
@@ -227,7 +227,7 @@ Awesome Hermes Agent 是 Hermes 生态系统的**社区精选清单**，涵盖 1
 
 ## 关联页面
 
-- [[raw/tech/awesome-hermes-agent-zh]] — 完整源文件（30KB）
+- [[raw/tech/awesome-hermes-agent-zh.md]] — 完整源文件(30KB)
 - [[concepts/hindsight-in-hermes-ecosystem-2026]] — Hindsight 在本生态中的定位
 - [[entities/hermes-workspace]] — Hermes Workspace 实体
 - [[comparisons/hermes-memory-systems-comparison-2026]] — 8 provider 对比（含 Hindsight vs Honcho）

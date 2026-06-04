@@ -46,6 +46,27 @@
 
 ---
 
+## [2026-06-04 14:45] wiki-git-sync skill 创建 + 首次同步测试
+
+**触发**: 用户要求新建 skill 维护云端 wiki 仓库
+
+**动作**:
+1. 创建 `hermes/skills/wiki-git-sync/SKILL.md` — 完整操作手册（含 commit/push/pull/rollback 流程）
+2. 配置 PAT 认证：改写 git remote URL，带入 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
+3. 首次同步测试成功：commit + push 到 AK47ZZQ/agent-wiki
+
+**验证结果**:
+- git remote -v: ✅ PAT 已写入（fetch + push 均可认证）
+- git add -A: ✅ 3 个文件 staged
+- git commit: ✅ 460d1e0
+- git push: ✅ 208677b..460d1e0 main -> main
+
+**待用户确认**:
+- 是否需要 cron 定时同步？
+- 同步频率建议：每日 1 次 / 每周 1 次？
+
+---
+
 ## [2026-06-04 14:16] wiki-keeper cron — J3 巡检 + P2 修复(indexes/ 补全 frontmatter)
 
 **触发**: cron 每日 07:10 wiki-keeper 定时维护

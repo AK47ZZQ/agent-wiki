@@ -28,15 +28,22 @@ REQUIRED_FRONTMATTER = {
 LOG_FILE = WIKI_ROOT / "log.md"
 INDEX_FILE = WIKI_ROOT / "index.md"
 SKIP_DIRS = {".git", ".obsidian", ".claude", ".claudian", ".codegraph",
-             ".trash", "_archive", "raw", "scratchpad", "_drafts"}
+             ".trash", "_archive", "raw"}
 SIZE_LIMIT_MB = 10
 LOG_FRESH_HOURS = 24
 
 # === 工具 ===
 def iter_md_files():
-    """遍历所有 content .md(跳过 SKIP_DIRS)"""
+    """遍历所有 content .md(跳过 SKIP_DIRS 顶层目录)"""
     for root, dirs, files in os.walk(WIKI_ROOT):
-        dirs[:] = [d for d in dirs if d not in SKIP_DIRS]
+        # 顶层目录跳过
+        rel_root = Path(root).relative_to(WIKI_ROOT)
+        top = rel_root.parts[0] if rel_root.parts else ""
+        if top in SKIP_DIRS:
+            dirs[:] = []
+            continue
+        # 跳过 _drafts 子目录
+        dirs[:] = [d for d in dirs if d != "_drafts"]
         for f in files:
             if f.endswith(".md") and not f.startswith(".#"):
                 yield Path(root) / f
