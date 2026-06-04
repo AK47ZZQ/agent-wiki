@@ -16,6 +16,7 @@ sources: [hermes-self-check, wiki-keeper-v1.6, methods/using-knowledge-base]
 - **3 个角色** = main-claude(主对话) / hermes-3rd(笔记本) / future-agents
 - **3 个仓库**: 1) hermes-all 本地 backup(已删远端) 2) agent-wiki 云端(主) 3) hermes 内部(hermes-all 本地)
 - **5 步核验**: 永远走 `scripts/safe-commit-push.sh` v1.6,不裸 git
+- **1 页速查**:[[methods/git-push-cheatsheet]] — 5 步核验 + 假成功防御(本会话新沉淀)
 - **100% 公开 wiki**: https://github.com/AK47ZZQ/agent-wiki
 
 ## 1. 当前架构(4 层记忆 + 1 共享 KB)
