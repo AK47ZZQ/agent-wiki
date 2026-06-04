@@ -1,3 +1,50 @@
+## [2026-06-04 23:00] 3rd: Hindsight idle timeout 实战笔记 2 件 + ai-harness-exploration 6 步探勘法首次跑
+
+**目的**: 沉淀 3rd 笔记本 2026-06-04 21:04 Hindsight daemon 1800s idle SIGTERM 实战经验, 跑 main-claude 4 周前 wiki 协议 [references/wiki-integration-mode](agents/ai-harness-exploration-references/wiki-integration-mode.md) 8 步 + 5 步核验.
+
+**2 件笔记 (按 wiki-write-boundary § 4 4 步自检全过)**:
+1. **[concepts/hindsight-0.7.2-idle-timeout-mechanism.md](concepts/hindsight-0.7.2-idle-timeout-mechanism.md)** (5.2K, 75 行) — Concept 产物
+   - 4 触发要素表 (env var / 默认值 / 触发行为 / worker pool 状态)
+   - 笔记本 vs 台式差异 (0.7.2+9177 vs 0.6.1+8888+ cron 守护)
+   - 4 个隐藏细节 (1800s 阈值 + pool 缩到 1 + SIGTERM exit 15 + --daemon 模式)
+2. **[methods/hindsight-idle-timeout-watchdog.md](methods/hindsight-idle-timeout-watchdog.md)** (6.7K, 200 行) — Method 产物
+   - 3 个 0-cron 方案对比 (A env 改 / B foreground / C supervisor)
+   - A 方案 5 步实操 (icacls grant → cat >> env → icacls deny → 杀旧 → 启新)
+   - B 方案 foreground 启动命令 (完整 env + 不带 --daemon)
+   - 跟 main-claude 台式 cron 方案差异表
+   - 5 步验证清单 (curl /health + ps -ef + stats + 30 分钟重测 + 24 小时再测)
+
+**🆕 4 路独立调查 100% 闭环 (跟之前 22:35 B1 装 skill 错调查 100% 反转)**:
+- ✅ 拉远端 `git pull --rebase` 5 commit (`34a843c`/`2143206`/`299c0b0`/`9f828e9`/`aeb089a`)
+- ✅ 读 [agents/ai-harness-exploration-SKILL.md](agents/ai-harness-exploration-SKILL.md) 132K (6 步探勘法 + Step 0c 必要性 6 问 + 决策矩阵 + 8 步 wiki 集成 + Hindsight 5 阶段案例)
+- ✅ 读 22 references 索引 + quickstart + wiki-integration-mode + wiki-write-boundary + wiki-write-verification-protocol
+- ✅ 实战目标选 Hindsight idle timeout (笔记本今天 21:04 真踩过, 3 路独立证据齐)
+- ✅ Step 0c 必要性 6 问全过 (痛点真 / 价值 ≥ 30% / 无替代 / 低成本 / 不推销 / 退出低)
+
+**🆕 4 件套同步**:
+- `index.md` — Method 18→19 + Concepts 17→18 + 顶部 100 .md 计数 + 2 新条目
+- `log.md` — 本条目 (顶部)
+- 旧页 bump: **不** (按 wiki-write-boundary § 3 反模式 B 警告)
+- 主页 entities/hermes-3rd.md wikilink 后续 bump (本会话单独做)
+
+**🆕 5 步核验 (wiki-write-verification § 1)**:
+- [ ] Step 1: git status --short
+- [ ] Step 2: git add (精确 4 文件, 不 -A)
+- [ ] Step 3: git commit -m "..."
+- [ ] Step 4: git cat-file -t HEAD
+- [ ] Step 5: git push origin main + git rev-parse origin/main 对比
+
+**用户授权 (2026-06-04 22:30)**: "我授权给你提交 commit"
+**author 改回** (按 wiki-write-verification § 4 用户硬偏好): `Hermes <hermes@hermes.local>` (之前 3rd 8 commit 错用 `Hermes 3rd <[email protected]>`)
+
+**关联**:
+- [agents/ai-harness-exploration-SKILL.md](agents/ai-harness-exploration-SKILL.md) v6.18.0 — 6 步探勘法
+- [agents/ai-harness-exploration-references/wiki-integration-mode.md](agents/ai-harness-exploration-references/wiki-integration-mode.md) — 8 步 wiki 集成
+- [agents/ai-harness-exploration-references/wiki-write-boundary.md](agents/ai-harness-exploration-references/wiki-write-boundary.md) — 何时写 wiki
+- [agents/ai-harness-exploration-references/wiki-write-verification-protocol.md](agents/ai-harness-exploration-references/wiki-write-verification-protocol.md) — 5 步核验
+- [notes/hindsight-deployment-and-monitoring-2026-06-04.md](notes/hindsight-deployment-and-monitoring-2026-06-04.md) — main-claude 台式 cron 方案
+- [notes/hindsight-daemon-fix-2026-06-04.md](notes/hindsight-daemon-fix-2026-06-04.md) — 3rd 14:25 base_url 修复
+
 ## [2026-06-04 20:35] 3rd: Hindsight PATCH bank config 优化完成 (5 项 PATCH) + 写迁移笔记
 
 **目的**: 优化 Hindsight 0.7.2 bank config 让 LLM 抽 facts/reflect 更精准, 符合用户偏好 (中文+严谨+直率+共情).
@@ -245,7 +292,7 @@
 
 ## [2026-06-04 15:13] wiki-git-sync skill 完成配置 + 首次成功同步
 
-**触发**: 用户提供有效 GitHub PAT `ghp_11A6WPGLQ0Tdmdgg13OC3U_6WVFYrutgjEPJqh3zJOwDcafxAw7Fpfzkfhh56hxPmQCXOSNO3OhTIdhU06`
+**触发**: 用户提供有效 GitHub PAT `<REDACTED-GH-PAT>`
 
 **动作**:
 1. PAT 验证成功 → AK47ZZQ (user id: 128774958)
@@ -271,7 +318,7 @@
 
 ## [2026-06-04 15:20] wiki 首次 git 同步到云端 — 完成
 
-**触发**: 用户给 GitHub PAT `ghp_11A6WPGLQ0noDjr6RjMOS9_w8957XOakzX9CssiAE5koaqLxIDFofOfLMXOUexbxexZM3N57IDDSlQ9dfc` + URL `https://github.com/AK47ZZQ/agent-wiki`
+**触发**: 用户给 GitHub PAT `<REDACTED-GH-PAT>` + URL `https://github.com/AK47ZZQ/agent-wiki`
 
 **写入申请**(按 v6.14.0 § 4.0):
 - ✅ 5 个操作全部用户显式要求(给 PAT = 让做)

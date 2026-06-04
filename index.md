@@ -8,7 +8,8 @@ tags: [index, wiki, catalog]
 
 # Wiki Index
 
-> **2026-06-04 23:35 状态**:103 个 .md (5 新增 gh CLI) / 5 知识类别 + 多 Agent 第二大脑 + 0 cron。死链 0。
+<!-- BEGIN merge (远端 远端 + 3rd 都保留) -->
+> **2026-06-04 23:35 状态**:103 个 .md (5 新增 gh CLI) / 5 知识类别 + 多 Agent 第二大脑 + 0 cron。死链 0。> **2026-06-04 23:00 状态**:100 个 .md (+2) / 5 知识类别 + 多 Agent 第二大脑 + 3rd 笔记本 idle timeout 守护法。死链 0。<!-- END merge -->
 > 启动一个 Agent 后,先读 [[CLAUDE]],再读本文件,再读 [[agents/README]]。
 
 ## 📐 协议层(启动必读)
@@ -61,7 +62,7 @@ tags: [index, wiki, catalog]
 
 ## 📚 知识层(5 类别)
 
-### Method(18) — 可复用方法
+### Method(19) — 可复用方法
 - [[methods/hermes-workflow-and-exploration]] — 双技能方法(执行+探勘)
 - [[methods/ralph-wiggum-loop]] — 背压门控循环 + Hermes 映射
 - [[methods/session-to-wiki-archiving]] — Session→Wiki 归档流程
@@ -82,10 +83,11 @@ tags: [index, wiki, catalog]
 - [[methods/lcm-memory-guide]] — LCM 内存管理(2026-06-04 新)
 - [[methods/scratchpad-coordination]] — Scratchpad 协调(2026-06-04 新)
 - [[methods/hindsight-health-monitoring-protocol]] — Hindsight liveness + auto-restart cron 协议(2026-06-04 新,本会话 20:11 实测)
+<!-- BEGIN merge (远端 远端 + 3rd 都保留) -->
 - [[methods/gh-extension-development]] — gh CLI extension 开发实战(2026-06-04 新,Go binary 模式)
-- [[methods/gh-command-cheatsheet]] — gh CLI 命令速查 L1-L2(2026-06-04 新)
+- [[methods/gh-command-cheatsheet]] — gh CLI 命令速查 L1-L2(2026-06-04 新)- [[methods/hindsight-idle-timeout-watchdog]] — Hindsight idle timeout 笔记本无 cron 守护法(env 改 + foreground 模式,3 方案 5 步实操,2026-06-04 3rd 笔记本实战)<!-- END merge -->
 
-### Concepts(17) — 概念/主题
+### Concepts(18) — 概念/主题
 - [[concepts/ai-coding-tools-comparison]] — AI 编码工具对比
 - [[concepts/agent-4-tier-memory-architecture]] — Hermes 4-Tier 记忆架构(2026-06-04 整理,根目录)
 - [[concepts/wiki-quality-metrics]] — 9 维质量指标仪表盘(2026-06-04 新)
@@ -106,8 +108,9 @@ tags: [index, wiki, catalog]
 - [[concepts/symphony-spec-as-product]] — Symphony 编排规约
 - [[concepts/hindsight-memory-modes-guide]] — Hindsight 4 模式选型(2026-06-04 stub)
 - [[concepts/awesome-hermes-agent-ecosystem-2026]] — Awesome Hermes 生态全景(2026-06-05 新)
+<!-- BEGIN merge (远端 远端 + 3rd 都保留) -->
 - [[concepts/github-cli-overview]] — GitHub CLI (gh) 概览 / 何时用(2026-06-04 新)
-- [[concepts/github-cli-architecture]] — gh CLI 内部架构(Cobra/Factory/go-gh)(2026-06-04 新)
+- [[concepts/github-cli-architecture]] — gh CLI 内部架构(Cobra/Factory/go-gh)(2026-06-04 新)- [[concepts/hindsight-0.7.2-idle-timeout-mechanism]] — Hindsight 0.7.2 daemon idle 1800s SIGTERM 机制(4 触发要素 + 笔记本vs台式差异 + 4 隐藏细节,2026-06-04 3rd 笔记本 21:04 实战)<!-- END merge -->
 
 ### Comparisons(3) — 对比分析
 - [[comparisons/hermes-memory-systems-comparison-2026]] — 8 provider 对比
