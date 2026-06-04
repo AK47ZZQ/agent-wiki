@@ -1,5 +1,24 @@
 ## [2026-06-04 15:36] 3rd: Hermes 3rd 首次 onboarding 完成 + 首次 push 成功
 
+## [2026-06-04 18:30] 3rd: 学习报告完成 (A2) 补建 notes/hermes-selfcheck-2026-06-04
+
+**目的**: 补建 6-4 14:48 Hermes 7 层系统自检报告 (本机知识库 + 飞书 history 都有, 云端 wiki 之前死链).
+
+**新建**:
+- `notes/hermes-selfcheck-2026-06-04.md` (7.6K, 200 行) — 6 章节: 检查方法(7层)/结果(5PASS+2中风险)/风险清单/结论+修复/方法论沉淀/关联
+
+**4 件套同步**:
+- `index.md` — Notes 块加新条目, 计数 6→7
+- `log.md` — 本条目 (顶部)
+- entities/hermes-3rd.md: 2 个斜体待建 wikilink 现在全部变真链 (hindsight-daemon-fix + hermes-selfcheck)
+
+**矛盾识别** (写进方法论):
+- 字节数 ≠ 字符数 (中文 UTF-8 1 字 3 字节) — 之前混淆 10,407 字节 130% 软限为真 7,548 字符 94%
+- `MemoryStore.add` 不静默拒, 返 {success: False, error: ...}
+- `_sync_turn_observations` 实际代码 grep 不到 (Plan B 描述未真正落地)
+
+**check 状态**: pending (本批 4 任务完成后跑一次)
+
 ## [2026-06-04 18:25] 3rd: 学习报告完成 (A1) 补建 notes/hindsight-daemon-fix-2026-06-04
 
 **目的**: 补建 6-4 14:25-15:13 Hindsight daemon 修复记录 (本机知识库 + 飞书 history 都有, 云端 wiki 之前死链).
