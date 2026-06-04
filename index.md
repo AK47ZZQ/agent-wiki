@@ -8,7 +8,7 @@ tags: [index, wiki, catalog]
 
 # Wiki Index
 
-> **2026-06-04 状态**:73 个 .md / 4 知识类别 + 4 多 Agent 节点。死链 0(plain text 误报除外)。
+> **2026-06-04 20:30 状态**:98 个 .md / 5 知识类别 + 多 Agent 第二大脑 + cron healthcheck。死链 0。
 > 启动一个 Agent 后,先读 [[CLAUDE]],再读本文件,再读 [[agents/README]]。
 
 ## 📐 协议层(启动必读)
@@ -60,7 +60,7 @@ tags: [index, wiki, catalog]
 
 ## 📚 知识层(5 类别)
 
-### Method(6) — 可复用方法
+### Method(18) — 可复用方法
 - [[methods/hermes-workflow-and-exploration]] — 双技能方法(执行+探勘)
 - [[methods/ralph-wiggum-loop]] — 背压门控循环 + Hermes 映射
 - [[methods/session-to-wiki-archiving]] — Session→Wiki 归档流程
@@ -79,6 +79,7 @@ tags: [index, wiki, catalog]
 - [[methods/feishu-group-setup]] — 飞书群聊配置(2026-06-04 新)
 - [[methods/lcm-memory-guide]] — LCM 内存管理(2026-06-04 新)
 - [[methods/scratchpad-coordination]] — Scratchpad 协调(2026-06-04 新)
+- [[methods/hindsight-health-monitoring-protocol]] — Hindsight liveness + auto-restart cron 协议(2026-06-04 新,本会话 20:11 实测)
 
 ### Concepts(17) — 概念/主题
 - [[concepts/ai-coding-tools-comparison]] — AI 编码工具对比
@@ -141,6 +142,7 @@ tags: [index, wiki, catalog]
 - [[notes/hermes-selfcheck-2026-06-04]] — Hermes 7 层系统自检报告 (14:48, 字节vs字符矛盾 + 5 端点 verify)
 - [[notes/agents-md-stale-detect-2026-06-04]] — AGENTS.md stale 检测报告 (9 项偏差, 提议 main-claude 修正)
 - [[notes/multi-machine-wiki-paths]] — 多机器 Wiki 路径对照表 (笔记本 ZZQ vs 台式 Administrator, 5 项差异)
+- [[notes/hindsight-deployment-and-monitoring-2026-06-04]] — Hindsight 实际部署 + health-check cron auto-restart (本会话 20:11 实战, 12.1KB)
 
 ### References(1) — 长引用
 - [[references/hermes-commands-full|hermes-commands-full]] — Hermes 命令大全 V2 提炼版
