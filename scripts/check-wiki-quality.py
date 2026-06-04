@@ -87,8 +87,8 @@ def check_dead_links():
             # 跳过:URL/标签/heading
             if link.startswith(("http", "tag:", "#", "/")):
                 continue
-            # 取基础(去掉 |alias)
-            base = link.split("|")[0].split("#")[0].strip()
+            # 取基础(去掉 |alias)— 先 unescape markdown 表格中的 \|
+            base = link.replace("\\|", "|").split("|")[0].split("#")[0].strip()
             if not base:
                 continue
             # 多种形式都试

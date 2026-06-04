@@ -28,11 +28,26 @@ tags: [index, wiki, catalog]
 | [[tasks/README|Task board]] | tasks/index.md | 跨 Agent 长生命周期任务 |
 | [[protocols/agent-coordination|Protocols]] | protocols/agent-coordination.md | 6 通信原语(announce/request/claim/update/hand-off/archive) |
 
+### Agent 实例(7)
+- [[agents/main-claude]] — orchestrator,主控
+- [[agents/hermes-kanban-orchestrator]] — Kanban 编排(模板)
+- [[agents/hermes-kanban-worker]] — Kanban worker(模板)
+- [[agents/hermes-self-check]] — Hermes 自检(模板)
+- [[agents/researcher-1]] — researcher 实例(2026-06-04 E2E 测试)
+- [[agents/writer-1]] — writer 实例(2026-06-04 E2E 测试)
+
+### Protocols(4)
+- [[protocols/agent-coordination]] — 6 原语 + A2A 兼容映射
+- [[protocols/goal-alignment]] — 主动告警机制
+- [[protocols/multi-agent-detail]] — frontmatter 9 字段 schema
+- [[protocols/per-project-claude-md-template]] — Progressive Disclosure 模板
+
 ## 📊 当前任务
 
 | ID | 状态 | Owner | 主题 |
 |---|---|---|---|
 | [[tasks/2026-06-04-agent-stack-test\|2026-06-04-agent-stack-test]] | done | main-claude | 端到端测试整个多 Agent 第二大脑协议栈(2026-06-04 实测通过) |
+| [[tasks/wiki-multi-agent-refactor]] | done | main-claude | Wiki 多 Agent 第二大脑重构(2026-06-04 任务记录) |
 | [[tasks/cleanup-worker-debris]] | pending | main-claude | 清理 worker 删除残留 |
 
 ## 📚 知识层(5 类别)
@@ -45,9 +60,11 @@ tags: [index, wiki, catalog]
 - [[methods/hindsight-4d-retrieval-complete]] — Hindsight 4 维检索
 - [[methods/feishu-wiki-pipeline]] — 飞书→Wiki 手动同步
 - [[methods/wiki-as-second-brain]] — Wiki 作为第二大脑的方法论(2026-06-04 新)
+- [[methods/wiki-code-workflow]] — CODE 4 阶段(Capture/Organize/Distill/Express)工作流(2026-06-04 新)
 
 ### Concepts(17) — 概念/主题
 - [[concepts/ai-coding-tools-comparison]] — AI 编码工具对比
+- [[agent-4-tier-memory-architecture]] — Hermes 4-Tier 记忆架构(2026-06-04 整理,根目录)
 - [[concepts/cli-anything]] — HKUDS 方法论 40.6k⭐
 - [[concepts/concept-kanban]] — Kanban 多代理并行调度
 - [[concepts/fowler-guides-sensors]] — 控制论 2×2 矩阵
@@ -95,6 +112,8 @@ tags: [index, wiki, catalog]
 
 ### Notes(5) — 短记录/部署日志
 - [[notes/lcm-upgrade-v0.12-to-v0.15]] — LCM 升级记录
+- [[hindsight-first-active-workflow]] — Hindsight-first 主动工作流(2026-06-04 整理,根目录)
+- [[hindsight-first-memory-pattern]] — Hindsight-first 记忆模式(2026-06-04 整理,根目录)
 - [[notes/hindsight-local-deployment-windows-2026]] — Windows 本地部署
 - [[notes/hindsight-risks-and-optimizations-2026]] — 风险与优化
 - [[notes/search-hermes-workspace-expose]] — 内网穿透方案研究
@@ -111,6 +130,12 @@ tags: [index, wiki, catalog]
 
 - `raw/work/hermes命令大全v2-...-1780136199.md` — 最新源文件
 - `raw/tech/awesome-hermes-agent-zh.md` — Awesome Hermes 清单源文件(30KB, 2026-06-05 摄入)
+
+## 📋 日志与索引子页
+
+- [[log|log.md]] — 完整操作日志(写读删改全部记录)
+- [[indexes/index|indexes/]] — 主题子索引
+- [[indexes/log|indexes/log.md]] — 子索引日志
 
 ---
 

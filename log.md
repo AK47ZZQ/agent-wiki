@@ -815,3 +815,34 @@ wiki/
 - messages: 0
 - files: 1
 - skills: (none)
+
+
+## 2026-06-04 14:35 — README 重写 + check 脚本 + force push
+
+**任务 2 (README)**: 改写 README.md(1352B → 6408B, +5056B)
+- 反映 2026-06-04 flatten 状态
+- 加 4 大模块(protocols/methods/agents/scratchpad)
+- 加 89+ 文件清单 + 2026-06-04 大事记
+- 加写入协议(ai-harness-exploration § 4.0)
+- 加维护脚本说明
+
+**任务 3 (check)**: 新建 `scripts/check-wiki-quality.py` (7582B, Python 3)
+- 5 项自检: 死链 / 索引 / frontmatter / log / size
+- 模式: 默认报告 / `--strict` CI / `--json` 机器读
+- 实测报告: 26 死链 / 16 缺索引 / 65 缺字段 / log 0.1h 前 / 0.39MB
+- 不修,只报告(修是 ai-harness-exploration)
+
+**冲突修正**:
+- 发现之前"rename master→main"是错觉(实际推的是 master)
+- origin/main 一直是 0 内容的 `0358f5b Initial commit`
+- origin/master = 我之前推的 `887e325 init`
+- 用户授权 force push
+- `git push --force-with-lease origin main` → 远端 main = `208677b`
+- `git push origin --delete master` → 远端 master 删
+- 远端 HEAD → main
+- 远端仓库现在唯一 branch: main (208677b,含 README + check script + 89 wiki 文件)
+
+**净状态**:
+- 远端: 1 个 branch (main),HEAD 指向 208677b
+- 本地: 1 个 branch (main),HEAD 指向 208677b
+- 完全对齐
