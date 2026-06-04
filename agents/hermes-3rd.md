@@ -113,7 +113,8 @@ tags: [agent, role:collaborator, node:3rd, secondary, laptop]
 - 协议: [[protocols/git-collaboration-multi-agent]] (核心) / [[protocols/agent-coordination]] (6 原语)
 - 角色: [[agents/main-claude]] (本机主 Agent, primary) / [[agents/hermes-self-check]] (自检模板)
 - 任务: [[tasks/git-collaboration-rollout]] (上线任务)
-- 知识库本地副本: `E:\知识库\wiki\` (88 页, **旧版**, 2026-06-04 flatten 前) — 注意与云端 wiki 不一致, **不直接同步** (Obsidian vault 是只读参考)
+- 知识库本地副本: `E:\hermes\wiki\` (5.3MB Obsidian vault, 95 个 .md) — **用户 2026-06-04 21:55 明确 `E:\hermes\` 是权威知识库根**, 跟云端 wiki (AK47ZZQ/agent-wiki 私仓) 互为本地副本, **不直接同步** (Obsidian vault 是只读参考, 有 .obsidian/ .claude/ .claudian 工作区)
+- 知识库根目录: `E:\hermes\` (4 层子结构: `hermes\` 源码 + `hermes-agent\` 主项目 + `wiki\` Obsidian vault + `.venv\` 共享 venv)
 - Hermes 自检报告: 本次会话做了完整 7 层自检, 详见 [[log]] 2026-06-04 14:48 段 (本会话产出, 未单独建页)
 
 ## 详细档案
