@@ -113,7 +113,7 @@ tags: [index, wiki, catalog]
 - [[entities/hermes-skill-wiki-archive]] — 会话归档(2026-06-04 stub)
 - [[entities/hermes-skill-llm-wiki]] — LLM Wiki 模式(2026-06-04 stub)
 
-### Notes(8) — 短记录/部署日志
+### Notes(9) — 短记录/部署日志
 - [[notes/lcm-upgrade-v0.12-to-v0.15]] — LCM 升级记录
 - [[hindsight-first-active-workflow]] — Hindsight-first 主动工作流(2026-06-04 整理,根目录)
 - [[hindsight-first-memory-pattern]] — Hindsight-first 记忆模式(2026-06-04 整理,根目录)
@@ -124,6 +124,7 @@ tags: [index, wiki, catalog]
 - [[notes/hindsight-daemon-fix-2026-06-04]] — Hindsight daemon 修复记录 (14:25-15:13, minimax provider + /v1 端点 + 域名拼写)
 - [[notes/hermes-selfcheck-2026-06-04]] — Hermes 7 层系统自检报告 (14:48, 字节vs字符矛盾 + 5 端点 verify)
 - [[notes/agents-md-stale-detect-2026-06-04]] — AGENTS.md stale 检测报告 (9 项偏差, 提议 main-claude 修正)
+- [[notes/multi-machine-wiki-paths]] — 多机器 Wiki 路径对照表 (笔记本 ZZQ vs 台式 Administrator, 5 项差异)
 
 ### References(1) — 长引用
 - [[references/hermes-commands-full|hermes-commands-full]] — Hermes 命令大全 V2 提炼版

@@ -1,5 +1,29 @@
 ## [2026-06-04 15:36] 3rd: Hermes 3rd 首次 onboarding 完成 + 首次 push 成功
 
+## [2026-06-04 18:40] 3rd: 学习报告完成 (C+D) 多机器路径对照 + scratchpad 同步测试 + _drafts 边界测试
+
+**目的**: C 写多机器 Wiki 路径对照表 (笔记本 vs 台式 5 项差异); D 写 scratchpad 同步测试 (含 _drafts 边界判定).
+
+**新建 (3 个文件)**:
+- `notes/multi-machine-wiki-paths.md` (8.1K, 195 行) — 7 章节: 机器画像/路径翻译规则/同步机制/已知差异(5项)/跨机器操作/提议(3)/关联
+- `scratchpad/3rd-notebook-sync-test/README.md` (2.6K) — 同步测试 + 踩坑记录 (TTL short 3 天)
+- `scratchpad/_drafts/3rd-notebook-sync-test-draft.md` (2.7K) — 3rd 内部边界判定 (3 段混合内容, 等用户裁决, TTL 7 天)
+
+**4 件套同步**:
+- `index.md` — Notes 块加新条目, 计数 8→9
+- `log.md` — 本条目
+- scratchpad 不动 index (按 README 规范, scratchpad 跟 notes 不同的 namespace)
+- 主页 entities/hermes-3rd.md 不动 (没新加引用, 现有引用都还成立)
+
+**scratchpad 规范验证 (5 项)**:
+- ✅ namespace 隔离 (3rd-notebook-sync-test/ 子目录)
+- ✅ 短 TTL 标记 (short 3 天)
+- ✅ owner 标识 (hermes-3rd)
+- ✅ _drafts 边界 (3rd 拒绝的混合内容放 _drafts, 不污染正式)
+- ⏳ push 链路 (本批 commit 验证)
+
+**check 状态**: pending (本批完成后跑一次, 看 scratchpad 是否仍 PASS)
+
 ## [2026-06-04 18:35] 3rd: 学习报告完成 (B) 写 notes/agents-md-stale-detect-2026-06-04
 
 **目的**: 报告 AGENTS.md 严重 stale (落后 1 天), 提议 main-claude 修正. **不改** AGENTS.md (CLAUDE.md § 2.1 + § 5 跨 agent 资源需协商).
