@@ -61,7 +61,7 @@ confidence: high
 
 ## 5. 关联文档
 
-- [[concepts/hermes-memory-stack]] — 4 层记忆架构
+- [[concepts/agent-4-tier-memory-architecture]] — 4 层记忆架构
 - [[methods/hindsight-idle-timeout-watchdog]] — 笔记本无 cron 守护法
 - [[notes/hindsight-deployment-and-monitoring-2026-06-04]] — main-claude 台式 0.6.1 + 8888 + cron 守护
 - [[notes/hindsight-0.7.2-bank-config-migration]] — 3rd 笔记本 0.7.2 + 9177 修复

@@ -1,16 +1,14 @@
 ---
 title: Wiki Index
 created: 2026-05-28
-updated: 2026-06-04 23:50
+updated: 2026-06-05 00:35
 type: meta
 tags: [index, wiki, catalog]
 ---
 
 # Wiki Index
 
-<!-- BEGIN merge (远端 f3afbe9 + 3rd A2 都保留) -->
-> **2026-06-05 00:00 状态**:106 个 .md (5 gh CLI + 1 skill 镜像 + 2 Hindsight idle timeout) / 5 知识类别 + 多 Agent 第二大脑 + 3rd 笔记本 idle timeout 守护法 + 0 cron。死链 0。<!-- BEGIN merge (远端 远端 + 3rd 都保留) -->
-> **2026-06-04 23:35 状态**:103 个 .md (5 新增 gh CLI) / 5 知识类别 + 多 Agent 第二大脑 + 0 cron。死链 0。> **2026-06-04 23:35 状态**:102 个 .md (+2) / 5 知识类别 + 多 Agent 第二大脑 + 3rd 笔记本 idle timeout 守护法。死链 0。<!-- END merge --><!-- END merge -->
+> **2026-06-05 00:40 状态**:111 个 .md (5 gh CLI + 2 skill 镜像 + 3 markitdown + 2 Hindsight 跨机器对比 + 1 Git playbook) / 5 知识类别 + 多 Agent 第二大脑 + 3rd 笔记本 idle timeout 守护法 + 0 cron。死链 0。
 > 启动一个 Agent 后,先读 [[CLAUDE]],再读本文件,再读 [[agents/README]]。
 
 ## 📐 协议层(启动必读)
@@ -43,6 +41,7 @@ tags: [index, wiki, catalog]
 - [[agents/user-preferences]] — 用户偏好(2026-06-04 新)
 - [[agents/tools-gh-cli]] — gh CLI 本机部署(Windows main-claude,2026-06-04 新)
 - [[agents/skills-github-gh-cli/SKILL|Skills: github-gh-cli]] — gh CLI skill 镜像(60K,4 references + 1 script + 1 template,3rd 端可拉)
+- [[agents/skills-markitdown-converter/SKILL|Skills: markitdown-converter]] — MarkItDown skill 镜像(56K,PDF/DOCX/图片 OCR → Markdown,3rd 端可拉)
 
 ### Protocols(4)
 - [[protocols/agent-coordination]] — 6 原语 + A2A 兼容映射

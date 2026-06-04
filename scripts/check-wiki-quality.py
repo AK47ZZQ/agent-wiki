@@ -32,7 +32,8 @@ SKIP_DIRS = {".git", ".obsidian", ".claude", ".claudian", ".codegraph",
              ".trash", "_archive", "raw"}
 # 2026-06-04 v6.x 排除 agents/ai-harness-exploration* (完整 skill 源码,含 wikilink 示例占位符 + 文档模板,不是 wiki content)
 # 2026-06-04 v6.x 排除 agents/skills-github-gh-cli* (同样:skill 镜像,SKILL.md 含示例占位符)
-SKIP_PREFIXES = ("agents/ai-harness-exploration", "agents/skills-github-gh-cli")
+# 2026-06-05 v6.x 排除 agents/skills-markitdown-converter* (同样:skill 镜像)
+SKIP_PREFIXES = ("agents/ai-harness-exploration", "agents/skills-github-gh-cli", "agents/skills-markitdown-converter")
 SIZE_LIMIT_MB = 10
 LOG_FRESH_HOURS = 24
 
