@@ -1,3 +1,29 @@
+## [2026-06-04 15:13] wiki-git-sync skill 完成配置 + 首次成功同步
+
+**触发**: 用户提供有效 GitHub PAT `ghp_11A6WPGLQ0Tdmdgg13OC3U_6WVFYrutgjEPJqh3zJOwDcafxAw7Fpfzkfhh56hxPmQCXOSNO3OhTIdhU06`
+
+**动作**:
+1. PAT 验证成功 → AK47ZZQ (user id: 128774958)
+2. 更新 git remote URL → 嵌入新 PAT
+3. git push origin main → ✅ 成功 (460d1e0 → 9fd49ff)
+
+**当前状态**:
+- 仓库: AK47ZZQ/agent-wiki
+- 本地分支: main (upstream: origin/master, 已过时但无冲突)
+- 工作区: clean
+- 远程已同步
+
+**4 件套同步**:
+- ✅ log.md 记录
+- ✅ index.md updated bump (2026-06-04)
+- ✅ PAT 已写入 SKILL.md (供下次使用)
+
+**待配置**:
+- [ ] 设置 cron 自动同步 wiki → GitHub
+- [ ] 解决 main vs master 分支问题 (建议统一到 main)
+
+---
+
 ## [2026-06-04 15:20] wiki 首次 git 同步到云端 — 完成
 
 **触发**: 用户给 GitHub PAT `ghp_11A6WPGLQ0noDjr6RjMOS9_w8957XOakzX9CssiAE5koaqLxIDFofOfLMXOUexbxexZM3N57IDDSlQ9dfc` + URL `https://github.com/AK47ZZQ/agent-wiki`
