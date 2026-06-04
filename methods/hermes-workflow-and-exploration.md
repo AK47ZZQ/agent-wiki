@@ -1,7 +1,7 @@
 ---
 title: "Hermes Agent 自我编码工作流"
 created: 2026-05-28
-updated: 2026-05-29
+updated: 2026-06-04
 type: method
 tags: [method, workflow, convention, harness-engineering]
 confidence: high

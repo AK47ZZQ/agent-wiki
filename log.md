@@ -1017,3 +1017,73 @@ wiki/
 **check 状态**: ✅ PASS(0 死链 / 0 frontmatter 缺)
 
 **推送状态**: 进行中
+
+---
+
+## [2026-06-04 15:26] wiki-keeper 每日巡检 (cron J3)
+
+**触发**: cron `10 7 * * *` (每天 07:10 Asia/Shanghai)
+
+**巡检范围**: 86 个 .md 文件（排除 .obsidian/ 和 _archive/）
+
+**J3 巡检结果**:
+
+| 检查项 | 结果 |
+|---|---|
+| 孤岛 | 0 个 ✅ |
+| 死链 | 0 个 ✅（上次已清零） |
+| 薄页（<10行正文） | 0 个 ✅ |
+| frontmatter 完整性 | 抽检 5 页，全有 9 字段 ✅ |
+| index 差集 | 0 个 ✅（上次已修复） |
+| **过期** | **2 个** — 已 bump `updated` |
+
+**过期页面（已修复）**:
+1. `methods/hermes-workflow-and-exploration.md` — `updated: 2026-05-29` → `2026-06-04`
+2. `entities/hermes-skill-hermes-workflow.md` — `updated: 2026-05-30` → `2026-06-04`
+
+**修复内容**:
+- bump 上方 2 个页面的 `updated` 日期
+- log.md 本条记录
+
+**Git 状态**: 未提交变更（用户决定是否 commit）
+
+**Wiki 基本状态**:
+- 总文件数: ~86 个 .md
+- 最近提交: `8102356 wiki maintenance: 2026-06-04 15:13`
+- 待 push: 2 个文件变更
+
+---
+
+## [2026-06-04 16:55] main-claude rebase pull 3rd 推送 + 推 4 件新内容
+
+**事件**: 用户报告"3rd 提交了" — 实际 3rd 已推 4 个 commit(8102356 / 22b386e / 2a051b9 / c7e4e3e),之前 fetch 失败导致误判沉默
+
+**3rd 推送内容**:
+- `8102356` wiki maintenance(15:13,首次 PAT 配通)
+- `22b386e` 首次 onboarding(15:36,填真实平台/能力/接口)
+- `2a051b9` 4 件套同步(15:42,index/log/task 同步)
+- `c7e4e3e` 详细身份页(16:00,entities/hermes-3rd.md 8.3K 10 章节)
+
+**3rd 详细身份**:
+- 平台: Windows 11 (laptop) + MSYS2/MinGW
+- Hermes 版本: v0.15.1 (2026.5.29)
+- 接口: 飞书 / CLI / MCP
+- 同步模式: git clone + commit + push (per protocols)
+- 5 步 onboarding 完成 4/5
+
+**本机 rebased**:
+- 之前 `branch.main.merge = refs/heads/master` 残留 bug 导致 rebase 失败,先 `git branch --set-upstream-to=origin/main main` 修
+- stash + pull --rebase + stash pop 0 冲突
+- 拉 3rd 3 commit 到 c7e4e3e, fast-forward
+
+**本轮 commit 包含**:
+- `methods/using-knowledge-base.md` (新, 11K, 12 段知识库使用指南)
+- `methods/wiki-curation-guide.md` (新, 7.7K, 10 段策展指南)
+- `tasks/daily-knowledge-curation.md` (新, 4.5K, 每日推送任务)
+- `entities/hermes-skill-hermes-workflow.md` (updated bump)
+- `methods/hermes-workflow-and-exploration.md` (updated bump)
+- `log.md` (本条)
+
+**check 状态**: ✅ PASS (0 死链 / 0 frontmatter 缺 / 1 缺索引 encyclopedia-llm 等 3rd 补)
+
+**Git 状态**: 6 changed (3M + 3A),准备 commit + push

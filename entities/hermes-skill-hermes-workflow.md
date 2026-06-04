@@ -1,7 +1,7 @@
 ---
 title: "Skill: hermes-workflow"
 created: 2026-05-30
-updated: 2026-05-30
+updated: 2026-06-04
 type: entity
 tags: [skill, hermes, workflow, harness-engineering]
 confidence: high
