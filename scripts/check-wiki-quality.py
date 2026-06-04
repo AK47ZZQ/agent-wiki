@@ -30,6 +30,8 @@ LOG_FILE = WIKI_ROOT / "log.md"
 INDEX_FILE = WIKI_ROOT / "index.md"
 SKIP_DIRS = {".git", ".obsidian", ".claude", ".claudian", ".codegraph",
              ".trash", "_archive", "raw"}
+# 2026-06-04 v6.x 排除 agents/ai-harness-exploration* (完整 skill 源码,含 wikilink 示例占位符 + 文档模板,不是 wiki content)
+SKIP_PREFIXES = ("agents/ai-harness-exploration",)
 SIZE_LIMIT_MB = 10
 LOG_FRESH_HOURS = 24
 
@@ -47,7 +49,12 @@ def iter_md_files():
         dirs[:] = [d for d in dirs if d != "_drafts"]
         for f in files:
             if f.endswith(".md") and not f.startswith(".#"):
-                yield Path(root) / f
+                p = Path(root) / f
+                # 跳过 SKIP_PREFIXES 前缀(2026-06-04 排除 ai-harness-exploration 完整源码)
+                rel_str = p.relative_to(WIKI_ROOT).as_posix()
+                if any(rel_str.startswith(pref) for pref in SKIP_PREFIXES):
+                    continue
+                yield p
 
 def get_frontmatter(path):
     """提取 YAML frontmatter,返回 dict"""
