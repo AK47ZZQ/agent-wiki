@@ -30,6 +30,7 @@ tags: [index, wiki, catalog]
 
 ### Agent 实例(7)
 - [[agents/main-claude]] — orchestrator,主控
+- [[agents/hermes-3rd]] — 笔记本协作 Agent(2026-06-04 占位,等 3rd 填)
 - [[agents/hermes-kanban-orchestrator]] — Kanban 编排(模板)
 - [[agents/hermes-kanban-worker]] — Kanban worker(模板)
 - [[agents/hermes-self-check]] — Hermes 自检(模板)
@@ -41,6 +42,7 @@ tags: [index, wiki, catalog]
 - [[protocols/goal-alignment]] — 主动告警机制
 - [[protocols/multi-agent-detail]] — frontmatter 9 字段 schema
 - [[protocols/per-project-claude-md-template]] — Progressive Disclosure 模板
+- [[protocols/git-collaboration-multi-agent]] — 多 Agent Git 协作协议(2026-06-04,本机+3rd 共维护 wiki)
 
 ## 📊 当前任务
 

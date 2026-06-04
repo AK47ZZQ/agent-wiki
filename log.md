@@ -897,3 +897,34 @@ wiki/
 - git fetch/ls-remote 超时,网络可能中断
 - 等恢复后再 pull + push
 - 本地变更安全(没 commit = 工作区,丢了重做)
+
+## 2026-06-04 15:02 — 多 Agent 协作协议 + 3rd 占位 + 推送到云端
+
+**重大架构变更**:用户明确"以后将由你(本机台式 Hermes)和 Hermes 3rd(笔记本)共同维护云端 github wiki"
+
+**新增文件**:
+- `protocols/git-collaboration-multi-agent.md` (5.7K) — 8 节协议
+  - 三条铁律(不 force / 推送前必拉 / 冲突由人裁决)
+  - 标准同步流程(写入前/中/后)
+  - 3 类冲突处理(无冲突/文本冲突/逻辑冲突)
+  - PAT 应急(本次踩坑,2026-06-04 14:46)
+  - 共享状态观察(git log / agent registry)
+  - 8 项检查清单
+
+- `tasks/git-collaboration-rollout.md` (1.8K) — 协议上线任务
+  - 4 阶段(本机 / 3rd / 联调 / 自动化)
+  - 状态追踪
+
+- `agents/hermes-3rd.md` (1.4K) — 3rd 实例占位
+  - 平台: 笔记本(OS 待 3rd 填)
+  - capabilities: pending
+  - git_user / pat_status: pending
+  - 协议引用: [[protocols/git-collaboration-multi-agent]]
+
+**修改**:
+- `index.md` — 加 git-collaboration 协议 + hermes-3rd 实例
+- `tasks/_archive/2026-06-04-agent-stack-test.md` — 补 source 字段
+
+**check 状态**: ✅ PASS(0 死链 / 0 frontmatter 缺)
+
+**推送状态**: 进行中

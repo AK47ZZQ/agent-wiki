@@ -14,6 +14,7 @@ goal: 端到端测试整个多 Agent 第二大脑协议栈
 tags: [test, e2e, multi-agent, protocol-validation]
 title: 2026-06-04 Agent Stack Test (Archived)
 type: task-archive
+source: 2026-06-04 E2E 多 Agent 协议栈测试(已 archive)
 ---
 
 # Task: 端到端测试多 Agent 第二大脑协议栈
