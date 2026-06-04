@@ -8,6 +8,9 @@ assignees: [agents/main-claude]
 depends_on: [tasks/wiki-multi-agent-refactor]
 priority: medium
 tags: [cleanup, post-refactor]
+title: Cleanup Worker Debris
+type: task
+source: 2026-06-04 self-check 期间清理 worker 残留任务
 ---
 
 # cleanup-worker-debris

@@ -6,6 +6,7 @@ type: analysis
 tags: [networking, tunnel, workspace, deployment, decision]
 confidence: high
 related: [[notes/hindsight-local-deployment-windows-2026]]
+source: Hermes workspace 内网穿透方案研究 2026-06
 ---
 
 # Hermes Workspace 内网穿透方案研究报告

@@ -23,8 +23,9 @@ from datetime import datetime, timedelta
 # === 配置 ===
 WIKI_ROOT = Path(__file__).resolve().parent.parent
 REQUIRED_FRONTMATTER = {
-    "title", "created", "updated", "type", "tags", "sources"
-}
+    "title", "created", "updated", "type", "tags"
+}  # source(单数)也算通过 — 因为 wiki 实际用单数
+SOURCE_FIELD_ALIASES = {"source", "sources"}
 LOG_FILE = WIKI_ROOT / "log.md"
 INDEX_FILE = WIKI_ROOT / "index.md"
 SKIP_DIRS = {".git", ".obsidian", ".claude", ".claudian", ".codegraph",
@@ -72,15 +73,27 @@ def find_wikilinks(text):
     return set(re.findall(r"\[\[([^\]]+)\]\]", text))
 
 def collect_existing_targets():
-    """收集所有 .md 路径(无 .md 后缀),用于死链检测"""
+    """收集所有 .md 路径(无 .md 后缀),用于死链检测
+    包括 content + raw(源文件也允许被引用)"""
     targets = set()
-    for p in iter_md_files():
-        rel = p.relative_to(WIKI_ROOT)
-        # 多种 wikilink 形式
-        targets.add(str(rel.with_suffix("")))            # concepts/foo
-        targets.add(str(rel.with_suffix("")) + ".md")    # concepts/foo.md
-        targets.add(rel.stem)                            # foo
-        targets.add(rel.name)                            # foo.md
+    # 遍历全部 .md(不跳 raw)— 因为 raw 文件是公开可引用的源
+    for root, dirs, files in os.walk(WIKI_ROOT):
+        rel_root = Path(root).relative_to(WIKI_ROOT)
+        top = rel_root.parts[0] if rel_root.parts else ""
+        if top in {".git", ".obsidian", ".claude", ".claudian", ".codegraph", ".trash", "_archive"}:
+            dirs[:] = []
+            continue
+        # 跳过 _drafts 子目录
+        dirs[:] = [d for d in dirs if d != "_drafts"]
+        for f in files:
+            if f.endswith(".md") and not f.startswith(".#"):
+                p = Path(root) / f
+                rel = p.relative_to(WIKI_ROOT)
+                # 多种 wikilink 形式
+                targets.add(str(rel.with_suffix("")))            # concepts/foo
+                targets.add(str(rel.with_suffix("")) + ".md")    # concepts/foo.md
+                targets.add(rel.stem)                            # foo
+                targets.add(rel.name)                            # foo.md
     return targets
 
 # === 检查函数 ===
@@ -109,16 +122,23 @@ def check_dead_links():
     return dead
 
 def check_index_sync():
-    """2. 索引同步"""
+    """2. 索引同步 — scratchpad 任务工作区不强求索引"""
     if not INDEX_FILE.exists():
         return -1, 0
     index_text = INDEX_FILE.read_text(encoding="utf-8", errors="ignore")
     indexed = set()
-    for m in re.finditer(r"\[\[([^\]|]+)(?:\|[^\]]+)?\]\]", index_text):
-        indexed.add(m.group(1).strip())
-    # 收集所有 content .md
-    all_files = {p.relative_to(WIKI_ROOT).with_suffix("").as_posix()
-                 for p in iter_md_files()}
+    for m in re.finditer(r"\[\[([^\]]+)\]\]", index_text):
+        # unescape \| -> |, then split alias
+        link = m.group(1).replace("\\|", "|").split("|")[0].split("#")[0].strip()
+        if link:
+            indexed.add(link)
+    # 收集所有 content .md(跳过 scratchpad)
+    all_files = set()
+    for p in iter_md_files():
+        rel = p.relative_to(WIKI_ROOT)
+        if rel.parts[0] == "scratchpad":
+            continue
+        all_files.add(rel.with_suffix("").as_posix())
     missing = []
     for f in sorted(all_files):
         if f not in indexed and not f.endswith(("index", "README", "AGENTS", "CLAUDE")):
@@ -126,12 +146,22 @@ def check_index_sync():
     return len(indexed), missing
 
 def check_frontmatter():
-    """3. frontmatter 9 字段"""
+    """3. frontmatter 9 字段
+    - 顶层文件(README/AGENTS/CLAUDE/log/index)跳过
+    - agents/* 用 Agent schema(id/owner/capabilities/interfaces)— 不强求 6 字段
+    - 其他文件需要 6 必填字段
+    """
     missing = []
     for p in iter_md_files():
         rel = p.relative_to(WIKI_ROOT)
         # 跳过特殊文件
         if rel.name in {"README.md", "AGENTS.md", "CLAUDE.md", "log.md", "index.md"}:
+            continue
+        # agents/* 用 Agent schema,跳过
+        if rel.parts[0] == "agents":
+            continue
+        # scratchpad/* 是任务工作区,不强求
+        if rel.parts[0] == "scratchpad":
             continue
         fm, _ = get_frontmatter(p)
         if fm is None:
@@ -140,6 +170,9 @@ def check_frontmatter():
         for k in REQUIRED_FRONTMATTER:
             if k not in fm:
                 missing.append((str(rel), f"missing: {k}"))
+        # source/sources 二选一
+        if not (SOURCE_FIELD_ALIASES & set(fm.keys())):
+            missing.append((str(rel), "missing: source"))
     return missing
 
 def check_log_fresh():

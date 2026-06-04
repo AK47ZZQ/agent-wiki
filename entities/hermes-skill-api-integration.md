@@ -4,6 +4,7 @@ created: 2026-05-30
 updated: 2026-05-30
 type: entity
 tags: [tool, hermes-skill]
+source: Hermes skills/software-development/api-integration/SKILL.md
 ---
 
 # hermes-skill-api-integration

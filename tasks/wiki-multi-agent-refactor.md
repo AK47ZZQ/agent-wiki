@@ -8,6 +8,9 @@ assignees: [agents/main-claude]
 depends_on: []
 priority: high
 tags: [refactor, wiki, multi-agent, second-brain]
+title: Wiki Multi-Agent Refactor
+type: task
+source: 2026-06-04 Wiki 升级为多 Agent 第二大脑的重构任务
 ---
 
 # wiki-multi-agent-refactor

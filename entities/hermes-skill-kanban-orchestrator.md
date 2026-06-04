@@ -5,6 +5,7 @@ updated: 2026-05-30
 type: entity
 tags: [skill, hermes, tool, kanban, multi-agent]
 confidence: high
+source: Hermes skills/autonomous-ai-agents/kanban-codex-lane/SKILL.md
 ---
 
 # kanban-orchestrator

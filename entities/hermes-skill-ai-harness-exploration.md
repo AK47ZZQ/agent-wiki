@@ -5,6 +5,7 @@ updated: 2026-05-30
 type: entity
 tags: [skill, hermes, exploration, analysis]
 confidence: high
+source: Hermes skills/autonomous-ai-agents/ai-harness-exploration/SKILL.md
 ---
 
 # ai-harness-exploration

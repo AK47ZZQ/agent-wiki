@@ -5,6 +5,7 @@ updated: 2026-05-31
 type: entity
 tags: [tool, ai, coding, openai]
 confidence: medium
+source: openai/codex 仓库 + 官方文档
 ---
 
 # Codex

@@ -8,6 +8,7 @@ confidence: medium
 related:
   - concepts/mcp-ecosystem-2026.md
   - concepts/harness-engineering-deep-study.md
+source: hermes 仓库全栈整合研究
 ---
 
 # Full Stack Ecosystem

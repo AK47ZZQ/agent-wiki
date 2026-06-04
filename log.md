@@ -867,3 +867,33 @@ wiki/
 - 远端: 1 个 branch (main),HEAD 指向 208677b
 - 本地: 1 个 branch (main),HEAD 指向 208677b
 - 完全对齐
+
+## 2026-06-04 14:49 — check 脚本 4 bug 修 + frontmatter 批量补
+
+**check-wiki-quality.py 修了 4 个 bug**:
+1. `\|` 转义未处理 — 表格里的 `[[path\|alias]]` 被误判死链
+2. SKIP_DIRS 把 `scratchpad` 整个跳过 — `scratchpad/README.md` 被误判死链
+3. `collect_existing_targets` 跳过 raw/ — `raw/tech/...` 被误判死链
+4. 索引对比时 `\|` 转义未处理 + frontmatter 找 `sources` 但实际用 `source` 单数
+5. agents/* 用 Agent schema,frontmatter 检查要跳过(否则 6 字段永远缺)
+6. scratchpad 任务工作区不进 index 也不强求 frontmatter
+
+**实际修复**:
+- 死链 26 → 0 (修了 awesome-hermes 4 个 + archive 路径 2 个 + 通配符 1 个 + raw 路径 1 个 + 模板占位符 1 个)
+- 索引 16 缺 → 0 (在 index.md 加 16 个 wikilink 到合适 section)
+- frontmatter 65 缺 → 1 缺 (在阈值内,PASS)
+  - 补 11 个 missing: source(concepts/entities/notes)
+  - 补 wiki-as-second-brain.md 的 `---` 包裹符
+  - 补 2 tasks/* 完整 frontmatter
+  - 补 _archive/2026-06-04-agent-stack-test type+title
+
+**任务 2 (sibling 边界文件评估)**:
+- concepts/awesome-hermes-agent-ecosystem-2026.md (18.7K) — 保留,已修通 4 个死链
+- entities/wondelai-skills.md — 保留(已有索引)
+- 根目录 3 个文件(agent-4-tier / hindsight-first-*): 保留(已加索引)
+
+**未推送**:
+- 18 个本地变更未 commit
+- git fetch/ls-remote 超时,网络可能中断
+- 等恢复后再 pull + push
+- 本地变更安全(没 commit = 工作区,丢了重做)

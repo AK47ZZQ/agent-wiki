@@ -4,6 +4,7 @@ created: 2026-05-30
 updated: 2026-05-30
 type: entity
 tags: [tool, hermes-skill]
+source: Hermes skills/autonomous-ai-agents/cli-anything-methodology/SKILL.md
 ---
 
 # hermes-skill-cli-anything-methodology

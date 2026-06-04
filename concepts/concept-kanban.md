@@ -5,6 +5,7 @@ updated: 2026-05-30
 type: concept
 tags: [tech, tool, workflow, hermes, multi-agent]
 confidence: high
+source: hermes-kanban 官方文档 + Hermes 仓库 README
 ---
 
 # Kanban — Hermes 内置并行任务调度系统

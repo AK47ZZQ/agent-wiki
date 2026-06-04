@@ -5,6 +5,7 @@ updated: 2026-05-30
 type: entity
 tags: [skill, hermes, tool, kanban, worker]
 confidence: high
+source: Hermes skills/devops/kanban-worker/SKILL.md
 ---
 
 # kanban-worker

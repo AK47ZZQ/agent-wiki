@@ -5,6 +5,7 @@ updated: 2026-05-30
 type: entity
 tags: [skill, hermes, workflow, harness-engineering]
 confidence: high
+source: Hermes skills/autonomous-ai-agents/hermes-workflow/SKILL.md
 ---
 
 # hermes-workflow

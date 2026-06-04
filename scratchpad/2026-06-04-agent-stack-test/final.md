@@ -77,7 +77,7 @@ status: done
 
 ## 关联
 
-- Task: [[tasks/2026-06-04-agent-stack-test]]
+- Task: [[tasks/_archive/2026-06-04-agent-stack-test]]
 - Scratchpad: [[scratchpad/2026-06-04-agent-stack-test/index]]
 - Protocols: [[protocols/agent-coordination]] / [[protocols/multi-agent-detail]]
 - Methods: [[methods/wiki-as-second-brain]] / [[methods/wiki-code-workflow]]
