@@ -32,7 +32,7 @@ def section(title):
 # 公开仓库(2026-06-04 22:00 起)后,以下 8 处 🔴 是历史基线,已知且用户决定不动
 # daily_maintain 只报 "新发现" → baseline 之外的 🔴
 KNOWN_BASELINE = {
-    ('methods/git-push-cheatsheet.md', 137),       # netrc password (cheatsheet 示例模板)
+    ('methods/git-push-cheatsheet.md', 137),       # x-oauth-basic + netrc password (同 1 行,cheatsheet 示例)
     ('notes/search-hermes-workspace-expose.md', 157),  # your-secure-password 占位符
     # log.md 里的 2 处完整 PAT + 1 处 9dfc 残片 + README.md 9dfc + protocols 9dfc
     # 全是历史 commit 残留,轮换 PAT 之前会一直存在

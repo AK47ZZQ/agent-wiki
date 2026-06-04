@@ -4,7 +4,7 @@ from pathlib import Path
 WIKI = Path(sys.argv[1] if len(sys.argv) > 1 else r'C:\Users\Administrator\hermes-all\wiki')
 os.chdir(WIKI)
 
-SKIP = {'.git', '.obsidian', '.trash', '_archive', 'node_modules', '__pycache__', '_drafts', 'raw'}
+SKIP = {'.git', '.obsidian', '.trash', '_archive', 'node_modules', '__pycache__', '_drafts', 'raw', 'scripts', 'agents/ai-harness-exploration'}
 
 # Use plain strings; construct regex with chr(92) for backslash if needed.
 BS = chr(92)  # single backslash
