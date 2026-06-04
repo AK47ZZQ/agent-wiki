@@ -28,6 +28,28 @@ def step(name):
 def section(title):
     return f'\n--- {title} ---\n'
 
+# === 2026-06-04 baseline 已知泄露(用户接受风险,不再每天报)===
+# 公开仓库(2026-06-04 22:00 起)后,以下 8 处 🔴 是历史基线,已知且用户决定不动
+# daily_maintain 只报 "新发现" → baseline 之外的 🔴
+KNOWN_BASELINE = {
+    ('methods/git-push-cheatsheet.md', 137),       # netrc password (cheatsheet 示例模板)
+    ('notes/search-hermes-workspace-expose.md', 157),  # your-secure-password 占位符
+    # log.md 里的 2 处完整 PAT + 1 处 9dfc 残片 + README.md 9dfc + protocols 9dfc
+    # 全是历史 commit 残留,轮换 PAT 之前会一直存在
+    ('log.md', 248),
+    ('log.md', 274),
+    ('log.md', 305),
+    ('log.md', 326),
+    ('README.md', 18),
+    ('protocols/git-collaboration-multi-agent.md', 113),
+}
+
+def is_known_baseline(file_path, line_num):
+    """判断 (file, line) 是否在已知 baseline"""
+    # file_path 可能是 'log.md' 或 'wiki/log.md' 等,normalize
+    fname = file_path.replace('\\', '/').split('/')[-1]
+    return (fname, line_num) in KNOWN_BASELINE
+
 # 收集报告
 report_lines = []
 issues = []
@@ -59,11 +81,33 @@ if 'FAIL' in out or '❌' in out:
 # === Step 3: scan_wiki_secrets.py 敏感扫描 ===
 report_lines.append(step('3. 敏感字符串扫描'))
 rc, out, err = run('python scripts/scan_wiki_secrets.py 2>&1')
-report_lines.append(out[-500:])  # 只看后 500 字符(报告太长)
-if '🔴' in out:
-    # 提取 🔴 行数
-    red_count = out.count('🔴')
-    issues.append(f'敏感扫描发现 {red_count} 个 🔴 命中')
+# 只看 human-readable 部分(不要 JSON)
+human_out = out.split('---JSON_OUTPUT_START---')[0] if '---JSON_OUTPUT_START---' in out else out
+report_lines.append(human_out[-500:])  # 只看后 500 字符
+
+# 解析 JSON 算 "新发现" (不在 KNOWN_BASELINE)
+try:
+    import json as _json
+    if '---JSON_OUTPUT_START---' in out:
+        json_str = out.split('---JSON_OUTPUT_START---')[1].split('---JSON_OUTPUT_END---')[0]
+        data = _json.loads(json_str)
+        new_red = 0
+        new_examples = []
+        for label, items in data.get('details', {}).items():
+            for item in items:
+                if not is_known_baseline(item['file'], item['line']):
+                    new_red += 1
+                    if len(new_examples) < 3:
+                        new_examples.append(f"  {label} @ {item['file']}:{item['line']}")
+        if new_red > 0:
+            issues.append(f'敏感扫描发现 {new_red} 个 🔴 新命中(基线外)')
+            report_lines.append('  新发现示例:')
+            for ex in new_examples:
+                report_lines.append(ex)
+        else:
+            report_lines.append(f'  全部 🔴 在已知 baseline 内,无新发现')
+except Exception as e:
+    issues.append(f'JSON 解析失败:{e}')
 
 # === Step 4: 4 个 SQLite DB WAL checkpoint ===
 report_lines.append(step('4. SQLite DB WAL checkpoint'))

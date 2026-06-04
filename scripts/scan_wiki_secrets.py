@@ -80,3 +80,19 @@ for label, results in sorted(hits.items(), key=lambda x: -len(x[1])):
 
 print(f'\n{"="*72}')
 print(f'总计: {sum(len(v) for v in hits.values())} 处命中 / 🔴 {total_red} 严重 / 🟡 {total_yel} 边界 / {len(hits)} 种模式')
+
+# === 2026-06-04 加 JSON 输出(给 daily_maintain.py 用)===
+import json
+output = {
+    'files_scanned': count_files,
+    'total': sum(len(v) for v in hits.values()),
+    'red': total_red,
+    'yellow': total_yel,
+    'patterns': len(hits),
+    'details': {label: [{'file': f, 'line': ln, 'match': m[:80], 'context': c[:160]}
+                          for f, ln, m, c in results]
+                for label, results in hits.items()}
+}
+print('---JSON_OUTPUT_START---')
+print(json.dumps(output, ensure_ascii=False, indent=2))
+print('---JSON_OUTPUT_END---')
