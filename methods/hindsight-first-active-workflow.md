@@ -12,7 +12,7 @@ confidence: high
 
 # Hindsight 主动化工作流
 
-> 把 [[hindsight-first-memory-pattern]] 落地为可执行脚本 + cron + 看门狗的完整工作流。
+> 把 [[methods/hindsight-first-memory-pattern]] 落地为可执行脚本 + cron + 看门狗的完整工作流。
 
 ## 端到端架构
 

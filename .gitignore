@@ -29,3 +29,6 @@ AGENTS.md.bak-pre-flatten
 Thumbs.db
 *.bak
 *.swp
+scripts/find-broken.py
+__pycache__/
+*.pyc

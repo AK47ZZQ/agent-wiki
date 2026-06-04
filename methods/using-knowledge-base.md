@@ -4,7 +4,7 @@ created: 2026-06-04
 updated: 2026-06-04
 type: method
 tags: [wiki, onboarding, knowledge-base, how-to, multi-agent]
-sources: [indexes/knowledge-map, methods/wiki-curation-guide, methods/scratchpad-coordination, protocols/git-collaboration-multi-agent, methods/using-knowledge-base-draft]
+sources: [indexes/knowledge-map, methods/wiki-curation-guide, methods/scratchpad-coordination, protocols/git-collaboration-multi-agent]
 ---
 
 # 知识库使用指南

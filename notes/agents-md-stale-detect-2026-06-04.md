@@ -145,6 +145,6 @@ Hermes CLI v0.15.1
 - LCM 升级笔记: [[notes/lcm-upgrade-v0.12-to-v0.15]] (冲突的来源, 6-3 升 v0.15.0 但本机没装)
 - Hermes 4-Tier 架构 (待更新): [[AGENTS]]
 - 笔记本协作者: [[agents/hermes-3rd]] / [[entities/hermes-3rd]]
-- 4-Tier 架构 (顶层 .md): [[agent-4-tier-memory-architecture]]
-- 主动化方法论: [[hindsight-first-active-workflow]]
-- 记忆模式: [[hindsight-first-memory-pattern]]
+- 4-Tier 架构 (顶层 .md): [[concepts/agent-4-tier-memory-architecture]]
+- 主动化方法论: [[methods/hindsight-first-active-workflow]]
+- 记忆模式: [[methods/hindsight-first-memory-pattern]]

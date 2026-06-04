@@ -153,4 +153,4 @@ contested: false
 - [[concepts/hermes-workflow]] — 主工作流
 - [[notes/lcm-upgrade-v0.12-to-v0.15]] — context engine (v0.14.0, 当前 0.12.0 过时需升级)
 - [[concepts/full-stack-ecosystem]] — 8 个 provider 选 1
-- [[agent-4-tier-memory-architecture]] — 通用 4 层模型
+- [[concepts/agent-4-tier-memory-architecture]] — 通用 4 层模型

@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # safe-commit-push.sh — 5 步核验 commit + push(防假成功)
 # Created: 2026-06-04 (wiki-keeper v1.5)
+# Updated: 2026-06-04 (v1.6 — 排除 .canvas / .bak / .obsidian 等)
 # 用途: 替代裸 `git add -A && git commit && git push`,加 5 步核验
 #
 # 用法:
@@ -51,11 +52,51 @@ echo ""
 echo -e "${BLUE}=== Step 1: git status ===${NC}"
 git status --short
 
+# === Step 1.5: 排除 Obsidian 工作区文件(关键!v1.6 加) ===
+# 这些是 Obsidian 本地 canvas / 备份 / 配置,不应该 commit 到共享 wiki
+EXCLUDE_PATTERNS=(
+  "*.canvas"           # Obsidian Canvas(白板)
+  "*.base"             # Obsidian Bases(数据库)
+  "*.bak"              # 备份文件
+  "*.tmp"              # 临时文件
+  "*.swp"              # vim swap
+  "*.swo"              # vim swap
+  ".obsidian/*"        # Obsidian 配置 + 插件
+  ".trash/*"           # Obsidian 回收站
+  "Untitled.canvas"    # 特定无标题 canvas
+  "未命名.canvas"      # 中文版
+)
+echo ""
+echo -e "${BLUE}=== Step 1.5: 排除 Obsidian 本地文件 ===${NC}"
+for pat in "${EXCLUDE_PATTERNS[@]}"; do
+  if git status --short | grep -E "$pat" >/dev/null 2>&1; then
+    echo "排除模式: $pat"
+    # 从 git index 移除(如果已 tracked)
+    git rm --cached -r --ignore-unmatch "$pat" 2>/dev/null || true
+  fi
+done
+# 写一份 .gitignore(防御性,确保未来不 add)
+GITIGNORE_ENTRIES=$(printf '%s\n' "${EXCLUDE_PATTERNS[@]}")
+if [ -f .gitignore ]; then
+  if ! grep -qF ".canvas" .gitignore 2>/dev/null; then
+    echo "" >> .gitignore
+    echo "# safe-commit-push.sh v1.6 排除" >> .gitignore
+    echo "$GITIGNORE_ENTRIES" >> .gitignore
+    git add .gitignore
+    echo "✅ .gitignore 更新 (加入排除模式)"
+  fi
+else
+  echo "# safe-commit-push.sh v1.6 排除" > .gitignore
+  echo "$GITIGNORE_ENTRIES" >> .gitignore
+  git add .gitignore
+  echo "✅ .gitignore 创建"
+fi
+
 # === Step 2: add 所有 ===
 echo ""
 echo -e "${BLUE}=== Step 2: git add -A ===${NC}"
 git add -A
-echo "已 add 所有变更"
+echo "已 add 所有变更(已排除 Obsidian 本地文件)"
 
 # === Step 3: commit ===
 echo ""

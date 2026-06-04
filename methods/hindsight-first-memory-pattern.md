@@ -30,7 +30,7 @@ Hindsight 主动化 = 自动 retain (写入) + 自动 reflect (读取) + 角色�
 | Retain 触发 | 用户/Agent 手动调 | cron 批量 + turn 关键节点 |
 | Recall 触发 | 用户/Agent 手动调 | session 开场自动 reflect |
 | 边界划分 | LCM 和 Hindsight 重叠 | L1=LCM, L2=Hindsight（明确分工） |
-| 上下文控制 | 单一路径（LCM） | 4-Tier 分层（见 [[agent-4-tier-memory-architecture]]） |
+| 上下文控制 | 单一路径（LCM） | 4-Tier 分层（见 [[concepts/agent-4-tier-memory-architecture]]） |
 
 ## 步骤
 
@@ -144,7 +144,7 @@ if ctx_pct > 0.5:
 - [[concepts/hermes-workflow]] — Hermes 主工作流（包含 LCM 大量使用技巧）
 - `install-hindsight-as-hermes-memory` skill — Hindsight 安装流程（前置）
 - [[concepts/hermes-kanban]] — Kanban workers 同样适用此方法论
-- [[agent-4-tier-memory-architecture]] — 本方法论的理论基础
+- [[concepts/agent-4-tier-memory-architecture]] — 本方法论的理论基础
 
 ## 验证清单
 

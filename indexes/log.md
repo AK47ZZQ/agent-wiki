@@ -99,3 +99,5 @@ confidence: high
 - 2026-06-10: 检查 .bak.1780502939 7 天保留期到, 决定删/留
 - 2026-07-01 09:00: 首次 cron 跑 memory-staleness-detection
 - Swarm v1→v2 profiles 迁移 (待你决定)
+
+- 2026-06-04 19:33: ABC 完成: 4 死链修复 (5 stub + 3 rename + index + AGENTS.md v2 + safe-commit-push.sh v1.6); 0 死链 / 102 索引 / check PASS

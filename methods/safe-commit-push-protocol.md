@@ -3,8 +3,8 @@ title: Safe Commit-Push Protocol
 created: 2026-06-04
 updated: 2026-06-04
 type: method
-tags: [wiki, git, safe-commit, 5-step-verification, multi-agent, protocol]
-sources: [wiki-keeper-v1.5-skill, hermes-self-check-pitfalls, 2026-06-04-fake-success-incident]
+tags: [wiki, git, safety, verification, multi-agent, v1.6]
+sources: [methods/git-tutorial, protocols/git-collaboration-multi-agent, methods/using-knowledge-base]
 ---
 
 # Safe Commit-Push Protocol — 5 步核验(防假成功)
@@ -70,15 +70,28 @@ fi
 
 **5 步核验的核心**:**不依赖任何单一信号**。`git commit` 输出"成功" + `git push` 输出"成功" **不**等于真成功。**必须** commit 对象存在 + 远端 hash 一致。
 
-## 3. 自动化脚本
+## 3. 自动化脚本 — v1.6
 
-`scripts/safe-commit-push.sh` 封装 5 步核验为 1 个命令:
+`scripts/safe-commit-push.sh` 封装 5 步核验 + 1.5 步排除为 1 个命令:
 
 ```bash
 bash scripts/safe-commit-push.sh "commit message"
 ```
 
-**脚本特性**:
+### 3.1 v1.6 升级(2026-06-04 18:58,3rd 反馈驱动)
+
+| 升级点 | v1.5 | v1.6 |
+|---|---|---|
+| 排除 `.canvas` / `.base` / `.bak` / `.tmp` / `.swp` / `.swo` / `.obsidian/*` / `.trash/*` | ❌ | ✅ |
+| 自动写 `.gitignore`(防御性) | ❌ | ✅ |
+| Step 1.5: 排除 Obsidian 本地文件 | ❌ | ✅ |
+| 6 步核验(原 5 步 + Step 1.5) | 5 步 | 6 步 |
+
+### 3.2 v1.6 解决的具体问题
+
+3rd 笔记本报 `c030a77` commit 反馈:`safe-commit-push.sh v1.5` 的 `git add -A` 把 `未命名.canvas`(Obsidian 白板)意外 add — 污染 wiki 仓库。**v1.6 修法**:Step 1.5 排除 10 个 EXCLUDE_PATTERNS + 自动写 `.gitignore`。
+
+### 3.3 脚本特性
 - 5 步顺序跑,任一步失败立即 `exit 1`
 - 输出彩色日志(绿/黄/红)
 - 自动诊断假成功根因(commit 失败 / push 失败 / hash 不一致)
@@ -191,6 +204,6 @@ git rev-parse origin/main
 
 - [[protocols/git-collaboration-multi-agent]] — v1.1 协作协议
 - [[methods/git-tutorial]] — git 教程
-- [[scripts/safe-commit-push.sh]] — 自动化脚本
+- `scripts/safe-commit-push.sh` (本地) — 自动化脚本
 - [[agents/main-claude]] — 主对话身份
 - [[agents/hermes-3rd]] — 笔记本身份
