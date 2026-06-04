@@ -1,5 +1,25 @@
 ## [2026-06-04 15:36] 3rd: Hermes 3rd 首次 onboarding 完成 + 首次 push 成功
 
+## [2026-06-04 18:35] 3rd: 学习报告完成 (B) 写 notes/agents-md-stale-detect-2026-06-04
+
+**目的**: 报告 AGENTS.md 严重 stale (落后 1 天), 提议 main-claude 修正. **不改** AGENTS.md (CLAUDE.md § 2.1 + § 5 跨 agent 资源需协商).
+
+**新建**:
+- `notes/agents-md-stale-detect-2026-06-04.md` (6.2K, 160 行) — 6 章节: 偏差表(9项)/来源分析/建议更新/3rd 不改原因/stale 方法论/关联
+
+**9 项偏差** (按严重度):
+- 🟡 6 项 (Hermes 版本/Hindsight 版本/端口/MEMORY 容量/LCM 状态/L2 facts)
+- 🟢 3 项 (动态: PID/RSS/L0 messages)
+- 🔴 0 项 (无矛盾)
+
+**4 件套同步**:
+- `index.md` — Notes 块加新条目, 计数 7→8
+- `log.md` — 本条目
+- 不动 AGENTS.md (跨 agent 资源, 写报告 + 提议, 不擅自改)
+- 主页 entities/hermes-3rd.md 引用 stale-detect 笔记 (真链)
+
+**check 状态**: pending (本批 4 任务完成后跑一次)
+
 ## [2026-06-04 18:30] 3rd: 学习报告完成 (A2) 补建 notes/hermes-selfcheck-2026-06-04
 
 **目的**: 补建 6-4 14:48 Hermes 7 层系统自检报告 (本机知识库 + 飞书 history 都有, 云端 wiki 之前死链).
