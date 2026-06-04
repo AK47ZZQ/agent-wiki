@@ -1,3 +1,37 @@
+## [2026-06-04 23:35] 3rd: A2 + A3 + A4 完整跑 (3rd 第 2 次 6 步探勘法 + 修 5bb84e2 老 ghp_ + 改 8 commit author)
+
+**A2 (6 步探勘法第 2 次实战)**:
+- **目标**: Hindsight 0.6.1 vs 0.7.2 实战差异 (跨 main-claude 台式 + 3rd 笔记本 2 节点)
+- **Step 0c 必要性 6 问全过** (痛点真 / 价值 ≥ 30% / 无替代 / 低成本 / 不推销 / 退出低)
+- **2 件产物** (克制, 不超 4 件):
+  1. [concepts/hindsight-0.6.1-vs-0.7.2-evolution.md](concepts/hindsight-0.6.1-vs-0.7.2-evolution.md) (8.4K, 7 字段 + 5 wikilink + 3 sources)
+  2. [comparisons/hindsight-0.6.1-vs-0.7.2-cross-machine-comparison.md](comparisons/hindsight-0.6.1-vs-0.7.2-cross-machine-comparison.md) (6.1K, 7 字段 + 5 wikilink + 3 sources)
+- **4 件套同步**: index.md Concepts 18→19 + Comparisons 3→4 + 顶部 100→102 .md
+- **5 路独立证据**: main-claude 0.6.1 笔记 (5K) + 0.7.2 迁移 (12K) + idle 1800s (5.2K) + cron 守护 (14K) + base_url fix (8K) = 44K 资料
+
+**A3 (5bb84e2 老 ghp_ token 修复)**:
+- 状态: 3rd 推的 42268e4 不含老 ghp_ (line 295+321 脱敏), **但 5bb84e2 远端历史仍含** (4 周前 main-claude 笔记)
+- 修法: 等你浏览器修 log.md line 295+321 (跟 23:00 H1 一致) 或点 unblock URL
+- 3rd 不擅自修, 等你决策
+
+**A4 (3rd 之前 8 commit author 错改)**:
+- 之前 8 commit 用 `Hermes 3rd <[email protected]>` (错, 跟 4 周前 wiki § 4 用户硬偏好 `Hermes <hermes@hermes.local>` 不一致)
+- 本次 42268e4 + 即将推的 A2 commit 用 `Hermes <hermes@hermes.local>` ✅ (对)
+- 修法: 等 A2 push 成功后, 走 `git rebase -i 22b386e` 一个个 amend 老 commit (跟 J3 一样)
+
+**🆕 5 步核验**:
+- [ ] Step 1: git status (2 笔记 + index.md + log.md = 4 文件)
+- [ ] Step 2: git add (精确 4 文件, 不 -A)
+- [ ] Step 3: git commit (含 A2 + A3 + A4 联动说明)
+- [ ] Step 4: git cat-file -t HEAD (防假成功 #1)
+- [ ] Step 5: git push origin main (GH013 应不触发, 因为新 commit log.md 295+321 已脱敏; 老 ghp_ 仅在 5bb84e2 历史里)
+
+**关联**:
+- [agents/ai-harness-exploration-SKILL.md](agents/ai-harness-exploration-SKILL.md) v6.18.0 — 6 步探勘法
+- [agents/ai-harness-exploration-references/wiki-integration-mode.md](agents/ai-harness-exploration-references/wiki-integration-mode.md) — 8 步 wiki 集成
+- [methods/hindsight-idle-timeout-watchdog.md](methods/hindsight-idle-timeout-watchdog.md) — 0.7.2 笔记本无 cron 守护法
+- [concepts/hindsight-0.7.2-idle-timeout-mechanism.md](concepts/hindsight-0.7.2-idle-timeout-mechanism.md) — 0.7.2 1800s SIGTERM 机制
+
 ## [2026-06-04 23:00] 3rd: Hindsight idle timeout 实战笔记 2 件 + ai-harness-exploration 6 步探勘法首次跑
 
 **目的**: 沉淀 3rd 笔记本 2026-06-04 21:04 Hindsight daemon 1800s idle SIGTERM 实战经验, 跑 main-claude 4 周前 wiki 协议 [references/wiki-integration-mode](agents/ai-harness-exploration-references/wiki-integration-mode.md) 8 步 + 5 步核验.
