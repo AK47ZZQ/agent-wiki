@@ -1,3 +1,37 @@
+## [2026-06-04 20:35] 3rd: Hindsight PATCH bank config 优化完成 (5 项 PATCH) + 写迁移笔记
+
+**目的**: 优化 Hindsight 0.7.2 bank config 让 LLM 抽 facts/reflect 更精准, 符合用户偏好 (中文+严谨+直率+共情).
+
+**5 项 PATCH 全部 200 OK** (base config 优化):
+1. **disposition 5/4/5** — skepticism=5 (严谨) + literalism=4 (平衡) + empathy=5 (共情)
+2. **3 mission** — retain/reflect/observations 各填 笔记本侧 Hermes 3rd 协作者身份 + 排除规则
+3. **extraction_mode=detailed** — 改 concise 为 detailed, 一句 3-5 facts (+17% token)
+4. **recall_budget_function=adaptive** — 改 fixed 为 adaptive, 按 query 自适应召回
+5. **entity_labels 9 类中文** — Person/Tool/Framework/Method/Concept/File/Path/Command, 含同义词列表
+
+**3 schema 坑 (踩过 + 写进笔记)**:
+1. PATCH body 要 `{"updates": {...}}` 包裹, 不是直接传字段
+2. entity_labels 是 `Dict[str, List[str]]` 格式 (LabelGroup pydantic), 不是 list
+3. disposition 字段 nullable, PATCH null = 重置默认 3/3/3
+
+**实测验证 (5 步全过)**:
+- ✅ disposition 5/4/5 GET 返 `{5,4,5}`, /profile 同步
+- ✅ 3 mission GET 显示, /profile 返 mission 字符串
+- ✅ 中文实体抽取: 1 句 "Hermes 3rd 是跑在 Windows 11 + MSYS2 笔记本上的协作者..." 抽 7 entities (E:\hermes\wiki\index.md, hindsight daemon, VS Code, lark-cli, LCM 0.16.0, uvx, Hermes 3rd)
+- ✅ retain 3675 tokens/retain, detailed 模式生效
+- ✅ reflect 1972 字符结构化中文, 含 5 维度对比表
+- stats 暴涨: nodes 46→156, links 519→3452, docs 5→10
+
+**新建**: `notes/hindsight-0.7.2-bank-config-migration.md` (12K, 281 行, 7 章节: 字段变化/6项 PATCH/3 坑/默认值表/验证流程/迁移方法论/关联)
+
+**4 件套同步**:
+- `index.md` — Notes 块加新条目, 计数 5→6
+- `log.md` — 本条目 (顶部)
+- 主页 entities/hermes-3rd.md 引用新笔记 wikilink (真链)
+- bump 其他相关 wikilink 目标 (跨笔记引用)
+
+**check 状态**: pending (本批 3 任务完成后跑一次)
+
 ## [2026-06-04 15:36] 3rd: Hermes 3rd 首次 onboarding 完成 + 首次 push 成功
 
 ## [2026-06-04 20:11] main-claude: Hindsight local server 第二次部署 + health-check cron auto-restart

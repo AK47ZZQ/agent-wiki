@@ -137,6 +137,7 @@ tags: [index, wiki, catalog]
 - [[notes/hindsight-local-deployment-windows-2026]] — Windows 本地部署
 - [[notes/hindsight-risks-and-optimizations-2026]] — 风险与优化
 - [[notes/search-hermes-workspace-expose]] — 内网穿透方案研究
+- [[notes/hindsight-0.7.2-bank-config-migration]] — 0.7.2 bank config 迁移指南 (memory_mode 废弃 + 6 项 PATCH 实操 + 3 schema 坑)
 - [[notes/hindsight-semantic-only-mode-2026]] — semantic-only mode(2026-06-04 新装的第 5 种 mode)
 - [[notes/hindsight-daemon-fix-2026-06-04]] — Hindsight daemon 修复记录 (14:25-15:13, minimax provider + /v1 端点 + 域名拼写)
 - [[notes/hermes-selfcheck-2026-06-04]] — Hermes 7 层系统自检报告 (14:48, 字节vs字符矛盾 + 5 端点 verify)
