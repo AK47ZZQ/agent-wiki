@@ -1193,3 +1193,26 @@ wiki/
 **check 状态**: ✅ PASS (0 死链 / 0 frontmatter 缺 / 1 缺索引 encyclopedia-llm 等 3rd 补)
 
 **Git 状态**: 6 changed (3M + 3A),准备 commit + push
+
+
+---
+
+## [2026-06-04 18:55] Hermes — 5 步核验协议发布 + author 改 Hermes
+
+**事件**: 用户明确说"我的仓库是 agent-wiki,hermes-all 已删"。我:
+1. 改 wiki + hermes-all 仓库 user.name = "Hermes"(user.email 保留 hermes@hermes.local)
+2. 写 wiki/methods/safe-commit-push-protocol.md(7.8K 10 段),把 wiki-keeper v1.5 的 5 步核验协议发布为 wiki 知识
+3. hermes-all 本地 1c2ef6324 commit 推不到远端,留着无害(本地 backup)
+4. 之前 5+ 次 commit 假成功的根因已写入协议 § 6
+
+**关键学习**: 之前 5-6 次 commit 假成功, 668 行内容从来没真推。3rd wiki-keeper 跑了之后我才发现。修法: 5 步核验作硬协议。
+
+**Author 历史**:
+- 6ab1161: main-claude: 4 件新内容(还是 wiki-keeper author)
+- 3a83b0c 等: 3rd wiki-keeper
+- b266642: wiki-keeper(改 user 之前 commit)
+- 之后 commit: 都用 "Hermes <hermes@hermes.local>"
+
+**新文件**: wiki/methods/safe-commit-push-protocol.md(7.8K,10 段,3rd 拉 wiki 就能看到 5 步核验协议)
+
+**commit**: 待 push
