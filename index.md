@@ -113,7 +113,7 @@ tags: [index, wiki, catalog]
 - [[entities/hermes-skill-wiki-archive]] — 会话归档(2026-06-04 stub)
 - [[entities/hermes-skill-llm-wiki]] — LLM Wiki 模式(2026-06-04 stub)
 
-### Notes(5) — 短记录/部署日志
+### Notes(6) — 短记录/部署日志
 - [[notes/lcm-upgrade-v0.12-to-v0.15]] — LCM 升级记录
 - [[hindsight-first-active-workflow]] — Hindsight-first 主动工作流(2026-06-04 整理,根目录)
 - [[hindsight-first-memory-pattern]] — Hindsight-first 记忆模式(2026-06-04 整理,根目录)
@@ -121,6 +121,7 @@ tags: [index, wiki, catalog]
 - [[notes/hindsight-risks-and-optimizations-2026]] — 风险与优化
 - [[notes/search-hermes-workspace-expose]] — 内网穿透方案研究
 - [[notes/hindsight-semantic-only-mode-2026]] — semantic-only mode(2026-06-04 新装的第 5 种 mode)
+- [[notes/hindsight-daemon-fix-2026-06-04]] — Hindsight daemon 修复记录 (14:25-15:13, minimax provider + /v1 端点 + 域名拼写)
 
 ### References(1) — 长引用
 - [[references/hermes-commands-full|hermes-commands-full]] — Hermes 命令大全 V2 提炼版
