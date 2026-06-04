@@ -1,3 +1,44 @@
+## [2026-06-04 15:36] 3rd: Hermes 3rd 首次 onboarding 完成 + 首次 push 成功
+
+**触发**: 用户在飞书 DM 通知笔记本 Hermes(3rd)已部署, 启动 onboarding 5 步流程
+
+**动作**:
+1. **第 1 步: 仓库身份确认** — `https://github.com/AK47ZZQ/agent-wiki` (private, main, 270KB)
+2. **第 2 步: 规范读取** — CLAUDE.md (Schema + 5 层协议 11.5K) + AGENTS.md (4-Tier 记忆) + index.md (76+ 页) + README.md + protocols/git-collaboration-multi-agent.md (8 节协议)
+3. **第 3 步: 决策确认** — 选 1(配 git user) + 选 3(全权写, 遵守 CLAUDE.md § 2.5 反模式) + 选 4(默认保守: 用户明确说"记一下"才写)
+4. **第 4 步: 5 步 onboarding**:
+   - [x] **填 `agents/hermes-3rd.md`** (1.5K placeholder → 5.4K active, capabilities/interfaces/git/sync/constraints 5 大块, 10 个 wikilink 全有效)
+   - [x] **配本地 git user** — `Hermes 3rd <[email protected]>` (repo 级别, 不污染 global)
+   - [x] **测 push** — `22b386e` (97 insertions, 27 deletions) 推送成功 → `8102356..22b386e main -> main`
+   - [x] **更新 `index.md`** — 3rd 行改为 "onboarded, status: active, 5.4K"
+   - [x] **写 `log.md`** (本条目)
+   - [x] **更新 `tasks/git-collaboration-rollout.md`** — 阶段 2 部分勾上
+5. **第 5 步: check 脚本** — `python scripts/check-wiki-quality.py` ✅ PASS (0 死链 / 0 frontmatter 缺 / 索引 80/81 / log 0.3h 前 / 总大小 0.43 MB)
+
+**关键路径发现**:
+- `write_file` / `patch` 工具在 MSYS 环境把 `/tmp/wiki-test/...` 解析为 `C:\tmp\...` (字面路径), **不是** `C:\Users\ZZQ\AppData\Local\Temp\...` (git 实际目录)
+- 修正: 写完后用 `cp` 或 `shutil.copy` 同步
+- **未来 3rd 写操作建议**: 用 `terminal` 配合 heredoc/cat 写, 避免工具路径解析陷阱
+
+**commit 记录**:
+- `22b386e` 3rd: hermes-3rd 首次 onboarding - 填真实 capabilities + 笔记本平台/版本/工具栈 (作者: Hermes 3rd <[email protected]>)
+- 待 push: index.md + log.md + tasks/git-collaboration-rollout.md 4 件套同步 (本 commit)
+
+**踩坑记录**:
+- **死链**: 首次写 `[[notes/hermes-selfcheck-2026-06-04]]` 引用"待建"页 → check FAIL → 改为 `[[log]]` 引用真实文件
+- **工具路径**: write_file/patch 写到 `C:\tmp\` 不写到 git cwd `/tmp/wiki-test/` → 需 `cp` 同步
+- **PAT 真相**: log.md 头部有完整 PAT, 之前以为"截断版"实际是后端自动重写 (wiki-git-sync skill 配置)
+
+**未决**:
+- [ ] **PAT 方案**: 仍用共享 PAT (log.md 里明文存, 安全风险 — 不在本会话解决)
+- [ ] **3rd 触发方式**: 决定为"用户明确说" 才写, 还未做"自动洞察"模式
+- [ ] **3rd git user 邮箱格式**: 用 `[email protected]` 是占位, 实际你想用?
+
+**关联**:
+- [[agents/hermes-3rd]] — 本 3rd 实例档案
+- [[protocols/git-collaboration-multi-agent]] — 同步协议
+- [[tasks/git-collaboration-rollout]] — 上线任务 (阶段 2 部分勾上)
+
 ## [2026-06-04 15:13] wiki-git-sync skill 完成配置 + 首次成功同步
 
 **触发**: 用户提供有效 GitHub PAT `ghp_11A6WPGLQ0Tdmdgg13OC3U_6WVFYrutgjEPJqh3zJOwDcafxAw7Fpfzkfhh56hxPmQCXOSNO3OhTIdhU06`

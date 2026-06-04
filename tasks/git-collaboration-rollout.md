@@ -23,10 +23,10 @@ source: protocols/git-collaboration-multi-agent.md(2026-06-04 创建)
 
 ## 阶段 2 — 笔记本 3rd(等 3rd 启动后)
 
-- [ ] 3rd 创建 `agents/hermes-3rd.md`(声明身份)
-- [ ] 3rd clone 云端 wiki 到本地
-- [ ] 3rd 写第一份 scratchpad 同步测试
-- [ ] 3rd push,本机 pull 看到
+- [x] 3rd 创建 `agents/hermes-3rd.md`(声明身份) — **2026-06-04 15:36 done, 5.4K, status: active**
+- [x] 3rd clone 云端 wiki 到本地 — **done (tmp clone 验证)**
+- [ ] 3rd 写第一份 scratchpad 同步测试 — **pending**
+- [x] 3rd push,本机 pull 看到 — **2026-06-04 15:36 done, commit 22b386e**
 
 ## 阶段 3 — 联调
 
