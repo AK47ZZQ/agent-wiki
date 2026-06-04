@@ -118,7 +118,10 @@ Step 5: push + 核 origin/main hash = 本地 hash
 
 ### autonomous-ai-agents (9) — AI 编码 + Agent 编排
 - `wiki-keeper` v1.11 — wiki 维护 / git 同步 / **35 个 pitfall** (commit 假成功 / 401vs403 / .canvas 污染 / push protection 等)
-- `ai-harness-exploration` — 探勘新主题 + Wiki 集成模式(8 步 + 6 step with web)
+- `ai-harness-exploration` v6.18 — 探勘新主题 + Wiki 集成模式(8 步 + 6 step with web)
+  - **完整源码**:[[agents/ai-harness-exploration-SKILL]] (132K) + 21 个 references 在 `agents/ai-harness-exploration-references/`
+  - 五源融合:deusyu Harness Engineering + OpenAI Codex + Vibe Coding + Mitchell Hashimoto + Harness 平台工程
+  - MiniMax MCP 优先搜索 + Tavily MCP×4 兜底,输出 Skill/Method/Workflow/AGENTS.md 四件套
 - `hermes-workflow` — P0-P4 AI 编码工作流(人类主导 + AI 辅助)
 - `claude-code` / `codex` / `opencode` — 委托编码(子 CLI 跑 PR)
 - `hermes-agent` — 配置 Hermes 自身
