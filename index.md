@@ -31,6 +31,7 @@ tags: [index, wiki, catalog]
 ### Agent 实例(7)
 - [[agents/main-claude]] — orchestrator,主控
 - [[agents/hermes-3rd]] — 笔记本协作 Agent(2026-06-04 onboarded, status: active, 5.4K)
+- [[entities/hermes-3rd]] — 3rd 详细档案 (8.3K, 10 章节, 协作/能力/踩坑/roadmap)
 - [[agents/hermes-kanban-orchestrator]] — Kanban 编排(模板)
 - [[agents/hermes-kanban-worker]] — Kanban worker(模板)
 - [[agents/hermes-self-check]] — Hermes 自检(模板)

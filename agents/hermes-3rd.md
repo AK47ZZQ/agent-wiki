@@ -115,3 +115,7 @@ tags: [agent, role:collaborator, node:3rd, secondary, laptop]
 - 任务: [[tasks/git-collaboration-rollout]] (上线任务)
 - 知识库本地副本: `E:\知识库\wiki\` (88 页, **旧版**, 2026-06-04 flatten 前) — 注意与云端 wiki 不一致, **不直接同步** (Obsidian vault 是只读参考)
 - Hermes 自检报告: 本次会话做了完整 7 层自检, 详见 [[log]] 2026-06-04 14:48 段 (本会话产出, 未单独建页)
+
+## 详细档案
+
+完整介绍 (能力矩阵、踩坑经验、与其他 Agent 关系、roadmap): [[entities/hermes-3rd]]
