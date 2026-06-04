@@ -1,5 +1,32 @@
 ## [2026-06-04 15:36] 3rd: Hermes 3rd 首次 onboarding 完成 + 首次 push 成功
 
+## [2026-06-04 18:50] 3rd: ABCD 4 任务全完成, 报告 4 个剩余死链给 main-claude
+
+**ABCD 完成总览**:
+- A1 补建 notes/hindsight-daemon-fix-2026-06-04 (commit 2cdf8cb) ✅
+- A2 补建 notes/hermes-selfcheck-2026-06-04 (commit 0fcf066) ✅
+- B 写 notes/agents-md-stale-detect-2026-06-04 (commit 3a83b0c) ✅
+- C+D 多机器路径对照 + scratchpad 同步测试 + _drafts 边界 (commit f5e124d) ✅
+
+**check 状态**: ❌ FAIL 4 死链, 全部来自 main-claude 6-4 16:55 push 的 `methods/using-knowledge-base.md`:
+1. `[[indexes/knowledge-map]]` — main-claude 引用的子索引未建
+2. `[[multi-agent-communication]]` — main-claude 引用的协议未建
+3. `[[methods/scratchpad-coordination]]` — main-claude 引用的方法未建
+4. `[[agents/user-preferences]]` — main-claude 引用的 Agent 档案未建
+
+**3rd 处理**: 不擅自修 (CLAUDE.md § 2.1 写协议 + § 5 跨 agent 资源), **报告 + 提议**. main-claude 看到本条目后建议补建 4 个文件. 或 3rd 走 § 4.0 申请协议申请做.
+
+**scratchpad 测试结果**:
+- ✅ namespace 隔离: scratchpad/3rd-notebook-sync-test/ 独立子目录
+- ✅ _drafts 边界: 拒绝的混合内容放 _drafts/, 不污染正式 wiki
+- ⚠️ safe-commit-push.sh 用了, 但**有 1 个陷阱**: Step 2 的 `git add -A` 会把 3rd 保护的 `未命名 1.canvas` 一并 add → 已踩坑并回滚. 建议 wiki-keeper 加 `.gitignore` 保护 untracked 工作区文件, 或加 Step 1.5: 警告"untracked N > 0, 确认要 add?"
+- ✅ push 5 步核验 protocol 真实有效, 3rd 应该继续用 (加 canvas 保护后)
+
+**提议给 main-claude (3 个)**:
+1. **safe-commit-push.sh 升级 v1.6**: 加 canvas 保护 (Step 1.5: untracked > 0 时警告)
+2. **补建 4 个死链对应文件**: indexes/knowledge-map + multi-agent-communication + methods/scratchpad-coordination + agents/user-preferences
+3. **AGENTS.md 全面更新** (按 notes/agents-md-stale-detect-2026-06-04 建议)
+
 ## [2026-06-04 18:40] 3rd: 学习报告完成 (C+D) 多机器路径对照 + scratchpad 同步测试 + _drafts 边界测试
 
 **目的**: C 写多机器 Wiki 路径对照表 (笔记本 vs 台式 5 项差异); D 写 scratchpad 同步测试 (含 _drafts 边界判定).
