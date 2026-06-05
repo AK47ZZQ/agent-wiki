@@ -1,3 +1,19 @@
+## [2026-06-05 10:45] 3rd: v0.7.2 升级 + idle 守护 + LLM 端到端 100% 成功 (DEF 任务全过)
+
+- **D 升级**: 4 件套 hindsight-all / api-slim / embed / client 全部 0.7.1 → 0.7.2, pg0-embedded 0.14.0 → 0.14.2, 0 breaking change (wheel diff 验证仅 dep bump + `_thread_limits.py` 性能改进)。alembic 自动跑 2 个新 migration: `86f7a033d372 -> b8c9d0e1f2a3` (vchord cosine) + `b5a4c3e2f1d8,b8c9d0e1f2a3 -> c1d2e3f4a5b6` (merge heads)
+- **E idle 守护**: `hindsight-api --daemon --port 9177 --idle-timeout 1800` 启 v0.7.2 daemon (30 分钟 idle auto-exit, 防 memory leak, 符合 memory 6-4 22:35 "无 cron 原则")。hermes.env 加 `HINDSIGHT_API_DAEMON_LOG=C:\Users\ZZQ\.hindsight\daemon.log` (cosmic 不写, 核心守护靠 idle middleware)
+- **F 端到端 5 步核验 100% 成功**:
+  - F.1 RETAIN SYNC: 15.8s, 2841 input / 676 output tokens ✅
+  - F.2 RETAIN ASYNC: 0.2s, op_id 9286401d-..., usage=null by design ✅
+  - F.3 REFLECT 5 iter: 33.2s, 107,901 input / 1,512 output tokens ✅
+  - F.4 CONSOLIDATE: llm_batch #1 完成 8/69 memories, 64.7s LLM, created=2 updated=3 ✅
+  - F.5 STATS 实时: 376 nodes / 12,362 links / 15 docs (vs D 启动 366/12,273/11) ✅
+  - F.6 全程 0 ERROR: log 0 个 APIStatusError / 4xx / 5xx ✅
+- **当前状态**: PID 34952 daemon 模式, 9177 listen, v0.7.2, LLM 真命中 `minimax/MiniMax-M2.7-highspeed`, stats 376/12362/15
+- **memory 漂移订正**: memory 6-4 22:25 记 "3rd 笔记本 Hindsight 0.7.2" 实际是 v0.7.1 (memory 跟现实漂移); 本次升级后现实 = memory 0.7.2 ✅
+- **1 件产物**: `notes/hindsight-v072-upgrade-3rd-notebook-2026-06-05.md` (12.5KB, D/E/F 三任务完整记录)
+- **4 件套同步**: index.md 状态行 + 154-156 行增 1 笔记 + log.md 本行 + 旧笔记 (hindsight-env-truly-fixed) 不动 (env 修复跟 v0.7.2 升级是两件事)
+
 ## [2026-06-05 10:15] 3rd: 3rd 笔记本 v0.7.1 env 独立 bug 修复 (跟 main-claude 4 周前 v0.7.2 fix 区分)
 
 - **bug 性质**: 3rd 笔记本本机 venv 装 hindsight v0.7.1 (不是 main-claude v0.7.2)，本机 env 独立存在错配。**不是 4 周前假修复**——main-claude 4 周前 fix 真成功（memory 4 个条目验证 35 LLM calls 100% 成功）

@@ -8,7 +8,7 @@ tags: [index, wiki, catalog]
 
 # Wiki Index
 
-> **2026-06-05 10:15 状态**:112 个 .md (新增 hindsight-env-truly-fixed-2026-06-05.md) / 5 知识类别 + 多 Agent 第二大脑 + 3rd 笔记本 idle timeout 守护法 + 0 cron。死链 0。**4 周前假修复已暴露并真修**。
+> **2026-06-05 10:45 状态**:113 个 .md (新增 hindsight-v072-upgrade-3rd-notebook-2026-06-05.md) / 5 知识类别 + 多 Agent 第二大脑 + 3rd 笔记本 idle timeout 守护法 + 0 cron。死链 0。**v0.7.2 升级 + idle 守护 + LLM 端到端 100% 成功**。
 > 启动一个 Agent 后,先读 [[CLAUDE]],再读本文件,再读 [[agents/README]]。
 
 ## 📐 协议层(启动必读)
@@ -153,6 +153,7 @@ tags: [index, wiki, catalog]
 - [[notes/hindsight-semantic-only-mode-2026]] — semantic-only mode(2026-06-04 新装的第 5 种 mode)
 - [[notes/hindsight-daemon-fix-2026-06-04]] — Hindsight daemon 修复记录 (14:25-15:13, minimax provider + /v1 端点 + 域名拼写, **main-claude 台式 4 周前成功**)
 - [[notes/hindsight-env-truly-fixed-2026-06-05]] — **3rd 笔记本 v0.7.1 env 独立 bug 修复** (10:10-10:15, 6-5 selfcheck, 本机 venv v0.7.1 跟 main-claude v0.7.2 minor 漂移, env 错配独立修, Windows ACL 4 陷阱 + env 注入 5 步法)
+- [[notes/hindsight-v072-upgrade-3rd-notebook-2026-06-05]] — **Hindsight v0.7.2 升级 + idle 守护 + LLM 端到端** (10:35-10:45, 4 件套 0.7.1→0.7.2 升级, `--daemon --idle-timeout 1800` 守护, F.1-F.6 5 步核验 100% 成功)
 - [[notes/hermes-selfcheck-2026-06-04]] — Hermes 7 层系统自检报告 (14:48, 字节vs字符矛盾 + 5 端点 verify)
 - [[notes/agents-md-stale-detect-2026-06-04]] — AGENTS.md stale 检测报告 (9 项偏差, 提议 main-claude 修正)
 - [[notes/multi-machine-wiki-paths]] — 多机器 Wiki 路径对照表 (笔记本 ZZQ vs 台式 Administrator, 5 项差异)
