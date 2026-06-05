@@ -133,3 +133,19 @@ confidence: high
 - **stale 大文件**: log.md 68K (可压缩), ai-harness-exploration-SKILL.md 132K (skill 源码,预期)
 
 **结论**: wiki 整体健康; lessons-learned + auto-apply 2 page 已加入索引并自检 PASS.
+
+## 13. 6-5 selfcheck 教训 (memory 是 source of truth, wiki 是子集)
+
+| 教训 | 场景 | 修法 |
+|---|---|---|
+| **memory 优先于 wiki** | 我把 `hindsight-daemon-fix-2026-06-04.md` 4 周前 fix 说成"假修复", 实际 main-claude 4 周前 PID 20520 v0.7.2 fix 真成功 (memory 4 个条目验证 35 LLM calls 100% 成功) | 任何 wiki 笔记写"X 周前假修复"前**先查 memory context**确认历史; memory 4 个条目验证 = 跟 memory 冲突 = 我错 |
+| **跨机器漂移 ≠ 假修复** | 3rd 笔记本 v0.7.1 vs main-claude v0.7.2 minor 漂移, 不是"修复失败", 是"独立机器独立 bug" | 写 bug 笔记标题明确标"X 笔记本 vX.Y.Z 独立 bug", 不说"假修复" |
+| **写文件走 env var 传 secret** | `write_file` sanitizer 脱敏 `sk-cp-...` / `gh[pousr]_...` 长字符串成 `***` | 任何 secret 走 env var 传, 脚本读 `os.environ.get("HERMES_MINIMAX_KEY")`; 不用 `***` 占位符 (也会被脱敏) |
+| **amend + force-push + reset 三连** | amend 改本地 SHA, 远端未 fetch 报 unmerged, `pull --rebase` 失败 | 标准流程: `git push --force-with-lease` + `git reset --hard origin/main` + 再 verify `LOCAL=REMOTE` |
+
+**5 步 commit 协议补充**:
+- amend 失败 + rebase 报 unmerged → **不要 panic**, 走 force-with-lease + reset --hard origin/main 三连
+- reset --hard **会丢未 push 的 amend**, 但 force-with-lease 之前的 amend 已 push 远端 = 数据安全
+- 任何 amend 必须 `git status -sb` + `cat-file -t HEAD` + rev-parse 远端对比 3 步独立核验
+
+**关联**: [[hindsight-env-truly-fixed-2026-06-05]] (本次 6-5 10:10-10:20 完整实战), [[hindsight-windows-acl-trap|SKILL hindsight-windows-acl-trap]] (4 ACL 陷阱)
