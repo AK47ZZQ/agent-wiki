@@ -1,3 +1,13 @@
+## [2026-06-05 23:40] 3rd: Hindsight v0.7.2 + gbrain v0.42.10 源仓库学习 + mental_model + 3 directives 实战 POST 200
+- 源仓库 clone 到本地: `/tmp/gbrain/` (AGENTS.md 128 行 + INSTALL_FOR_AGENTS.md 354 行 + 26 skills + 10 recipes) + `/tmp/hindsight-tmp/` (CLAUDE.md 372 行 + configuration.md 1918 行 + bank-templates.mdx + 3 套官方 template)
+- Hindsight 38 字段 _CONFIGURABLE_FIELDS 全景: 之前只用了 9 个, 漏 29 个 (mental_models/directives/recall_strategy/retain_strategies/mcp_enabled_tools 等)
+- 实战 POST /mental-models 200: `hermes-3rd-context` (refresh_after_consolidation=true, 自动重生成)
+- 实战 POST /directives 200 ×3: `language-style` (priority 100) / `evidence-required` (90) / `tool-fallback-required` (80) — 必注入所有 reflect prompt
+- reflect 200 测试 OK, 返回中文, mental_model 自动生效
+- 5 个新待办: 切 pgroonga (中文 BM25) + 切 ONNX embeddings (bge-m3 in-process) + 加 zzq-preferences mental_model (修 L2 盲区) + L1 压缩 (98% → 6K) + 写 bank-config protocol
+- L2 retain 关键 15 条摘要已入 bank
+- gbrain 不直接整合 hindsight (4 套独立系统 L1/L2/L3/L4), Hindsight 0.5.0 已 drop "Hermes integration"
+
 ## [2026-06-05 23:25] 3rd: 自我反思笔记 — 4 反模式 + 5 改进项 + meta 对齐 (反思笔记首篇)
 - 反思笔记: `notes/reflection-hermes-3rd-2026-06-05-2320.md` (12.6K, 反思不是流水账)
 - 4 反模式: (1) 工具失败贴报告停手 (用户纠错触发) (2) 贴结果≠用结果, patch 完不验证下游 (3) 一锤改 ≥ 3 处 vs issue-by-issue (4) 同一思路失败 ≥ 3 次不切换

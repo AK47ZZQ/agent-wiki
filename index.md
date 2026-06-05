@@ -1,14 +1,14 @@
 ---
 title: Wiki Index
 created: 2026-05-28
-updated: 2026-06-05 23:25
+updated: 2026-06-05 23:40
 type: meta
 tags: [index, wiki, catalog]
 ---
 
 # Wiki Index
 
-> **2026-06-05 状态**:123 个 .md (新增 3: v1.6 漏洞实战 + v1.7 终极修复 + v1.7 笔记 v1.1 增补 + **自我反思 4 反模式**) / 6 知识类别。死链 0。**反思笔记首篇: 4 反模式 + 5 改进项 + meta 对齐**。
+> **2026-06-05 状态**:124 个 .md (新增 4: v1.6 漏洞 + v1.7 修复 + v1.1 增补 + 反思 + **Hindsight/gbrain 源仓库学习**) / 6 知识类别。死链 0。**Hindsight mental_model + 3 directives 实战, 38 字段 schema 完整理解**。
 > 启动一个 Agent 后,先读 [[CLAUDE]],再读本文件,再读 [[agents/README]]。
 
 ## 📐 协议层(启动必读)
@@ -170,6 +170,7 @@ tags: [index, wiki, catalog]
 - [[notes/git-push-v16-pitfalls-2026-06-05]] — **v1.6 漏洞实战** (3rd, 22:10, 5 步核验金标准 + v1.7 脚本根因)
 - [[notes/safe-commit-push-v17-deep-fix-2026-06-05]] — **v1.7 终极修复 + agent 治理 commit 实战** (3rd, 23:10, mktemp+here-doc+git commit -F file + BRANCH 永远从 git 取 + 3 大坑+ 5 步核验全过)
 - [[notes/reflection-hermes-3rd-2026-06-05-2320]] — **自我反思 4 反模式 + 5 改进项** (3rd, 23:20, 工具失败停手 / 贴结果≠用结果 / 一锤改5处 / 9轮patch钻printf + 共同根因"优化轮次=优化做错" + meta对齐"穷尽≠一次")
+- [[notes/hindsight-gbrain-source-code-learning-2026-06-05]] — **Hindsight v0.7.2 + gbrain v0.42.10 源仓库学习** (3rd, 23:35, INSTALL 9 步 / _CONFIGURABLE_FIELDS 38 字段全景 / 4 vector ext / 5 text search / 3 bank template + mental_model+directive 实战 200)
 - [[agents/tools-markitdown]] — MarkItDown 本机部署 (Windows main-claude, 2026-06-04)
 - [[concepts/markitdown-overview]] — MarkItDown 概览 (Microsoft 开源文件→Markdown 转换器)
 - [[methods/markitdown-cheatsheet]] — MarkItDown CLI/Python/5 实战配方
