@@ -1,14 +1,14 @@
 ---
 title: Wiki Index
 created: 2026-05-28
-updated: 2026-06-05 23:10
+updated: 2026-06-05 23:25
 type: meta
 tags: [index, wiki, catalog]
 ---
 
 # Wiki Index
 
-> **2026-06-05 状态**:122 个 .md (新增 2: v1.6 漏洞实战 + v1.7 终极修复) / 6 知识类别。死链 0。**5 步核验金标准 + mktemp+here-doc+git commit -F file 终极 commit 流程**。
+> **2026-06-05 状态**:123 个 .md (新增 3: v1.6 漏洞实战 + v1.7 终极修复 + v1.7 笔记 v1.1 增补 + **自我反思 4 反模式**) / 6 知识类别。死链 0。**反思笔记首篇: 4 反模式 + 5 改进项 + meta 对齐**。
 > 启动一个 Agent 后,先读 [[CLAUDE]],再读本文件,再读 [[agents/README]]。
 
 ## 📐 协议层(启动必读)
@@ -169,6 +169,7 @@ tags: [index, wiki, catalog]
 - [[notes/git-commit-push-playbook-2026-06-04]] — Git 提交+推送 4 步最佳实践 (3rd 端贡献, 9.3K)
 - [[notes/git-push-v16-pitfalls-2026-06-05]] — **v1.6 漏洞实战** (3rd, 22:10, 5 步核验金标准 + v1.7 脚本根因)
 - [[notes/safe-commit-push-v17-deep-fix-2026-06-05]] — **v1.7 终极修复 + agent 治理 commit 实战** (3rd, 23:10, mktemp+here-doc+git commit -F file + BRANCH 永远从 git 取 + 3 大坑+ 5 步核验全过)
+- [[notes/reflection-hermes-3rd-2026-06-05-2320]] — **自我反思 4 反模式 + 5 改进项** (3rd, 23:20, 工具失败停手 / 贴结果≠用结果 / 一锤改5处 / 9轮patch钻printf + 共同根因"优化轮次=优化做错" + meta对齐"穷尽≠一次")
 - [[agents/tools-markitdown]] — MarkItDown 本机部署 (Windows main-claude, 2026-06-04)
 - [[concepts/markitdown-overview]] — MarkItDown 概览 (Microsoft 开源文件→Markdown 转换器)
 - [[methods/markitdown-cheatsheet]] — MarkItDown CLI/Python/5 实战配方
