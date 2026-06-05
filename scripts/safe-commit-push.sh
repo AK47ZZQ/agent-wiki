@@ -2,6 +2,7 @@
 # safe-commit-push.sh — 5 步核验 commit + push(防假成功)
 # Created: 2026-06-04 (wiki-keeper v1.5)
 # Updated: 2026-06-04 (v1.6 — 排除 .canvas / .bak / .obsidian 等)
+# Updated: 2026-06-05 (v1.7 — 新 untracked canvas 漏出 v1.6 漏洞根治)
 # 用途: 替代裸 `git add -A && git commit && git push`,加 5 步核验
 #
 # 用法:
@@ -12,6 +13,7 @@
 #   0 = 全成功(commit 存在 + push 到远端 + hash 一致)
 #   1 = 假成功诊断(commit 失败 / push 失败 / hash 不一致)
 #   2 = 冲突未解决
+#   3 = Step 2.5 检测到应排除的 untracked 文件没被 .gitignore 盖住(致命 v1.6 漏洞)
 
 set -euo pipefail
 
@@ -52,8 +54,11 @@ echo ""
 echo -e "${BLUE}=== Step 1: git status ===${NC}"
 git status --short
 
-# === Step 1.5: 排除 Obsidian 工作区文件(关键!v1.6 加) ===
+# === Step 1.5: 排除 Obsidian 工作区文件(关键!v1.6 加, v1.7 强化) ===
 # 这些是 Obsidian 本地 canvas / 备份 / 配置,不应该 commit 到共享 wiki
+# v1.6 漏洞: `git rm --cached` 只处理已 tracked 文件, 新 untracked 的
+# `未命名.canvas` 在 Step 2 `git add -A` 时仍被加进去 (实测 2026-06-05 误入 commit)
+# v1.7 修法: 同时 .gitignore 写入 + Step 2.5 校验 untracked 是否真被 gitignore 盖住
 EXCLUDE_PATTERNS=(
   "*.canvas"           # Obsidian Canvas(白板)
   "*.base"             # Obsidian Bases(数据库)
@@ -63,11 +68,11 @@ EXCLUDE_PATTERNS=(
   "*.swo"              # vim swap
   ".obsidian/*"        # Obsidian 配置 + 插件
   ".trash/*"           # Obsidian 回收站
-  "Untitled.canvas"    # 特定无标题 canvas
-  "未命名.canvas"      # 中文版
+  "Untitled.canvas"    # 特定无标题 canvas (英文版)
+  "未命名*.canvas"     # 中文版 (含 "未命名 1.canvas" 等)
 )
 echo ""
-echo -e "${BLUE}=== Step 1.5: 排除 Obsidian 本地文件 ===${NC}"
+echo -e "${BLUE}=== Step 1.5: 排除 Obsidian 本地文件 (v1.7 强化版) ===${NC}"
 for pat in "${EXCLUDE_PATTERNS[@]}"; do
   if git status --short | grep -E "$pat" >/dev/null 2>&1; then
     echo "排除模式: $pat"
@@ -78,25 +83,46 @@ done
 # 写一份 .gitignore(防御性,确保未来不 add)
 GITIGNORE_ENTRIES=$(printf '%s\n' "${EXCLUDE_PATTERNS[@]}")
 if [ -f .gitignore ]; then
-  if ! grep -qF ".canvas" .gitignore 2>/dev/null; then
+  if ! grep -qF "未命名*.canvas" .gitignore 2>/dev/null; then
+    # v1.7 检测关键 pattern (中文未命名) 防止 v1.6 的 .canvas 单独检测不全
     echo "" >> .gitignore
-    echo "# safe-commit-push.sh v1.6 排除" >> .gitignore
+    echo "# safe-commit-push.sh v1.7 排除 (2026-06-05 强化)" >> .gitignore
     echo "$GITIGNORE_ENTRIES" >> .gitignore
     git add .gitignore
-    echo "✅ .gitignore 更新 (加入排除模式)"
+    echo "✅ .gitignore 更新 (加入 v1.7 排除模式)"
   fi
 else
-  echo "# safe-commit-push.sh v1.6 排除" > .gitignore
+  echo "# safe-commit-push.sh v1.7 排除" > .gitignore
   echo "$GITIGNORE_ENTRIES" >> .gitignore
   git add .gitignore
   echo "✅ .gitignore 创建"
 fi
 
-# === Step 2: add 所有 ===
+# === Step 2: add 所有 (v1.7 改为先看 untracked 是否被 gitignore 盖住) ===
 echo ""
-echo -e "${BLUE}=== Step 2: git add -A ===${NC}"
+echo -e "${BLUE}=== Step 2: git add -A (v1.7 加 untracked 预校验) ===${NC}"
+# 先看 untracked 列表, 跟 EXCLUDE_PATTERNS 比对, 看是否真被 .gitignore 排除
+UNTRACKED=$(git ls-files --others --exclude-standard 2>/dev/null || true)
+LEAKED=""
+for f in $UNTRACKED; do
+  for pat in "${EXCLUDE_PATTERNS[@]}"; do
+    # fnmatch 风格匹配 (Obsidian 临时文件规则)
+    case "$f" in
+      $pat) LEAKED="$LEAKED $f" ;;
+    esac
+  done
+done
+if [ -n "$LEAKED" ]; then
+    echo -e "${RED}❌ 致命: v1.6 漏洞复发! 应排除的 untracked 文件没被 .gitignore 盖住:${NC}"
+    for f in $LEAKED; do
+      echo "    - $f"
+    done
+    echo ""
+    echo "修法: 检查 .gitignore 是否包含这些 pattern, 或加更多 EXCLUDE_PATTERNS"
+    exit 3
+fi
 git add -A
-echo "已 add 所有变更(已排除 Obsidian 本地文件)"
+echo "已 add 所有变更(已排除 Obsidian 本地文件, v1.7 预校验通过)"
 
 # === Step 3: commit ===
 echo ""
