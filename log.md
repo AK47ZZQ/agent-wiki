@@ -1,3 +1,12 @@
+## [2026-06-05 23:10] 3rd: safe-commit-push v1.7 终极修复 + agent 治理 commit 实战 | 4 新文件 + 3 坏 commit 化掉
+- v1.7 终极修复 commit `f8793649a5a899df8366aa397bf4c06ccd863a19` (本地=远端, 5 步核验全过)
+- 新笔记: `notes/safe-commit-push-v17-deep-fix-2026-06-05.md` (10.6K, 5 步核验金标准 + 3 大坑 + 5 条 L1 铁律)
+- 化掉 3 个坏 commit: 6e33d7f (msg 全拼一行) + cb64447 (msg 临时文件路径) + 81b1f7f (msg 临时文件路径) — `git reset --soft 2d3ffba`
+- 脚本修复: mktemp + here-doc `{ ... } > file` + `git commit -F $MSG_FILE` 直接传文件, 绕所有 bash 字符串拼接吞 LF 坑
+- BRANCH 永远从 `git branch --show-current` 取 (原 bug 把 subject 含空格当 BRANCH, 推 `fatal: invalid refspec`)
+- 5 步核验金标准: status → add -A (加 untracked 预校验 exit 3) → commit -F file → cat-file -t HEAD → push + rev-parse 对比
+- author: Hermes 3rd <hermes-3rd@notebook.local> (新设, 跟 4 周前 wiki § 4 兼容)
+
 ## [2026-06-05] main: 完整优化第 2 轮 — 6 新页面 + 4 快照清理 + 索引整合 | 120 .md
 - 新建 methods/agent-safety.md (7KB): 5 层安全模型 + 13 规则表
 - 新建 entities/codex-cli-deep-dive.md (7KB): 沙箱/MCP/Symphony/Hermes 协作

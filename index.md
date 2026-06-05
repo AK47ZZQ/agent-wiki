@@ -1,14 +1,14 @@
 ---
 title: Wiki Index
 created: 2026-05-28
-updated: 2026-06-05 00:35
+updated: 2026-06-05 23:10
 type: meta
 tags: [index, wiki, catalog]
 ---
 
 # Wiki Index
 
-> **2026-06-05 状态**:120 个 .md (新增 7: 推理模式 / 多Agent架构 / 上下文工程 / 安全 / 评估 / Codex深度 / 写入标准) / 6 知识类别。死链 0。**写作规范 + 知识缺口补全 + 日志归档 + 快照清理**。
+> **2026-06-05 状态**:122 个 .md (新增 2: v1.6 漏洞实战 + v1.7 终极修复) / 6 知识类别。死链 0。**5 步核验金标准 + mktemp+here-doc+git commit -F file 终极 commit 流程**。
 > 启动一个 Agent 后,先读 [[CLAUDE]],再读本文件,再读 [[agents/README]]。
 
 ## 📐 协议层(启动必读)
@@ -167,6 +167,8 @@ tags: [index, wiki, catalog]
 - [[notes/lessons-learned-index]] — **经验与教训索引** (2026-06-05 新建,跨 session 沉淀)
 - [[notes/auto-apply-mode-best-practices]] — **Auto-Apply 模式最佳实践** (2026-06-05 新建, 5 guard rails + 8 步流程)
 - [[notes/git-commit-push-playbook-2026-06-04]] — Git 提交+推送 4 步最佳实践 (3rd 端贡献, 9.3K)
+- [[notes/git-push-v16-pitfalls-2026-06-05]] — **v1.6 漏洞实战** (3rd, 22:10, 5 步核验金标准 + v1.7 脚本根因)
+- [[notes/safe-commit-push-v17-deep-fix-2026-06-05]] — **v1.7 终极修复 + agent 治理 commit 实战** (3rd, 23:10, mktemp+here-doc+git commit -F file + BRANCH 永远从 git 取 + 3 大坑+ 5 步核验全过)
 - [[agents/tools-markitdown]] — MarkItDown 本机部署 (Windows main-claude, 2026-06-04)
 - [[concepts/markitdown-overview]] — MarkItDown 概览 (Microsoft 开源文件→Markdown 转换器)
 - [[methods/markitdown-cheatsheet]] — MarkItDown CLI/Python/5 实战配方
