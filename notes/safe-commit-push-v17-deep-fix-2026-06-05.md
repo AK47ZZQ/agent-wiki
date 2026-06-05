@@ -3,13 +3,14 @@ title: "safe-commit-push v1.7 终极修复 + agent 治理 commit 实战 (3rd 笔
 created: 2026-06-05
 updated: 2026-06-05
 type: note
-tags: [note, git, push, commit, safe-commit-push, v1.7, bash, mktemp, here-doc, agent-governance, msys, hermes-3rd, playbook]
+tags: [note, git, push, commit, safe-commit-push, v1.7, bash, mktemp, here-doc, agent-governance, msys, hermes-3rd, playbook, llm-wiki, karpathy, chaubey, tigera, mcp, conventional-commits]
 sources:
   - 22:54 远端 81b1f7f commit 灾难: commit message 变 /tmp/safe-commit-msg.ODxA77 (临时文件路径)
   - 23:00 远端 81b1f7f 远端领先, 6e33d7f + cb64447 + 81b1f7f 3 个未 push commit 全坏
   - 23:05 reset --soft 化 3 个坏 commit + 修脚本核心 (mktemp + git commit -F $MSG_FILE)
   - 23:06 amend 把 BRANCH 修复合并成 1 个干净 commit f879364
   - 23:07 push 成功 (本地 = 远端 = f879364, 5 步核验全过)
+  - 23:15 跨外部信号: Karpathy LLM Wiki (2026-03) + Chaubey "Wiki That Writes Itself" (2026-04) + Tigera AI Agent Governance (2026-01) + conventionalcommits.org + CSDN ai-commit 对比
   - 4 周前 wiki § 4 protocols/git-collaboration-multi-agent (3 铁律 + 3 冲突类型)
   - 6-4 23:55 notes/git-commit-push-playbook (5 步核验金标准)
 confidence: high
@@ -180,3 +181,52 @@ fi
 - wikilink ≥ 6 出链 (远超 ≥ 2 要求) ✅
 - 7 sources 跨节点 (5 step 流程 + 4 周前 wiki + 6-4 笔记) + 跨 commit SHA (2d3ffba / 81b1f7f / f879364) ✅
 - confidence: high (1 commit 实战 + 5 步核验全过) ✅
+
+## 8. v1.1 增补 (2026-06-05 23:15, 跨外部信号 + L2 Hindsight recall 沉淀)
+
+### 8.1 与 Karpathy "LLM Wiki" + Chaubey "Wiki That Writes Itself" 模式对照
+
+| 我的 wiki 实践 | Karpathy LLM Wiki (2026-03) | Chaubey enterprise 扩展 (2026-04) | 我的落地情况 |
+|---|---|---|---|
+| **Git 仓做 SoT** | ✅ (个人) | ✅ + MCP server 跨 agent 派发 | ✅ (3rd + main-claude 共用 agent-wiki) |
+| **每改 = commit** | ✅ | ✅ + author 跟踪 | ✅ (新设 `Hermes 3rd <hermes-3rd@notebook.local>`) |
+| **Admin review PR** | ❌ (单 agent) | ✅ (admin team 审 PR) | ⚠️ (我跟 main-claude 互相审, 需写 `protocols/git-collaboration-multi-agent` 明确分工) |
+| **Developer feedback loop** | ❌ | ✅ 3 票 orphan branch → promote → PR | ❌ (我的 5 步核验 = 弱 loop, 不投票, 单人签字) |
+| **CI 验证跨页一致性** | ❌ | ✅ | ⚠️ (有 `safe-commit-push-protocol.md` 8.7K, 但无自动 CI 钩) |
+| **多 agent 同 SoT** | ❌ | ✅ (Claude Code/Copilot/Cursor/Codex/Gemini 同源) | ✅ (Hermes 3rd + main-claude 笔记本 + 台机 3 端共用) |
+
+**关键差距** (下一步可补):
+- **feedback loop 投票机制**: 我当前 wiki 无 `wiki_suggest` 等价物. 临时方案: wiki 笔记 `## TODO` 段 + index.md `## Knowledge Gaps` section, 人工跟踪
+- **CI 跨页一致性**: 写一个 `scripts/wiki-consistency-check.sh` 跑 wikilink 完整性 / frontmatter 9 字段齐 / sources ≥ 2 / staleness (e.g. 60 天未更新)
+- **AGENTS.md 标准化**: 4 周前 wiki § 4 有 3 铁律, 但没顶层 `AGENTS.md` 给任何 agent (Claude Code/Cursor/Codex/Hermes) 通用入口. Chaubey Open Q #2 提了, 我也没好答案 — **经验性答案是 wiki 索引 `index.md` 充当**, 不强求单一 AGENTS.md
+
+### 8.2 Tigera "AI Agent Governance" 5 大组件对照 (单人/小团队版)
+
+| Tigera 组件 | 我有? | 实施形式 |
+|---|---|---|
+| **Agent Identity & Registry** | ✅ | `git config user.name/email` (Hermes 3rd) + 每 commit author 跟踪 + wiki `entities/hermes-3rd.md` |
+| **Security & Access Control** | ✅ | SSH key (per machine, 6-1 已配) + least-privilege (笔记本只读自己 5 仓) + 短 token 周期 (PAT 已撤销) |
+| **Human-in-the-Loop (HITL)** | ✅ | **5 步核验金标准** = 强 HITL (每 push 必过 cat-file + rev-parse 双重 human-review check) |
+| **Runtime Monitoring** | ✅ | `start-hermes-all.bat` 60s 巡检 + 4 服务健康检查 + watchdog.log |
+| **Lifecycle Management** | ⚠️ | 笔记本场景不需要企业级, 但 v0.6.1→v0.7.2 升级演练 (6-4/6-5) 实战了设计→开发→部署→运行→退役 5 阶段 |
+
+**Tigera 5 大 best practices 取舍 (单人场景)**:
+- ✅ **Zero Trust** 不全用 (太重), 但 **5 步核验 = 应用层 zero trust** (commit 不经 push 验证不认成功)
+- ✅ **Strong Identity** (Hermes 3rd author 永不变)
+- ⏭ **Microsegmentation** 不需要 (单仓单分支, 不存在横向移动风险)
+- ✅ **Deep Observability** (L2 daemon 自动 retain + LCM 实时存 + 5 步核验 audit trail)
+- ✅ **Standardize Policies** (5 步核验金标准 + safe-commit-push.sh v1.7 = 强 SOP)
+
+### 8.3 3 个 Open Questions (我自己 wiki 的未决问题)
+
+1. **AGENTS.md / CLAUDE.md 该不该写?** — Chaubey 提了, 我倾向**不**写统一 AGENTS.md (不同 agent 解析差异大), 改写 `wiki/AGENTS.md` 当**入口指针** ("先读这个, 再决定读哪"), 类似 L1 MEMORY.md 注入 system prompt 的作用
+2. **3 票阈值怎么定?** — 我是单 agent, **投票人** = 自我对话 (turn N 跟 turn N+k 比, 同一 question 命中次数). 阈值 = 3 复用, 但**单 agent** 时 = 跨 session 命中 ≥ 3 次. 可加 L2 Hindsight `/recall` 跨 session 频率统计
+3. **CI 一致性检查该不该做?** — 200 个 wiki 笔记时人工不可能维护 wikilink, 需要脚本. 短期: `scripts/wiki-consistency-check.sh` (写一次, 跑 monthly) + commit hook 卡 staging. 长期: GitHub Actions (公仓可白嫖)
+
+### 8.4 跨 session 引用 (本轮外部信号)
+
+- **Karpathy "LLM Wiki" gist** (2026-03) — 个人 wiki 模式原始设计
+- **Saurabh Chaubey "Wiki That Writes Itself"** (2026-04-07) — 企业级扩展 (MCP server + 3 票 feedback loop + admin PR)
+- **Tigera "AI Agent Governance" guide** (2026-01) — 5 组件 + 5 best practices 框架
+- **conventionalcommits.org** — Conventional Commits 规范 (我当前未用, 后续可考虑加 `<type>(<scope>): <subject>` 格式)
+- **CSDN "AI commit 工具对比"** (2026-05) — ai-commit / OpenCommit 等 AI 生成 commit msg 工具 — **不**采用, 我手写更准, AI 生成会带来 subject 拼行/bug 复发风险
