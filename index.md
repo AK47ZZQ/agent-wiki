@@ -8,7 +8,7 @@ tags: [index, wiki, catalog]
 
 # Wiki Index
 
-> **2026-06-05 10:45 状态**:113 个 .md (新增 hindsight-v072-upgrade-3rd-notebook-2026-06-05.md) / 5 知识类别 + 多 Agent 第二大脑 + 3rd 笔记本 idle timeout 守护法 + 0 cron。死链 0。**v0.7.2 升级 + idle 守护 + LLM 端到端 100% 成功**。
+> **2026-06-05 状态**:113 个 .md / 5 知识类别 + 多 Agent 第二大脑。死链 0。**Harness Engineering v2.1 深度优化 (35KB, 22 篇来源 + 5 旗舰实现 + 有效性度量)**。
 > 启动一个 Agent 后,先读 [[CLAUDE]],再读本文件,再读 [[agents/README]]。
 
 ## 📐 协议层(启动必读)
@@ -96,8 +96,8 @@ tags: [index, wiki, catalog]
 - [[concepts/concept-kanban]] — Kanban 多代理并行调度
 - [[concepts/fowler-guides-sensors]] — 控制论 2×2 矩阵
 - [[concepts/full-stack-ecosystem]] — 14 节点全栈地图(合并版)
-- [[concepts/harness-engineering]] — Harness Engineering 速览
-- [[concepts/harness-engineering-deep-study]] — 完整框架研究
+- [[concepts/harness-engineering]] — Harness Engineering 速览 (v2.0 更新)
+- [[concepts/harness-engineering-deep-study]] — 完整框架研究 v2.1 (35KB, Agent 开箱即用, 22 篇来源 + 5 旗舰实现, 决策树 + 15 项自检 + Harness 有效性度量 7 指标)
 - [[concepts/hermes-codex-runtime]] — Codex Runtime 架构
 - [[concepts/hermes-kanban]] — Durable Kanban 编排
 - [[concepts/hermes-workflow]] — P0-P4 工作流

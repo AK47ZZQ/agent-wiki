@@ -1,3 +1,16 @@
+## [2026-06-05] main: Harness Engineering wiki v2.0→v2.1 深度优化 | +4 新模式 + 7 指标 + 4 新来源
+- v2.1 新增: Mitchell Hashimoto 操作性定义 (6 步采纳之旅) / Anthropic 初始化器+编码 Agent 双模式 (4 失败模式对策) / Claude Code Harness v4.14.0 (Go 守卫引擎) / ralph-orchestrator v2.9.3 (Hat + RObot HITL)
+- 新增 §8 Harness 有效性度量: 7 项健康度指标 (触发率/误报率/逃逸率/修复比例/前馈反馈比/惯性/灵敏度) + 4 种度量方法 (基线/注入测试/满意度/覆盖率地图)
+- 来源索引: 19→22 篇 (新增 Anthropic Long-Running / Claude Code Harness / ralph-orchestrator) + 5 旗舰实现对比表
+- 24KB→35KB, 658 行, 15 章节
+
+## [2026-06-05] main: Harness Engineering wiki v2.0 完全重写 | 全网搜索(GitHub/CSDN/OpenAI/Fowler/LangChain) → 整合为 24KB Agent 开箱即用手册
+- 重写 concepts/harness-engineering-deep-study.md: v1.0(39行)→v2.0(24KB, 14 章)
+- 更新 concepts/harness-engineering.md: 速览页同步 v2.0
+- 新增内容: Agent 决策树 / 15 项自检清单 / 最小模板 / 反模式 / 19 篇完整来源索引 / 关系全景图
+- 8 个原始来源直接抓取: OpenAI 原文 / Fowler 完整文章+备忘录 / LangChain 解剖 / deusyu 仓库 / Symphony / Ralph / harness/harness
+- 更新 index.md + log.md
+
 ## [2026-06-05 10:45] 3rd: v0.7.2 升级 + idle 守护 + LLM 端到端 100% 成功 (DEF 任务全过)
 
 - **D 升级**: 4 件套 hindsight-all / api-slim / embed / client 全部 0.7.1 → 0.7.2, pg0-embedded 0.14.0 → 0.14.2, 0 breaking change (wheel diff 验证仅 dep bump + `_thread_limits.py` 性能改进)。alembic 自动跑 2 个新 migration: `86f7a033d372 -> b8c9d0e1f2a3` (vchord cosine) + `b5a4c3e2f1d8,b8c9d0e1f2a3 -> c1d2e3f4a5b6` (merge heads)
