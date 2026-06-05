@@ -1,13 +1,17 @@
 ---
 title: Hindsight 实际部署 + Health-check Cron Auto-Restart (2026-06-04 20:11)
 created: 2026-06-04
-updated: 2026-06-04T20:35
+updated: 2026-06-05
 type: note
-tags: [note, hindsight, deployment, health-check, cron, auto-restart, watchdog, hermes, live-ops]
+tags: [note, hindsight, deployment, health-check, cron, auto-restart, stale]
 source: |
   本会话 main-claude 实操记录 (2026-06-04 20:07-20:24) + 之前 SKILL 沉淀 + Daemon fix 笔记
 confidence: high
+stale: true
+superseded_by: methods/hindsight-health-monitoring-protocol.md
 ---
+
+> ⚠️ **本页为历史部署快照** (2026-06-04)。可复用方法论已提取至 [[methods/hindsight-health-monitoring-protocol]]。本页保留供历史参考，不再维护。
 
 # Hindsight 实际部署 + Health-check Cron Auto-Restart (2026-06-04 20:11)
 

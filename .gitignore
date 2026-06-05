@@ -32,3 +32,7 @@ Thumbs.db
 scripts/find-broken.py
 __pycache__/
 *.pyc
+
+# Obsidian canvas (any name, including 未命名)
+未命名*.canvas
+*.canvas

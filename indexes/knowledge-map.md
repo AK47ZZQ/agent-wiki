@@ -54,8 +54,8 @@ sources: [methods/using-knowledge-base, methods/wiki-curation-guide]
 - [[protocols/multi-agent-detail]] — Agent 协议
 
 ### 7) 教训
-- [[notes/hermes-selfcheck-2026-06-04]] — 7 层自检
-- [[notes/agents-md-stale-detect-2026-06-04]] — AGENTS stale
+- [[notes/lessons-learned-index]] — 7 层自检方法
+- [[notes/lessons-learned-index]] — AGENTS stale 检测经验
 - [[notes/hindsight-daemon-fix-2026-06-04]] — Hindsight 修复
 
 ### 8) 任务

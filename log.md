@@ -1,3 +1,11 @@
+## [2026-06-05] main: 完整优化第 2 轮 — 6 新页面 + 4 快照清理 + 索引整合 | 120 .md
+- 新建 methods/agent-safety.md (7KB): 5 层安全模型 + 13 规则表
+- 新建 entities/codex-cli-deep-dive.md (7KB): 沙箱/MCP/Symphony/Hermes 协作
+- 归档 2 快照 → _archive/: hermes-selfcheck + agents-md-stale-detect
+- 标记 2 stale: hindsight-deployment + lessons-learned-2026-06-04-23-50
+- 修复 6 inbound wikilink → lessons-learned-index
+- index.md: 概念 22 / 方法 22 / 对比 5 / 实体 19
+
 ## [2026-06-05] main: Git 经验沉淀 → lessons-learned §14 + git-push-cheatsheet v1.1 + safe-commit-push-protocol v1.7
 - lessons-learned: 新增 §14 (Git 实战新坑, 5 项) + §1 工具坑新增 4 行 (rebase吞commit / stale rebase-merge / author错配 / 脚本不可用)
 - git-push-cheatsheet: §2.0 stash-before-rebase 前置流程 + §3 假成功 #5-#7 (rebase吞commit / rebase-merge阻塞 / author错配) + §6 决策树新分支

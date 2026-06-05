@@ -156,10 +156,10 @@ confidence: high
 
 - 主 wiki 仓库: [AK47ZZQ/agent-wiki](https://github.com/AK47ZZQ/agent-wiki) (云端)
 - Git 协作协议: [[protocols/git-collaboration-multi-agent]]
-- AGENTS.md stale 报告: [[notes/agents-md-stale-detect-2026-06-04]]
+- AGENTS.md stale 报告: [[notes/lessons-learned-index]] (自检 + stale 检测经验已汇总)
 - 笔记本协作者: [[agents/hermes-3rd]] / [[entities/hermes-3rd]]
 - 协作者注册表: [[agents/README]]
 - Hindsight 修复: [[notes/hindsight-daemon-fix-2026-06-04]]
-- 自检报告: [[notes/hermes-selfcheck-2026-06-04]]
+- 自检报告: [[notes/lessons-learned-index]] (系统自检方法)
 - LCM 升级 (冲突): [[notes/lcm-upgrade-v0.12-to-v0.15]]
 - 旧版本地知识库: `E:\知识库\wiki\` (88 页, 笔记本 Obsidian vault, 6-4 flatten 前) — 跟云端 wiki 不一致, Obsidian vault 只读参考

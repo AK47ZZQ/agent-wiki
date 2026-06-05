@@ -174,7 +174,7 @@ curl -s http://localhost:9177/v1/default/banks/hermes/operations?status=complete
 
 ## 6. 关联文档
 
-- 触发场景: [[notes/hermes-selfcheck-2026-06-04]] — 14:48 自检时发现 daemon 全栈 OK 但 operations failed
+- 触发场景: [[notes/lessons-learned-index]] (系统自检方法) — 14:48 自检时发现 daemon 全栈 OK 但 operations failed
 - L0 路径: [[AGENTS]] 4-Tier 架构, L2 = Hindsight local
 - 真实定位: [[concepts/hindsight-in-hermes-ecosystem-2026]]
 - 5 mode 横向对比: [[comparisons/hindsight-5-modes-2026]]

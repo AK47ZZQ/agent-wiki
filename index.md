@@ -8,7 +8,7 @@ tags: [index, wiki, catalog]
 
 # Wiki Index
 
-> **2026-06-05 状态**:113 个 .md / 5 知识类别 + 多 Agent 第二大脑。死链 0。**Harness Engineering v2.1 深度优化 (35KB, 22 篇来源 + 5 旗舰实现 + 有效性度量)**。
+> **2026-06-05 状态**:120 个 .md (新增 7: 推理模式 / 多Agent架构 / 上下文工程 / 安全 / 评估 / Codex深度 / 写入标准) / 6 知识类别。死链 0。**写作规范 + 知识缺口补全 + 日志归档 + 快照清理**。
 > 启动一个 Agent 后,先读 [[CLAUDE]],再读本文件,再读 [[agents/README]]。
 
 ## 📐 协议层(启动必读)
@@ -63,7 +63,10 @@ tags: [index, wiki, catalog]
 
 ## 📚 知识层(5 类别)
 
-### Method(19) — 可复用方法
+### Method(22) — 可复用方法
+- [[methods/agent-safety]] — Agent 安全模型 (5 层防护 + 13 规则表 + 权限模型) (2026-06-05 新)
+- [[methods/agent-evaluation]] — Agent 评估方法 (SWE-bench / HumanEval / E2E / Eval-Driven) (2026-06-05 新)
+- [[methods/agent-writing-standard]] — **Agent 写入规约** (判断矩阵 + 5 反模式 + 清理协议) (2026-06-05 新)
 - [[methods/hermes-workflow-and-exploration]] — 双技能方法(执行+探勘)
 - [[methods/ralph-wiggum-loop]] — 背压门控循环 + Hermes 映射
 - [[methods/session-to-wiki-archiving]] — Session→Wiki 归档流程
@@ -88,7 +91,8 @@ tags: [index, wiki, catalog]
 - [[methods/gh-extension-development]] — gh CLI extension 开发实战(2026-06-04 新,Go binary 模式)
 - [[methods/gh-command-cheatsheet]] — gh CLI 命令速查 L1-L2(2026-06-04 新)- [[methods/hindsight-idle-timeout-watchdog]] — Hindsight idle timeout 笔记本无 cron 守护法(env 改 + foreground 模式,3 方案 5 步实操,2026-06-04 3rd 笔记本实战)<!-- END merge -->
 
-### Concepts(19) — 概念/主题
+### Concepts(22) — 概念/主题
+- [[concepts/agent-reasoning-patterns]] — Agent 推理模式: CoT / ReAct / ToT / Reflexion (2026-06-05 新)
 - [[concepts/ai-coding-tools-comparison]] — AI 编码工具对比
 - [[concepts/agent-4-tier-memory-architecture]] — Hermes 4-Tier 记忆架构(2026-06-04 整理,根目录)
 - [[concepts/wiki-quality-metrics]] — 9 维质量指标仪表盘(2026-06-04 新)
@@ -108,19 +112,22 @@ tags: [index, wiki, catalog]
 - [[concepts/mcpb-bundle-format]] — MCP Bundle 格式
 - [[concepts/symphony-spec-as-product]] — Symphony 编排规约
 - [[concepts/hindsight-memory-modes-guide]] — Hindsight 4 模式选型(2026-06-04 stub)
+- [[concepts/context-engineering]] — 上下文作为工程资源管理 (2026-06-05 新)
 - [[concepts/awesome-hermes-agent-ecosystem-2026]] — Awesome Hermes 生态全景(2026-06-05 新)
 - [[concepts/hindsight-0.6.1-vs-0.7.2-evolution]] — Hindsight 0.6.1→0.7.2 实战差异 (跨 main-claude 台式 + 3rd 笔记本, 6 维度 + 3 schema 坑 + 2 节点链路, 2026-06-04 3rd 第 2 次 6 步探勘法实战)
 <!-- BEGIN merge (远端 远端 + 3rd 都保留) -->
 - [[concepts/github-cli-overview]] — GitHub CLI (gh) 概览 / 何时用(2026-06-04 新)
 - [[concepts/github-cli-architecture]] — gh CLI 内部架构(Cobra/Factory/go-gh)(2026-06-04 新)- [[concepts/hindsight-0.7.2-idle-timeout-mechanism]] — Hindsight 0.7.2 daemon idle 1800s SIGTERM 机制(4 触发要素 + 笔记本vs台式差异 + 4 隐藏细节,2026-06-04 3rd 笔记本 21:04 实战)<!-- END merge -->
 
-### Comparisons(4) — 对比分析
+### Comparisons(5) — 对比分析
+- [[comparisons/multi-agent-architecture-patterns]] — 多 Agent 架构 6 模式对比与选型 (2026-06-05 新)
 - [[comparisons/hermes-memory-systems-comparison-2026]] — 8 provider 对比
 - [[comparisons/hindsight-0.6.1-vs-0.7.2-cross-machine-comparison]] — Hindsight 0.6.1 vs 0.7.2 跨机器对比 (台式 + 笔记本, 7 维度 + 守护哲学差异, 2026-06-04 3rd 第 2 次 6 步探勘法实战)
 - [[comparisons/hindsight-automation-patterns-2026]] — 4 自动化模式对比
 - [[comparisons/hindsight-5-modes-2026]] — 5 mode 横向对比(2026-06-04 baseline-no-skill 独立产出)
 
-### Entities(18) — 人物/工具/框架/模型
+### Entities(19) — 人物/工具/框架/模型
+- [[entities/codex-cli-deep-dive]] — Codex CLI 深度解析 (沙箱/AGENTS.md/MCP/Hermes协作) (2026-06-05 新)
 - [[entities/codex]] — OpenAI Codex 生态
 - [[entities/smithery-cli]] — Smithery CLI 工具
 - [[entities/tool-cli-anything-obsidian]] — Obsidian CLI
@@ -154,10 +161,9 @@ tags: [index, wiki, catalog]
 - [[notes/hindsight-daemon-fix-2026-06-04]] — Hindsight daemon 修复记录 (14:25-15:13, minimax provider + /v1 端点 + 域名拼写, **main-claude 台式 4 周前成功**)
 - [[notes/hindsight-env-truly-fixed-2026-06-05]] — **3rd 笔记本 v0.7.1 env 独立 bug 修复** (10:10-10:15, 6-5 selfcheck, 本机 venv v0.7.1 跟 main-claude v0.7.2 minor 漂移, env 错配独立修, Windows ACL 4 陷阱 + env 注入 5 步法)
 - [[notes/hindsight-v072-upgrade-3rd-notebook-2026-06-05]] — **Hindsight v0.7.2 升级 + idle 守护 + LLM 端到端** (10:35-10:45, 4 件套 0.7.1→0.7.2 升级, `--daemon --idle-timeout 1800` 守护, F.1-F.6 5 步核验 100% 成功)
-- [[notes/hermes-selfcheck-2026-06-04]] — Hermes 7 层系统自检报告 (14:48, 字节vs字符矛盾 + 5 端点 verify)
-- [[notes/agents-md-stale-detect-2026-06-04]] — AGENTS.md stale 检测报告 (9 项偏差, 提议 main-claude 修正)
+- [[notes/lessons-learned-index]] — 经验教训索引 (含自检方法 + stale 检测经验, 原快照页已归档至 _archive/)
 - [[notes/multi-machine-wiki-paths]] — 多机器 Wiki 路径对照表 (笔记本 ZZQ vs 台式 Administrator, 5 项差异)
-- [[notes/hindsight-deployment-and-monitoring-2026-06-04]] — Hindsight 实际部署 + health-check cron auto-restart (本会话 20:11 实战, 12.1KB)
+- [[notes/hindsight-deployment-and-monitoring-2026-06-04]] — Hindsight 部署快照 (⚠️ 已 stale, 方法论见 methods/hindsight-health-monitoring-protocol)
 - [[notes/lessons-learned-index]] — **经验与教训索引** (2026-06-05 新建,跨 session 沉淀)
 - [[notes/auto-apply-mode-best-practices]] — **Auto-Apply 模式最佳实践** (2026-06-05 新建, 5 guard rails + 8 步流程)
 - [[notes/git-commit-push-playbook-2026-06-04]] — Git 提交+推送 4 步最佳实践 (3rd 端贡献, 9.3K)
