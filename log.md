@@ -1,3 +1,14 @@
+## [2026-06-06 00:28] 3rd: DSPy 3.2.1 实战 — 4 个应用 + zzq-preferences mental_model 自动生成
+- dspy 3.2.1 已装 (Python 3.12 系统包), openai 2.24.0 / anthropic 0.87.0 / diskcache 5.6.3 / httpx 0.28.1 全齐
+- dspy.LM 走 litellm → 需 OPENAI_API_KEY env (不是 HINDSIGHT_API_LLM_API_KEY) + model 字符串 "openai/..." 前缀
+- 应用 1: dspy.Predict 最小调用 → "DSPy 是一个自动优化提示的框架" (一句话)
+- 应用 2: dspy.ChainOfThought 生成 hermes-3rd-context mental_model (2230 chars, markdown 表格化, 含 reasoning 步骤)
+- 应用 3: dspy.BootstrapFewShot 优化 5 步核验金标准 (3 训练示例, max_bootstrapped_demos=2)
+- 应用 4 (实战): dspy.ChainOfThought 生成 zzq-preferences mental_model (>1500 chars 表格化), POST 200, refresh 200 queued
+- L2 mental_models 现在 2 个: zzq-preferences + hermes-3rd-context (4643 chars)
+- 3 个新待办: 用 DSPy 优化 L2 retain 抽 fact prompt + 用 DSPy 标准化 wiki 9 字段 frontmatter + 用 DSPy 学中文 reflect 风格
+- 笔记: notes/dspy-3-2-1-applications-2026-06-06.md (12KB)
+
 ## [2026-06-05 23:40] 3rd: Hindsight v0.7.2 + gbrain v0.42.10 源仓库学习 + mental_model + 3 directives 实战 POST 200
 - 源仓库 clone 到本地: `/tmp/gbrain/` (AGENTS.md 128 行 + INSTALL_FOR_AGENTS.md 354 行 + 26 skills + 10 recipes) + `/tmp/hindsight-tmp/` (CLAUDE.md 372 行 + configuration.md 1918 行 + bank-templates.mdx + 3 套官方 template)
 - Hindsight 38 字段 _CONFIGURABLE_FIELDS 全景: 之前只用了 9 个, 漏 29 个 (mental_models/directives/recall_strategy/retain_strategies/mcp_enabled_tools 等)
