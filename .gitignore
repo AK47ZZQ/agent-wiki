@@ -36,3 +36,5 @@ __pycache__/
 # Obsidian canvas (any name, including 未命名)
 未命名*.canvas
 *.canvas
+notes/git-push-v16-pitfalls-2026-06-05.md
+git-push-v16-pitfalls*

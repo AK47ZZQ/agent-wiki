@@ -25,7 +25,12 @@ BLUE='\033[0;34m'
 NC='\033[0m'
 
 WIKI_ROOT="${WIKI_ROOT:-/c/Users/Administrator/hermes-all/wiki}"
-BRANCH="${2:-$(cd "$WIKI_ROOT" 2>/dev/null && git branch --show-current)}"
+# v1.7 修法: BRANCH 永远从 git branch --show-current 取, 不解析 $@ (subject 也可能在第 1 位置)
+# 原 bug: 把 commit message 的 subject (含空格) 当 BRANCH, 导致 push refspec 非法
+BRANCH="$(cd "$WIKI_ROOT" 2>/dev/null && git branch --show-current 2>/dev/null || echo "main")"
+if [ -z "$BRANCH" ]; then
+    BRANCH="main"
+fi
 
 # === 进入 wiki 目录 ===
 if [ ! -d "$WIKI_ROOT/.git" ]; then
@@ -36,18 +41,56 @@ fi
 
 cd "$WIKI_ROOT"
 
-# === 取 commit message ===
-if [ -z "${1:-}" ]; then
-    echo -n "输入 commit message: "
-    read -r COMMIT_MSG
+# === 取 commit message (v1.7 终极: here-document 写文件) ===
+# 第一个位置参数 = 完整 message (subject + 空行 + body, caller 自己 format)
+# 后续 -m "body" / -mbody 累积加 body 段 (用 here-doc 拼, 不用 printf %b 避免 bash 字符串拼接吞换行)
+MSG_FILE="$(mktemp -t safe-commit-msg.XXXXXX 2>/dev/null || mktemp)"
+trap 'rm -f "$MSG_FILE"' EXIT
+
+if [ $# -ge 1 ]; then
+    # 第一个位置参数当 subject
+    {
+        printf '%s' "$1"
+        # 后续 -m body / -mbody 累加 (用 here-doc, 保留所有换行)
+        i=2
+        while [ $i -le $# ]; do
+            arg="${!i}"
+            case "$arg" in
+                -m)
+                    next_i=$((i+1))
+                    next_arg="${!next_i}"
+                    if [ -n "$next_arg" ] && [ "${next_arg:0:1}" != "-" ]; then
+                        printf '\n\n%s' "$next_arg"
+                        i=$((i+2))
+                    else
+                        i=$((i+1))
+                    fi
+                    ;;
+                -m*)
+                    body="${arg#-m}"
+                    printf '\n\n%s' "$body"
+                    i=$((i+1))
+                    ;;
+                *)
+                    i=$((i+1))
+                    ;;
+            esac
+        done
+    } > "$MSG_FILE"
 else
-    COMMIT_MSG="$1"
+    # 交互模式: 读 stdin
+    echo -n "输入 commit message: "
+    read -r MSG_INPUT
+    printf "%s" "$MSG_INPUT" > "$MSG_FILE"
 fi
 
-if [ -z "$COMMIT_MSG" ]; then
+if [ ! -s "$MSG_FILE" ]; then
     echo -e "${RED}❌ 错误:${NC} commit message 不能为空"
     exit 1
 fi
+echo -e "${BLUE}📝 commit message 预览:${NC}"
+cat "$MSG_FILE"
+echo "---"
 
 # === Step 1: 看本地变更 ===
 echo ""
@@ -133,7 +176,8 @@ if git diff --cached --quiet; then
     H_LOCAL=$(git rev-parse HEAD)
     echo "本地 HEAD: $H_LOCAL"
 else
-    git commit -m "$COMMIT_MSG"
+    # v1.7 改: 用 -F file 直接传 message 文件 (绕 printf %b 字符串拼接吞换行坑)
+    git commit -F "$MSG_FILE"
     echo ""
 fi
 
