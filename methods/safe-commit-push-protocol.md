@@ -1,7 +1,7 @@
 ---
 title: Safe Commit-Push Protocol
 created: 2026-06-04
-updated: 2026-06-04
+updated: 2026-06-05
 type: method
 tags: [wiki, git, safety, verification, multi-agent, v1.6]
 sources: [methods/git-tutorial, protocols/git-collaboration-multi-agent, methods/using-knowledge-base]
@@ -117,6 +117,8 @@ bash scripts/safe-commit-push.sh "commit message"
 | **`push 静默非快进`** | `git push` 输出空,但本地 ≠ 远端 | 必看 5 步核验 step 5 |
 | **403 Write access not granted** | PAT 没 write 权限 | 改 fine-grained token 权限为 `Contents: Read and write` |
 | **5 步核验后假成功诊断** | local = 远端 = 不同 hash | 跑 `safe-commit-push.sh` 自动诊断回滚 |
+| **脚本不可用 + 手动 5 步** | `bash scripts/safe-commit-push.sh` exit 1 无诊断 | 手动执行: `commit` → `cat-file -t HEAD` → `stash` → `pull --rebase` → `push` → `ls-remote == rev-parse` (见 git-push-cheatsheet § 2.0) |
+| **commit 被 rebase 吞掉** | `pull --rebase` 后 `git log` 看不见自己 commit | `git reflog -5` 找回 hash → `git reset --hard <hash>` (reflog 保留 90 天不丢数据) |
 
 ## 5. 多 Agent 协作场景(3rd + 主对话)
 

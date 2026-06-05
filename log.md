@@ -1,3 +1,9 @@
+## [2026-06-05] main: Git 经验沉淀 → lessons-learned §14 + git-push-cheatsheet v1.1 + safe-commit-push-protocol v1.7
+- lessons-learned: 新增 §14 (Git 实战新坑, 5 项) + §1 工具坑新增 4 行 (rebase吞commit / stale rebase-merge / author错配 / 脚本不可用)
+- git-push-cheatsheet: §2.0 stash-before-rebase 前置流程 + §3 假成功 #5-#7 (rebase吞commit / rebase-merge阻塞 / author错配) + §6 决策树新分支
+- safe-commit-push-protocol: §4 陷阱表新增 2 行 (脚本不可用手动回退 / commit被rebase吞掉)
+- 全部关联 [[notes/lessons-learned-index]] ↔ [[methods/git-push-cheatsheet]] ↔ [[methods/safe-commit-push-protocol]]
+
 ## [2026-06-05] main: Harness Engineering wiki v2.0→v2.1 深度优化 | +4 新模式 + 7 指标 + 4 新来源
 - v2.1 新增: Mitchell Hashimoto 操作性定义 (6 步采纳之旅) / Anthropic 初始化器+编码 Agent 双模式 (4 失败模式对策) / Claude Code Harness v4.14.0 (Go 守卫引擎) / ralph-orchestrator v2.9.3 (Hat + RObot HITL)
 - 新增 §8 Harness 有效性度量: 7 项健康度指标 (触发率/误报率/逃逸率/修复比例/前馈反馈比/惯性/灵敏度) + 4 种度量方法 (基线/注入测试/满意度/覆盖率地图)

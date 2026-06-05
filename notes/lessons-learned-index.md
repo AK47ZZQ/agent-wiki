@@ -22,6 +22,10 @@ confidence: high
 | **MSYS bash + `safe-commit-push.sh` CRLF 静默失败** — `set -euo pipefail` + 嵌套 `bash -c` 在 Windows MSYS 上有 CRLF 问题 | workaround: 用 `subprocess.run(['git', ...])` 跑 5 步核验 | 2026-06-04 19:30+ |
 | **GitHub push protection blocks PAT redaction** — 本地已删 PAT,commit "Redact PATs" push 仍被 GH013 阻断 | 唯一解: 撤销 PAT → 等 5min → 再 commit/push | 2026-06-04 v1.9 |
 | **Git 5 步核验** — `cat-file -t HEAD` + `fetch` + `rev-parse` 对比 + `git show --stat` + `git ls-remote` | 实战真成功: `805ae1a` (5 files), `aa0bcb0` (1148 lines) | 2026-06-04 19:30+ |
+| **`git pull --rebase` 吞掉未 push 的 commit** — 未 stash 的本地修改触发 rebase 失败 → rebase abort 回到远端 HEAD → 本地新 commit 丢失 | 修法: `git reflog` 找丢失的 commit hash → `git reset --hard <hash>` 恢复 | 2026-06-05 (本 session, commit `7de5719`) |
+| **stale `.git/rebase-merge` 目录阻塞** — 上次 rebase 未 clean abort, 残留 `rebase-merge` dir → 下次 `pull --rebase` 报 "already a rebase-merge directory" | 修法: `git rebase --abort` 清残留（即使无活跃 rebase 也执行） | 2026-06-05 |
+| **git author 错配 (`Hermes 3rd` → `Hermes`)** — 换机器/换用户后 `git config` 残留旧身份 → commit 署名错误 | 修法: `git config user.name "Hermes"` + `git config user.email "hermes@hermes.local"` + `git commit --amend --reset-author` | 2026-06-05 |
+| **`safe-commit-push.sh` 脚本不可用** — Windows MSYS 下脚本 `exit 1` 无诊断信息 → 无法走自动化 5 步 | 修法: 手动执行 5 步核验: `commit` → `cat-file` → `pull --rebase` → `push` → `ls-remote == rev-parse` | 2026-06-05 |
 
 ## 2. Hermes / LCM / Hindsight 架构坑
 
@@ -149,3 +153,41 @@ confidence: high
 - 任何 amend 必须 `git status -sb` + `cat-file -t HEAD` + rev-parse 远端对比 3 步独立核验
 
 **关联**: [[hindsight-env-truly-fixed-2026-06-05]] (本次 6-5 10:10-10:20 完整实战), [[hindsight-windows-acl-trap|SKILL hindsight-windows-acl-trap]] (4 ACL 陷阱)
+
+## 14. 2026-06-05 Git 实战新坑 (本 session Harness Engineering v2.1 推送)
+
+> 完整实战记录: commit `7de5719` → push → 5 步核验全部通过。踩了 5 个新坑。
+
+| 经验 | 场景 | 细节页 | 沉淀日期 |
+|---|---|---|---|
+| **`git pull --rebase` 吞 commit** — 未 stash 的本地修改 → rebase 失败 → `rebase --abort` 回到远端 HEAD → 本地新 commit 在 reflog 但不在 branch | 本 session 提交 `7de5719` 后 `pull --rebase` 失败, 文件内容回退到 v1.0 (39 行) | [[methods/git-push-cheatsheet#假成功5]] | 2026-06-05 |
+| **stale `.git/rebase-merge` 阻塞** — 上次 rebase 未 clean abort 残留 `rebase-merge` 目录 → 下次 `pull --rebase` 报 "already a rebase-merge directory, I wonder if you are in the middle of another rebase" | `git pull --rebase` 第二次尝试时被阻塞 | [[methods/git-push-cheatsheet#假成功5]] | 2026-06-05 |
+| **reflog 恢复法** — `git reflog` 找丢失 commit → `git reset --hard <hash>` 精确恢复到丢失前的状态 | 从 `HEAD@{4}` 恢复了 commit `7de5719` (amend 后), 658 行内容全量恢复 | [[methods/git-push-cheatsheet#reflog]] | 2026-06-05 |
+| **author 错配** — 换机器/换会话后 `git config user.name` 残留旧值 (`Hermes 3rd` 而非 `Hermes`) → commit 署名错误 | `git log` 显示 author = `Hermes 3rd`, 不符合 main-claude 身份 | [[methods/git-push-cheatsheet#author-identity]] | 2026-06-05 |
+| **`safe-commit-push.sh` 不可用** — Windows MSYS bash 下脚本 `exit 1` 无诊断输出, 无法走自动化 5 步 | 本 session 两次尝试 `bash scripts/safe-commit-push.sh` 均失败 | 手动 5 步核验 (本协议 § 2) | 2026-06-05 |
+
+### 14.1 标准手动 5 步核验 (脚本不可用时)
+
+```bash
+# Step 1: 清理工作区
+git stash push -m "unrelated changes"     # 暂存无关修改
+# Step 2: 提交
+git add <files> && git commit -m "msg"
+# Step 3: 验证 commit 对象存在
+git cat-file -t HEAD                      # 必须输出 "commit"
+# Step 4: 同步 + 推送
+git pull --rebase origin main             # 先拉,有冲突停下
+git push origin main
+# Step 5: 远端核验
+git ls-remote origin main | cut -f1       # 取远端 hash
+git rev-parse HEAD                        # 取本地 hash
+# 两者必须完全一致
+```
+
+### 14.2 stash + rebase + reflog 三连口诀
+
+> **忘 stash → rebase 死 → abort → commit 丢 → reflog 找 → reset 回**
+>
+> 中间态检查: `git stash list` + `git status -sb` + `git log --oneline -3` + `git reflog -5`
+
+**关联**: [[methods/git-push-cheatsheet]] (假成功 #5 / reflog 恢复 / author 错配), [[methods/safe-commit-push-protocol]] (手动 5 步核验)

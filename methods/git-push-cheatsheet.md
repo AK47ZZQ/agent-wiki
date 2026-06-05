@@ -1,9 +1,9 @@
 ---
 title: Git Push Cheatsheet — 5 步核验 + 假成功防御
 created: 2026-06-04
-updated: 2026-06-04
+updated: 2026-06-05
 type: method
-tags: [git, cheatsheet, verification, safety, multi-agent, push]
+tags: [git, cheatsheet, verification, safety, multi-agent, push, reflog, rebase, stash]
 sources: [wiki-keeper-v1.8, safe-commit-push-protocol, AGENTS-v2, using-knowledge-base]
 confidence: high
 ---
@@ -22,6 +22,18 @@ confidence: high
 | **5 步核验** | 永远走,不裸 `git commit` + `git push` | 5+ 次假成功教训(668 行内容从来没真推过) |
 
 ## 2. 5 步核验(必走)
+
+### 2.0 前置: stash 清理 (防 rebase 吞 commit)**
+
+```bash
+# 永远在 pull --rebase 之前 stash!
+git stash list                          # 看已有 stash
+git stash push -m "WIP before rebase"   # 暂存未提交修改
+# ... 5 步核验 ...
+git stash pop                           # 恢复 (有冲突则手动解)
+```
+
+### 2.1 标准 5 步
 
 ```bash
 # Step 1: 看本地变更
@@ -84,6 +96,29 @@ assert h_local == h_remote, f"假成功!local={h_local} remote={h_remote}"
 ### 假成功 #4: .canvas / .obsidian 污染
 - **症状**:`git add -A` 把 Obsidian 工作区文件(`.canvas` / `.base` / `.obsidian/*` / `.trash/*`)一起 add
 - **修法**:`safe-commit-push.sh` v1.6 Step 1.5 自动排除 + 写 `.gitignore`
+
+### 假成功 #5: `pull --rebase` 吞掉你的 commit
+- **症状**:未 stash 的本地修改 → `pull --rebase` 失败 → `rebase --abort` 回到远端 HEAD → 本地新 commit 从 branch 消失 (但仍在 `reflog` 中)
+- **核验**:`git log --oneline -3` 看不见自己的 commit; `git reflog -5` 能看到 (标记为 `commit` 或 `commit (amend)`)
+- **恢复**:`git reflog` 找目标 hash → `git reset --hard <hash>` 精确恢复。**不会丢数据**: reflog 保留 90 天
+- **预防**:永远 `git stash` 再 `pull --rebase`
+
+### 假成功 #6: stale `.git/rebase-merge` 阻塞
+- **症状**:`pull --rebase` 报 "already a rebase-merge directory, I wonder if you are in the middle of another rebase"
+- **根因**:上次 rebase 未 clean abort (如被 Ctrl+C 打断),残留 `.git/rebase-merge/` 目录
+- **修法**:`git rebase --abort` (即使当前无活跃 rebase 也执行) → `rm -rf .git/rebase-merge` (如果 abort 仍报错)
+- **预防**:每次 rebase 后 `ls .git/rebase-merge 2>/dev/null && echo "STALE" || echo "CLEAN"`
+
+### 假成功 #7: git author 身份错配
+- **症状**:commit 署名不是 `Hermes` 而是 `Hermes 3rd` (或其他残留身份)
+- **核验**:`git log -1 --format='%an <%ae>'` 看 author
+- **修法**:
+```bash
+git config user.name "Hermes"
+git config user.email "hermes@hermes.local"
+git commit --amend --reset-author --no-edit   # 修最近一次
+```
+- **预防**:每次新机器/新会话启动时跑 `git config user.name && git config user.email` 确认
 
 ## 4. 多 Agent 协作(本机 + 3rd)
 
@@ -155,6 +190,10 @@ git branch --set-upstream-to=origin/main main
   │
   ├─ 冲突? → 写 log.md + 通知用户,**不** force
   │
+  ├─ pull --rebase 吞了 commit? → `git reflog -5` 找回 → `git reset --hard <hash>`
+  │
+  ├─ rebase-merge 阻塞? → `git rebase --abort` + `rm -rf .git/rebase-merge`
+  │
   └─ 远端有 sibling 新 commit?
       → git pull --rebase + 看 author 区分来源
 ```
@@ -167,10 +206,11 @@ git branch --set-upstream-to=origin/main main
 - `AGENTS.md` v2 § 3 — 协议命令
 - `scripts/safe-commit-push.sh` v1.6 — 自动化实现
 
-## 8. 实战真成功证据(2026-06-04)
+## 8. 实战真成功证据(2026-06-04 ~ 2026-06-05)
 
 | commit | 内容 | 验证 |
 |---|---|---|
+| `7de5719` | v2.1 Harness Engineering 深度优化 (4 files, 721 insertions) | 5 步核验过, `reflog` 恢复后 push, `ls-remote == rev-parse` |
 | `aa0bcb0` | 24 changes, 1148 lines | 5 步核验过,本地=远端 |
 | `6ab1161` | 5 files, 1.0 MB | 5 步核验过 |
 | `49adbe6` | 3rd: Hindsight PATCH bank | sibling 协作 |
