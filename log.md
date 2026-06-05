@@ -1,3 +1,15 @@
+## [2026-06-05 10:15] 3rd: 3rd 笔记本 v0.7.1 env 独立 bug 修复 (跟 main-claude 4 周前 v0.7.2 fix 区分)
+
+- **bug 性质**: 3rd 笔记本本机 venv 装 hindsight v0.7.1 (不是 main-claude v0.7.2)，本机 env 独立存在错配。**不是 4 周前假修复**——main-claude 4 周前 fix 真成功（memory 4 个条目验证 35 LLM calls 100% 成功）
+- **修复结果**: `~/.hindsight/profiles/hermes.env` 332 字节错配 `provider=anthropic + base_url=/anthropic` → 323 字节正确 `provider=minimax + base_url=https://api.minimaxi.com/v1 + sk-cp-... key`
+- **3 件套备份**: `hermes.env.broken.20260605` (raw 332B) + `hermes.env.archive.json` (结构化 653B) + `fix_env_minimax.py` (脚本 3.2KB)
+- **5 步核验全过**: port 9177 PID 28712 listen ✅ + /health 200 healthy ✅ + LLM provider=minimax/MiniMax-M2.7-highspeed ✅ + Connection verified ✅ + list 11 docs 可查 ✅
+- **关键学习**: v0.7.1 daemon 用 `load_dotenv(find_dotenv(usecwd=True))` 不是直接读 env 变量。`set -a; . ./hermes.env; set +a` 是唯一让 daemon 读 env 的方法
+- **4 个 ACL 陷阱**: (1) `/reset + /inheritance:e` 默默删 Everyone Deny 保护 (2) `icacls /grant ZZQ:(M)` 看似给 modify 实则锁自己 (3) `/remove 'ZZQ'` 解析失败必须用 `*ZZQ` (4) `Deny ACE` 永远赢 inherited `Allow`
+- **跨机器 minor 漂移**: main-claude v0.7.2 vs 3rd v0.7.1, 未来 main-claude fix 时要同步 3rd (跟 lessons-learned 23:50 同步协议一致)
+- **2 件产物**: `notes/hindsight-env-truly-fixed-2026-06-05.md` (9.2KB, 修订标题 + 内容跟 main-claude 4 周前 fix 区分) + skill `hindsight-windows-acl-trap` (8.1KB, 4 陷阱 + 5 步法)
+- **4 件套同步**: index.md 增 1 笔记 (line 154-155 旁注) + 状态行更新 (00:40 → 10:15, 111 → 112) + log.md 本行 + 旧笔记 (hindsight-daemon-fix-2026-06-04) 不标 contradiction (它记的是 main-claude 4 周前正确 fix)
+
 ## [2026-06-04 23:35] 3rd: A2 + A3 + A4 完整跑 (3rd 第 2 次 6 步探勘法 + 修 5bb84e2 老 ghp_ + 改 8 commit author)
 
 **A2 (6 步探勘法第 2 次实战)**:
