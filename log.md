@@ -1469,3 +1469,5 @@ wiki/
 **commit**: 待 push
 
 ## [2026-06-06 10:21] maintenance | 3rd 笔记本 wiki 自检维护: 修 1 typo wikilink + 创建 4 个死链笔记 (git-push-v16-pitfalls / hindsight-windows-acl-trap / llm-wiki-pattern / agent-governance-framework) + 批量补 46 个 content 文件的 `source:` 字段 (主题反推) + 修 1 个 frontmatter 缺 type + 5 个索引补入 index.md. check-wiki-quality.py 13→7 死链, 索引缺 5→8(新文件带动的)→ 修后应 <5. § 4.0 维护豁免范围, 用户显式授权 A 选项.
+
+## [2026-06-06 21:30] notes | dspy-self-evolution 实战笔记 — DSPy ChainOfThought → Hindsight mental_model `hermes-self-evolution` 4903 chars + BootstrapFewShot 5 步核验训出 5033 bytes model. mental_model 触发器 refresh_after_consolidation=true, 自动 reflect 注入未来 session. 笔记含 step1/2 完整数据 + landmines + 5 步核验实例.

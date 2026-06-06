@@ -182,6 +182,8 @@ tags: [index, wiki, catalog]
 - [[notes/hindsight-l2-deep-fix-2026-06-05-afternoon]] — Hindsight L2 deep fix 下午场 (3rd, 6-5, mental_models/directives 子表设计 + bank updated_at 区分 + 4 PATCH items 验证, 之前缺索引补)
 - [[notes/lessons-learned-2026-06-04-23-50]] — Lessons learned 23:50 快照 (3rd 6-4, 含 5 条本轮铁律, 之前缺索引 + 缺 type 一并修)
 
+
+- [[notes/dspy-self-evolution-2026-06-06]] — **Hermes 3rd 自我进化** (3rd, 21:30, DSPy ChainOfThought → Hindsight mental_model 4903 chars + BootstrapFewShot 5 步核验训练, "实现自我进化" 任务, mental_model `hermes-self-evolution` 自动 reflect 注入未来 session)
 ### References(1) — 长引用
 - [[references/hermes-commands-full|hermes-commands-full]] — Hermes 命令大全 V2 提炼版
 
