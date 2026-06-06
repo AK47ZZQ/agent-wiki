@@ -10,6 +10,7 @@ sources:
   - [[methods/wiki-curation-guide]]
   - [[notes/lessons-learned-index]]
 confidence: high
+source: hermes-3rd-context-2026-06
 ---
 
 # Agent Writing Standard — 知识库写入规约

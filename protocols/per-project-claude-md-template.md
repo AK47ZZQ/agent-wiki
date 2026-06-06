@@ -9,6 +9,7 @@ sources:
   - https://medium.com/@AnalyticsAtMeta/how-we-built-an-ai-second-brain-for-60k-knowledge-workers-78c507dd795b
   - https://ericmjl.github.io/blog/2026/3/6/mastering-personal-knowledge-management-with-obsidian-and-ai
 confidence: high
+source: per-project-claude-md-2026
 ---
 
 # Per-Project CLAUDE.md 模板(Progressive Disclosure 落地)

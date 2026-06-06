@@ -9,6 +9,7 @@ sources:
   - https://hindsight.vectorize.io/guides/2026/04/14/guide-migrate-hindsight-hermes-to-native-hermes-memory
   - local: C:\Python314\start_hindsight_local.py
 confidence: high
+source: hindsight-deployment-2026-06
 ---
 
 # Hindsight 本地部署 (Windows + Hermes native provider)

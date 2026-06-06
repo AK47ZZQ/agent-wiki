@@ -9,6 +9,7 @@ sources:
   - openai.com/index/harness-engineering
   - martinfowler.com/articles/harness-engineering.html
   - github.com/deusyu/harness-engineering (3.5k★)
+source: harness-engineering-2026
 ---
 
 # Harness Engineering — 速览

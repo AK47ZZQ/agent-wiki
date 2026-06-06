@@ -12,6 +12,7 @@ sources:
   - github.com/deusyu/harness-engineering (3.5k★)
   - github.com/openai/symphony (25k★)
   - github.com/snarktank/ralph (19.9k★)
+source: harness-engineering-2026
 ---
 
 # Harness Engineering — Agent 开箱即用完整手册

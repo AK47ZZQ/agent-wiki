@@ -16,6 +16,7 @@ sources:
   - L1 MEMORY.md 98% 占用, 9 entry 已存 4 反模式 + 5 步核验 + 工具 fallback 铁律
   - 4 周前 wiki § 4 protocols/git-collaboration-multi-agent (3 铁律)
 confidence: high
+source: hindsight-3rd-notebook-2026-06
 ---
 
 # Hindsight v0.7.2 + gbrain v0.42.10 源仓库学习 — bank config 完整 5 字段 + mental_models + directives 实战

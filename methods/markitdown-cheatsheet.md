@@ -7,6 +7,7 @@ tags: [markitdown, cheatsheet, reference, llm, ocr]
 sources:
   - https://github.com/microsoft/markitdown
 confidence: high
+source: markitdown-tooling-2026
 ---
 
 # MarkItDown 命令速查

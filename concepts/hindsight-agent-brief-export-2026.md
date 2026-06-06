@@ -7,6 +7,7 @@ tags: [meta, export, hindsight, brief, agent-feeding]
 sources:
   - ~/hermes-all/exports/hindsight-agent-brief/ (7 文件, 61 KB)
 confidence: high
+source: hindsight-deployment-2026-06
 ---
 
 # Hindsight Agent Brief (5 文档导出)

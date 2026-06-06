@@ -10,6 +10,7 @@ sources:
   - Tree-of-Thought: Yao et al. 2023, arxiv.org/abs/2305.10601
   - Reflexion: Shinn et al. 2023, arxiv.org/abs/2303.11366
 confidence: high
+source: hermes-3rd-context-2026-06
 ---
 
 # Agent Reasoning Patterns — CoT / ReAct / ToT / Reflexion

@@ -9,6 +9,7 @@ sources:
   - promptingguide.ai (Context Engineering section)
   - martinfowler.com/articles/harness-engineering.html § sidebar
 confidence: medium
+source: harness-engineering-2026
 ---
 
 # Context Engineering — 把上下文窗口当作工程资源来管理

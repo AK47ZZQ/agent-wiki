@@ -9,6 +9,7 @@ sources:
   - github.com/openai/symphony (25k★)
   - concepts/hermes-codex-runtime.md
 confidence: high
+source: codex-cli-deep-dive-2026
 ---
 
 # Codex CLI 深度解析
@@ -194,7 +195,7 @@ Exit code 2 是关键：Agent 说"我做了一半，上下文满了，需要新 
 - [[concepts/hermes-codex-runtime]] — Hermes↔Codex 桥接架构
 - [[concepts/symphony-spec-as-product]] — Symphony: Issue→PR 编排
 - [[concepts/harness-engineering-deep-study]] — Codex 是 Harness Engineering 的第一个实践案例
-- [[concepts/agent-safety]] (新建) — 沙箱 = 安全模型的核心
+- [[methods/agent-safety]] (新建) — 沙箱 = 安全模型的核心
 - [[comparisons/multi-agent-architecture-patterns]] — Codex 在 Swarm / Orchestrator-Workers 中的角色
 
 ### 外部链接

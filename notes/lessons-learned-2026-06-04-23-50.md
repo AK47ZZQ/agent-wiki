@@ -7,9 +7,11 @@ owner: Hermes 3rd
 status: superseded
 tags: [lessons-learned, hermes-3rd, github-push, ssh, 5-step-verify, gh013, gitpython, hindsight-acl, multi-agent, stale]
 superseded_by: notes/lessons-learned-index.md
+type: note
+source: safe-commit-push-3rd-notebook-2026-06
 ---
 
-> ⚠️ **本页已合并至** [[notes/lessons-learned-index]] (2026-06-05)。核心教训已抽取至索引 §1-§14。本页保留供历史参考。
+> ⚠️
 
 # Hermes 3rd 笔记本 5 小时经验教训沉淀
 

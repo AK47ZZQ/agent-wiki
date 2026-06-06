@@ -1467,3 +1467,5 @@ wiki/
 **新文件**: wiki/methods/safe-commit-push-protocol.md(7.8K,10 段,3rd 拉 wiki 就能看到 5 步核验协议)
 
 **commit**: 待 push
+
+## [2026-06-06 10:21] maintenance | 3rd 笔记本 wiki 自检维护: 修 1 typo wikilink + 创建 4 个死链笔记 (git-push-v16-pitfalls / hindsight-windows-acl-trap / llm-wiki-pattern / agent-governance-framework) + 批量补 46 个 content 文件的 `source:` 字段 (主题反推) + 修 1 个 frontmatter 缺 type + 5 个索引补入 index.md. check-wiki-quality.py 13→7 死链, 索引缺 5→8(新文件带动的)→ 修后应 <5. § 4.0 维护豁免范围, 用户显式授权 A 选项.

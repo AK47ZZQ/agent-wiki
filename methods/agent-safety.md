@@ -10,6 +10,7 @@ sources:
   - Claude Code Harness guardrail engine (Chachamaru127, v4.14.0)
   - Hermes CLI security commands
 confidence: medium
+source: hermes-3rd-context-2026-06
 ---
 
 # Agent Safety — Guardrails, 沙箱, 权限模型

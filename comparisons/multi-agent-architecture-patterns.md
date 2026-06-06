@@ -11,6 +11,7 @@ sources:
   - AutoGen (Microsoft): arxiv.org/abs/2308.08155
   - Generative Agents (Stanford/Google): arxiv.org/abs/2304.03442
 confidence: high
+source: multi-agent-design-2026
 ---
 
 # Multi-Agent Architecture Patterns — 6 种模式对比与选型

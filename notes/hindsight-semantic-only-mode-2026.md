@@ -8,6 +8,7 @@ sources:
   - user statement (2026-06-04)
   - concepts/hindsight-memory-modes-guide
 confidence: medium
+source: hindsight-deployment-2026-06
 ---
 
 # Hindsight semantic-only mode (2026-06-04 新装)

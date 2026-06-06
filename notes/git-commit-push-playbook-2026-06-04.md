@@ -11,6 +11,7 @@ sources:
   - 4 周前 wiki § 4 git-collaboration-multi-agent (3 铁律)
   - 4 周前 wiki § 4.3 PAT 应急流程
 confidence: high
+source: git-3rd-notebook-2026-06
 ---
 
 # Git 提交 + 拉取 4 步最佳实践 (笔记本 Windows 11 + MSYS + GitHub 公仓, 2026-06-04 23:55 实战)

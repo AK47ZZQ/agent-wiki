@@ -9,6 +9,7 @@ sources:
   - https://gurusup.com/blog/best-multi-agent-frameworks-2026
   - https://medium.com/online-inference/best-practices-for-building-effective-ai-agents-and-multi-agent-systems-2c7fe11c9605
 confidence: high
+source: multi-agent-design-2026
 ---
 
 # Agent Coordination Protocol — 协作协议(A2A 兼容)

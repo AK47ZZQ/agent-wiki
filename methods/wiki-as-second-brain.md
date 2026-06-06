@@ -6,6 +6,7 @@ type: method
 tags: [wiki, multi-agent, second-brain, meta, knowledge-management, progressive-disclosure, blackboard, PARA]
 sources:
   - https://gurusup.com/blog/best-multi-agent-frameworks-2026
+source: wiki-second-brain-2026-06
 ---
   - https://medium.com/@Micheal-Lanham/multi-agent-in-production-in-2026-what-actually-survived-f86de8bb1cd1
   - https://openlayer.com/blog/post/multi-agent-system-architecture-guide

@@ -13,6 +13,7 @@ sources:
   - 4 周前 wiki § 4 protocols/git-collaboration-multi-agent (3 铁律)
   - 6-5 23:10 v1.7 笔记 + 23:15 v1.1 增补 (2 份实战笔记合并反思)
 confidence: high
+source: self-reflection-3rd-notebook-2026-06
 ---
 
 # Hermes 3rd 自我反思: 本轮 4 个反模式 + 5 个改进项

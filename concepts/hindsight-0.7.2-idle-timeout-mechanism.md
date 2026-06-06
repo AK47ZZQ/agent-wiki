@@ -9,6 +9,7 @@ sources:
   - main-claude 台式 notes/hindsight-deployment-and-monitoring-2026-06-04.md
   - Hindsight 0.7.2 daemon 源码 grep (hindsight_api.daemon module)
 confidence: high
+source: hindsight-deployment-2026-06
 ---
 
 # Hindsight 0.7.2 daemon idle timeout 机制 (1800s SIGTERM)

@@ -176,6 +176,12 @@ tags: [index, wiki, catalog]
 - [[concepts/markitdown-overview]] — MarkItDown 概览 (Microsoft 开源文件→Markdown 转换器)
 - [[methods/markitdown-cheatsheet]] — MarkItDown CLI/Python/5 实战配方
 
+- [[concepts/agent-governance-framework]] — Agent 治理框架 (2026-06-06 补,3 硬规则 + 5 软规则, 从 reflection 引用反推)
+- [[concepts/llm-wiki-pattern]] — LLM Wiki Pattern (2026-06-06 补, Karpathy 风格 LLM 驱动互链, 从 reflection 引用反推)
+- [[notes/hindsight-windows-acl-trap]] — Hindsight Windows ACL 陷阱 (2026-06-06 补, daemon log access denied 排查 3 方案, 从 lessons-learned 引用反推)
+- [[notes/hindsight-l2-deep-fix-2026-06-05-afternoon]] — Hindsight L2 deep fix 下午场 (3rd, 6-5, mental_models/directives 子表设计 + bank updated_at 区分 + 4 PATCH items 验证, 之前缺索引补)
+- [[notes/lessons-learned-2026-06-04-23-50]] — Lessons learned 23:50 快照 (3rd 6-4, 含 5 条本轮铁律, 之前缺索引 + 缺 type 一并修)
+
 ### References(1) — 长引用
 - [[references/hermes-commands-full|hermes-commands-full]] — Hermes 命令大全 V2 提炼版
 

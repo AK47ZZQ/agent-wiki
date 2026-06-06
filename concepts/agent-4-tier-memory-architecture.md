@@ -12,6 +12,7 @@ sources:
   - https://www.cnblogs.com/deephub/p/19740751
 confidence: high
 contested: false
+source: hermes-3rd-context-2026-06
 ---
 
 # Agent 四层记忆架构

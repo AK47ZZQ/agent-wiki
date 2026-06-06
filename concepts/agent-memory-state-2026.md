@@ -8,6 +8,7 @@ sources:
   - ~/AppData/Local/hermes/memories/MEMORY.md (3448 chars)
   - ~/AppData/Local/hermes/memories/USER.md (1543 chars)
 confidence: high
+source: hermes-3rd-context-2026-06
 ---
 
 # Agent Memory 状态镜像 (2026-06-03)

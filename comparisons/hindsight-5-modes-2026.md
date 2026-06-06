@@ -10,6 +10,7 @@ sources:
   - methods/install-hindsight-native-hermes-method
   - methods/hindsight-4d-retrieval-complete
 confidence: low
+source: hindsight-3rd-notebook-2026-06
 ---
 
 # Hindsight 5 种 Mode 横向对比 (2026-06-04 补充)

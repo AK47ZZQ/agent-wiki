@@ -8,6 +8,7 @@ sources:
   - local: ~/hermes-all/hermes/config.yaml
   - local: ~/hermes-all/hermes/scripts/
 confidence: high
+source: hindsight-deployment-2026-06
 ---
 
 # Hindsight 主动化工作流

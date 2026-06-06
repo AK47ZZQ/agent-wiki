@@ -10,6 +10,7 @@ sources:
   - https://github.com/dorianlgs/langgraph-mem0
   - local: ~/hermes-all/hermes/skills/autonomous-ai-agents/ai-harness-exploration/references/hindsight-install-uninstall-case-study.md
 confidence: high
+source: hindsight-3rd-notebook-2026-06
 ---
 
 # Hindsight 自动化方案对比 (2026-06-03)

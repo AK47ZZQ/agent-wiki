@@ -16,6 +16,7 @@ sources:
   - L1 MEMORY 8 entry 97% (反模式 #5 完整 + 38 字段全景 + 5 待办)
   - 4 周前 wiki § 4 protocols/git-collaboration-multi-agent (3 铁律)
 confidence: high
+source: dspy-3rd-notebook-2026-06
 ---
 
 # DSPy 3.2.1 实战 — 自动生成 mental_model + 反模式 #5 后的 agent 治理新工具

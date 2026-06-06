@@ -8,6 +8,7 @@ sources:
   - https://github.com/microsoft/markitdown
   - https://pypi.org/project/markitdown/
 confidence: high
+source: markitdown-tooling-2026
 ---
 
 # MarkItDown 概览

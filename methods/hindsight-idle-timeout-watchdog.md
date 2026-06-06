@@ -8,6 +8,7 @@ sources:
   - 本会话(2026-06-04)Hermes 3rd 笔记本实测
   - main-claude 台式 hindsight-healthcheck.py cron 方案
 confidence: high
+source: hindsight-deployment-2026-06
 ---
 
 # Hindsight idle timeout 无 cron 守护法 (笔记本 0.7.2 实战)

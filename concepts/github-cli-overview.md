@@ -9,6 +9,7 @@ sources:
   - https://www.augmentcode.com/open-source/cli/cli
   - https://cli.github.com/manual/
 confidence: high
+source: gh-cli-tooling-2026
 ---
 
 # GitHub CLI (gh) 概览

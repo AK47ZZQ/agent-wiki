@@ -15,6 +15,7 @@ sources:
   - https://arxiv.org/html/2512.12818v1
 confidence: high
 contested: false
+source: hindsight-deployment-2026-06
 ---
 
 # Hindsight 在 Hermes 生态的真实定位

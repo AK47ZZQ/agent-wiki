@@ -9,6 +9,7 @@ sources:
   - https://hindsight.vectorize.io/
   - local: ~/hermes-all/hermes/config.yaml
 confidence: high
+source: hindsight-deployment-2026-06
 ---
 
 # Hindsight 主动化方法论

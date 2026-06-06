@@ -8,6 +8,7 @@ sources:
   - https://hindsight.vectorize.io/
   - notes/hindsight-semantic-only-mode-2026
 confidence: medium
+source: hindsight-deployment-2026-06
 ---
 
 # Hindsight Memory Modes Guide

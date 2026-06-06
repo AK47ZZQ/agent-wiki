@@ -11,6 +11,7 @@ sources:
   - 3rd 笔记本 notes/hindsight-daemon-fix-2026-06-04.md (14:25 base_url fix)
   - 3rd 笔记本 concepts/hindsight-0.7.2-idle-timeout-mechanism.md (1800s SIGTERM)
 confidence: high
+source: hindsight-deployment-2026-06
 ---
 
 # Hindsight 0.6.1 → 0.7.2 实战差异 (跨 main-claude 台式 + 3rd 笔记本 2 节点)

@@ -10,6 +10,7 @@ sources:
   - https://hindsight.vectorize.io/developer/api/quickstart
   - https://hindsight.vectorize.io/guides/2026/04/14/guide-hermes-memory-modes-with-hindsight-hybrid-context-tools
 confidence: high
+source: hindsight-deployment-2026-06
 ---
 
 # Hermes 安装 Hindsight 完整方法 (官方 native 路径)

@@ -10,6 +10,7 @@ sources:
   - https://github.com/gh-cli-for-education/awesome-gh-cli-extensions
   - https://docs.github.com/en/github-cli/github-cli/creating-github-cli-extensions
 confidence: high
+source: gh-cli-tooling-2026
 ---
 
 # gh Extension 开发实战

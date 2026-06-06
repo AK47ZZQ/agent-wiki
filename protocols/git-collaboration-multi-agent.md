@@ -8,6 +8,7 @@ sources:
   - 本会话(2026-06-04 用户明确)
   - local
 confidence: high
+source: git-3rd-notebook-2026-06
 ---
 
 # Git Collaboration Protocol — 多 Agent 共享 Wiki 同步协议

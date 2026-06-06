@@ -9,6 +9,7 @@ sources:
   - local: http://localhost:8888/docs
   - local: C:\Python314\test_hindsight_full.py
 confidence: high
+source: hindsight-deployment-2026-06
 ---
 
 # Hindsight 4 维检索 (完整版) - 实测全功能

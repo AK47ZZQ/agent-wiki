@@ -11,6 +11,7 @@ sources:
   - notes/hindsight-deployment-and-monitoring-2026-06-04.md
   - https://hindsight.vectorize.io/developer/api/quickstart
 confidence: high
+source: hindsight-deployment-2026-06
 ---
 
 # Hindsight Health-Monitoring 协议 (liveness + auto-restart)

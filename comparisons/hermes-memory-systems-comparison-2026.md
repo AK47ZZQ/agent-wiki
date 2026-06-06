@@ -12,6 +12,7 @@ sources:
   - https://www.reddit.com/r/hermesagent/comments/1tms3g6/memory_providers_i_tested_them_all
 confidence: high
 contested: false
+source: hindsight-3rd-notebook-2026-06
 ---
 
 # Hermes 最佳记忆系统对比

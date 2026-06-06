@@ -14,6 +14,7 @@ sources:
   - 4 周前 wiki § 4 protocols/git-collaboration-multi-agent (3 铁律 + 3 冲突类型)
   - 6-4 23:55 notes/git-commit-push-playbook (5 步核验金标准)
 confidence: high
+source: safe-commit-push-3rd-notebook-2026-06
 ---
 
 # safe-commit-push v1.7 终极修复 + agent 治理 commit 实战

@@ -9,6 +9,7 @@ sources:
   - 3rd 笔记本 notes/hindsight-0.7.2-bank-config-migration.md (12K 281 行)
   - main-claude 台式 notes/hindsight-deployment-and-monitoring-2026-06-04.md (14K 355 行)
 confidence: high
+source: hindsight-3rd-notebook-2026-06
 ---
 
 # Hindsight 0.6.1 vs 0.7.2 跨机器对比 (台式 + 笔记本 双节点实战)

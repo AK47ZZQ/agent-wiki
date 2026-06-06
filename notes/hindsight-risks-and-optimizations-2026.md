@@ -9,6 +9,7 @@ sources:
   - local: http://localhost:8888/health
   - local: 658MB/41min 实测
 confidence: high
+source: hindsight-deployment-2026-06
 ---
 
 # Hindsight 已知风险 + 优化建议 (2026-06 实战)

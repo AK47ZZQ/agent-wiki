@@ -9,6 +9,7 @@ sources:
   - Anthropic "Building Effective Agents" § evaluation
   - LangSmith / LangFuse observability platforms
 confidence: medium
+source: hermes-3rd-context-2026-06
 ---
 
 # Agent Evaluation — 如何度量 Agent 的质量

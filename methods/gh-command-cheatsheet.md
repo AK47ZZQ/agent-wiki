@@ -9,6 +9,7 @@ sources:
   - https://dev.to/github/top-10-tips-for-using-github-from-the-command-line-1me6
   - https://www.trainwithshubham.com/blog/github-cli-comprehensive-guide
 confidence: high
+source: gh-cli-tooling-2026
 ---
 
 # gh CLI 命令速查

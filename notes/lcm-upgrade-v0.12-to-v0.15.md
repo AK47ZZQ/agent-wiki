@@ -8,6 +8,7 @@ sources:
   - https://github.com/stephenschoettler/hermes-lcm/releases/tag/v0.15.0
   - local: ~/hermes-all/hermes/lcm.db
 confidence: high
+source: lcm-3rd-notebook-2026-06
 ---
 
 # LCM 升级记录 (v0.12.0 → v0.15.0)
